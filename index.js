@@ -91,35 +91,69 @@ app.get('/api/pdf', async (req, res) => {
     // Ajustar la posición x para alinear más a la izquierda
     const leftMargin = 50;
 
+    // (X, Y aliegn)
     doc
       .fontSize(7)
       .font('Times-Bold')
-      .text('Cotización No:', leftMargin, doc.y, { underline: true, align: 'left' });
+      .text('Cotización No:', 80, 100, { underline: true, align: 'left' });
+
+    // (X, Y aliegn)
+    doc.fontSize(7).text('SOL_PRC_51286', 180, 100, { align: 'left' }); //###
 
     doc.moveDown(0.7);
 
     doc
       .fontSize(7)
       .font('Times-Bold')
-      .text('Fecha de creación:', { underline: true, align: 'left' },);
+      .text('Fecha de creación:', 80, 110, { underline: true, align: 'left' },);
+
+    // (X, Y aliegn)
+    doc.fontSize(7).text('30/09/2024', 180, 110, { align: 'left' }); //###
     doc.moveDown(0.7);
 
     doc
       .fontSize(7)
       .font('Times-Bold')
-      .text('Máximo nivel de atribución:', { underline: true, align: 'left' },);
-    doc.moveDown(0.7);
+      .text('Máximo nivel de atribución:', 80, 120, { underline: true, align: 'left' },);
 
-    // Respuestas de la primera caida de datos
-    /* Aca deberia ir el texto de respuesta
-        doc
-          .fontSize(7)
-          .font('Times-Bold')
-          .text('SOL_PRC_51286', { align: 'center' },);
-        doc.moveDown(0.5); */
+    // (X, Y aliegn)
+    doc.fontSize(7).text('VP Ejecutivo', 180, 120, { align: 'left' }); //###
+    doc.moveDown(0.7);
 
     // Rectangulo 3 (x, y, width, height)
-    doc.rect(320, 90, 260, 30).stroke(); // Solo borde
+    doc.rect(320, 90, 260, 30).stroke();
+
+    doc
+      .fontSize(7)
+      .font('Times-Bold')
+      .text('Gerente', 80, 155, { underline: false, align: 'left' },);
+
+    // (X, Y aliegn)
+    doc.fontSize(7).text('Cristian Camilo Salazar Zuleta', 180, 155, { align: 'left' }); //###
+
+    doc
+      .fontSize(7)
+      .font('Times-Bold')
+      .text('CEO', 80, 165, { underline: false, align: 'left' },);
+
+    // (X, Y aliegn)
+    doc.fontSize(7).text('1779', 180, 165, { align: 'left' }); //###
+
+    doc
+      .fontSize(7)
+      .font('Times-Bold')
+      .text('Dirección', 80, 175, { underline: false, align: 'left' },);
+
+    // (X, Y aliegn)
+    doc.fontSize(7).text('Corporativo', 180, 175, { align: 'left' }); //###
+
+
+
+    // (X, Y aliegn)
+    doc.fontSize(7).text('Estado:', 330, 95, { align: 'left' });
+
+    // (X, Y aliegn)
+    doc.fontSize(7).text('Borrador', 510, 95, { align: 'left' }); //###
 
     // Crear linea horizantal divisora 1
     const startX = 320;
@@ -142,6 +176,98 @@ app.get('/api/pdf', async (req, res) => {
     doc.moveTo(startX1, middleY1)
       .lineTo(endX1, middleY1)
       .stroke();
+
+    doc
+      .fontSize(8)
+      .font('Times-Bold')
+      .text('Información Cliente Principal', 120, 205, { underline: true, align: 'left' },);
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(10).text('ISAGEN S.A. E.S.P', 75, 225, { align: 'left' });
+
+    doc
+      .fontSize(7).text('Nit', 200, 222, { align: 'left' });
+
+    doc
+      .fontSize(7).text('8110007404', 200, 233, { align: 'left' })
+      .fillColor('black'); // Para devolver el color original
+
+    doc
+      .fontSize(7)
+      .font('Times-Bold')
+      .text('Segmento Comercial / Dirección Banca', 40, 243, { underline: false, align: 'left' },);
+
+    // (X, Y aliegn)
+    doc.fontSize(7).text('Corporativo / Infraestructura y', 200, 243, { align: 'left' }); //###
+
+    doc
+      .fontSize(7)
+      .font('Times-Bold')
+      .text('Calificación MRC', 40, 253, { underline: false, align: 'left' },);
+
+    // (X, Y aliegn)
+    doc.fontSize(7).text('AA', 240, 253, { align: 'left' }); //###
+
+    doc
+      .fontSize(7)
+      .font('Times-Bold')
+      .text('Rating MRC Observado E.F. a 2020', 40, 263, { underline: false, align: 'left' },);
+
+    // (X, Y aliegn)
+    doc.fontSize(7).text('2', 243, 263, { align: 'left' }); //###
+
+    doc
+      .fontSize(7)
+      .font('Times-Bold')
+      .text('Rating MRC Proyectado', 40, 273, { underline: false, align: 'left' },);
+    // (X, Y aliegn)
+    doc.fontSize(7).text('-', 243, 273, { align: 'left' }); //###
+
+    doc
+      .fontSize(7)
+      .font('Times-Bold')
+      .text('Clasificación Comercial EPC', 40, 283, { underline: false, align: 'left' },);
+
+    // (X, Y aliegn)
+    doc.fontSize(7).text('Estratégico', 230, 283, { align: 'left' }); //###
+
+    doc
+      .fontSize(8)
+      .font('Times-Bold')
+      .text('Información de Nomina (Beneficio E + E)', 100, 297, { underline: true, align: 'left' },);
+
+
+    doc
+      .fontSize(7)
+      .font('Times-Bold')
+      .text('Numero de cuentas asociadas', 40, 315, { underline: false, align: 'left' },);
+    // (X, Y aliegn)
+    doc.fontSize(7).text('0', 243, 315, { align: 'left' }); //###
+
+    doc
+      .fontSize(7)
+      .font('Times-Bold')
+      .text('Potencial de empleados', 40, 325, { underline: false, align: 'left' },);
+    // (X, Y aliegn)
+    doc.fontSize(7).text('0', 243, 325, { align: 'left' }); //###
+
+    doc
+      .fontSize(7)
+      .font('Times-Bold')
+      .text('Share de nomina de la empresa', 40, 335, { underline: false, align: 'left' },);
+
+    // (X, Y aliegn)
+    doc.fontSize(7).text('0%', 242, 335, { align: 'left' }); //###
+
+    doc
+      .fontSize(7)
+      .font('Times-Bold')
+      .text('Target del Share de nomina', 40, 345, { underline: false, align: 'left' },);
+    // (X, Y aliegn)
+    doc.fontSize(7).text('53%', 241, 345, { align: 'left' }); //###
+
 
     // Rectangulo 5 (x, y, width, height)
     doc.rect(320, 130, 260, 250).stroke();
@@ -253,7 +379,7 @@ app.get('/api/pdf', async (req, res) => {
     doc.fontSize(6).text('Código:', 455, 30);
 
     // (X, Y aliegn)
-    doc.fontSize(6).text('DCC_FOR_130', 515, 30, {align: 'left'});
+    doc.fontSize(6).text('DCC_FOR_130', 515, 30, { align: 'left' });
 
     // Rectangulo Superior Header (x, y, width, height)
     doc.rect(30, 90, 550, 130).stroke(); // Solo borde
@@ -376,10 +502,8 @@ app.get('/api/pdf', async (req, res) => {
       .lineTo(startX20, endY20)
       .stroke();
 
-          // (X, Y aliegn)
+    // (X, Y aliegn)
     doc.fontSize(5).text('Esto es una ', 520, 103, { align: 'left' });//###
-
-
 
 
 
