@@ -1,0 +1,444 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+const PDFDocument = require('pdfkit');
+const streamBuffers = require('stream-buffers');
+const fs = require('fs');
+
+
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
+
+app.get('/api/pdf', async (req, res) => {
+  try {
+    const doc = new PDFDocument();
+
+    const writableStream = new streamBuffers.WritableStreamBuffer({
+      initialSize: 100 * 1024, // Tamaño inicial del buffer
+      incrementAmount: 10 * 1024, // Incremento del buffer
+    });
+
+    doc.pipe(writableStream);
+
+    // Obtener la fecha actual
+    const fechaActual = new Date();
+
+    // Formatear la fecha en el formato "23 de diciembre de 2024"
+    const meses = [
+      'Enero',
+      'Febrero',
+      'Marzo',
+      'Abril',
+      'Mayo',
+      'Junio',
+      'Julio',
+      'Agosto',
+      'Septiembre',
+      'Octubre',
+      'Noviembre',
+      'Diciembre',
+    ];
+    const dia = fechaActual.getDate();
+    const mes = meses[fechaActual.getMonth()];
+    const anio = fechaActual.getFullYear();
+
+    // Rectangulo 1 (x, y, width, height)
+    doc.rect(30, 25, 550, 55).stroke(); // Solo borde
+    //doc.rect(300, 50, 200, 100).fill('#3498db'); // Relleno azul
+
+    doc.image('./images/bancoLogo.png', 50, 50, {
+      fit: [75, 75], // Tamaño ajustado
+      align: 'left', // Alineado a la izquierda
+      valign: 'top', // Alineado al principio
+    });
+
+    doc.fontSize(8).text('Herramienta de Pricing CEOIS Versión: V5', 100, 50, { align: 'center' });
+    doc
+      .fontSize(6)
+      .text(`Fecha de vigencia de la herramienta del ${dia} de`, 100, 45, {
+        align: 'right',
+      });
+    doc
+      .fontSize(6)
+      .text(`${mes} al ${dia} de Septiembre de ${anio}`, 100, 55, { align: 'right' });
+
+    doc.moveDown(2); // Espaciado adicional
+
+    // Título principal
+    //doc
+    //.fontSize(20)
+    //.font('Times-Bold')
+    //.text('DOCUMENTO LEGAL', { align: 'center' });
+    //doc.fontSize(16).font('Times-Bold').text('Herramienta de Pricing CEOIS Versión: V5', { align: 'center' });
+
+    doc.moveDown(1); // Espaciado adicional
+
+    // Rectangulo 2 (x, y, width, height)
+    doc.rect(30, 90, 280, 45).stroke();
+
+    // Rectangulo 2.0 (x, y, width, height)
+    doc.rect(30, 145, 280, 45).stroke();
+
+    doc.moveDown(2); // Espaciado adicional
+
+    // Pipe el PDF a un archivo
+    doc.pipe(fs.createWriteStream('output.pdf'));
+
+    // Ajustar la posición x para alinear más a la izquierda
+    const leftMargin = 50;
+
+    doc
+      .fontSize(7)
+      .font('Times-Bold')
+      .text('Cotización No:', leftMargin, doc.y, { underline: true, align: 'left' });
+
+    doc.moveDown(0.7);
+
+    doc
+      .fontSize(7)
+      .font('Times-Bold')
+      .text('Fecha de creación:', { underline: true, align: 'left' },);
+    doc.moveDown(0.7);
+
+    doc
+      .fontSize(7)
+      .font('Times-Bold')
+      .text('Máximo nivel de atribución:', { underline: true, align: 'left' },);
+    doc.moveDown(0.7);
+
+    // Respuestas de la primera caida de datos
+    /* Aca deberia ir el texto de respuesta
+        doc
+          .fontSize(7)
+          .font('Times-Bold')
+          .text('SOL_PRC_51286', { align: 'center' },);
+        doc.moveDown(0.5); */
+
+    // Rectangulo 3 (x, y, width, height)
+    doc.rect(320, 90, 260, 30).stroke(); // Solo borde
+
+    // Crear linea horizantal divisora 1
+    const startX = 320;
+    const endX = startX + 260;
+    const middleY = 90 + 30 / 2;
+    // Dibujar la línea horizontal que pasa por la mitad del rectángulo
+    doc.moveTo(startX, middleY)
+      .lineTo(endX, middleY)
+      .stroke();
+
+    doc.moveDown(5);
+
+    // Cuerpo principal
+
+    // Rectangulo 4 (x, y, width, height)
+    doc.rect(30, 200, 280, 165).stroke();
+    const startX1 = 30;
+    const endX1 = startX1 + 280;
+    const middleY1 = 215;
+    doc.moveTo(startX1, middleY1)
+      .lineTo(endX1, middleY1)
+      .stroke();
+
+    // Rectangulo 5 (x, y, width, height)
+    doc.rect(320, 130, 260, 250).stroke();
+    // Crear linea horizantal divisora 2
+    const startX2 = 320;
+    const endX2 = startX2 + 260;
+    const middleY2 = 150;
+    doc.moveTo(startX2, middleY2)
+      .lineTo(endX2, middleY2)
+      .stroke();
+
+
+    // Rectangulo 6 (x, y, width, height)
+    doc.rect(30, 390, 280, 195).stroke();
+    // Crear linea horizantal divisora 3
+    const startX3 = 30;
+    const endX3 = startX3 + 280;
+    const middleY3 = 405;
+    doc.moveTo(startX3, middleY3)
+      .lineTo(endX3, middleY3)
+      .stroke();
+
+    // Rectangulo 7 (x, y, width, height)
+    doc.rect(320, 390, 260, 235).stroke();
+    // Crear linea horizantal divisora 4
+    const startX4 = 320;
+    const endX4 = startX4 + 260;
+    const middleY4 = 405;
+    doc.moveTo(startX4, middleY4)
+      .lineTo(endX4, middleY4)
+      .stroke();
+
+    // Rectangulo 8 (x, y, width, height)
+    doc.rect(30, 600, 280, 145).stroke();
+
+    // Rectangulo 9 (x, y, width, height)
+    doc.rect(320, 635, 260, 60).stroke();
+
+    // Rectangulo 10 (x, y, width, height)
+    doc.rect(320, 705, 260, 60).stroke();
+
+    // Pie de página
+
+    doc.moveDown(5);
+
+    //PAG. 2 ----->>> Creación de nuava pagina en blanco <<<----- //
+    doc
+      .fontSize(10)
+      .text(
+        '',
+        50,
+        doc.page.height - 50,
+        { align: 'center' }
+      );
+
+    // Rectangulo Superior Header (x, y, width, height)
+    doc.rect(30, 25, 550, 55).stroke(); // Solo borde
+    // Crear linea vertical divisora 1
+    const startX5 = 215; // Mantiene la misma posición en X
+    const startY5 = 25; // Punto inicial en Y
+    const endY5 = startY5 + 55; // Punto final en Y (ajusta la longitud)
+    doc.moveTo(startX5, startY5) // Inicio de la línea
+      .lineTo(startX5, endY5) // Mantiene X fijo y cambia solo Y
+      .stroke();
+
+
+    doc.image('./images/bancoLogo.png', 50, 50, {
+      fit: [75, 75], // Tamaño ajustado
+      align: 'left', // Alineado a la izquierda
+      valign: 'top', // Alineado al principio
+    })
+    // (X, Y aliegn)
+    doc.fontSize(7).text('FORMATO ÚNICO DE AUTORIZACIÓN PARA', 100, 45, { align: 'center' });
+    doc.fontSize(7).text('OPERACIONES DEL ACTIVO Y PASIVO', 100, 55, { align: 'center' });
+
+    // Crear linea vertical divisora 2
+    const startX6 = 425;
+    const startY6 = 25;
+    const endY6 = startY6 + 55;
+    doc.moveTo(startX6, startY6)
+      .lineTo(startX6, endY6)
+      .stroke();
+
+    // Crear linea horizantal divisora 1
+    const startX7 = 425;
+    const endX7 = startX7 + 156;
+    const middleY7 = 40;
+    doc.moveTo(startX7, middleY7)
+      .lineTo(endX7, middleY7)
+      .stroke();
+
+    // Crear linea horizantal divisora 2
+    const startX8 = 425;
+    const endX8 = startX8 + 156;
+    const middleY8 = 55;
+    doc.moveTo(startX8, middleY8)
+      .lineTo(endX8, middleY8)
+      .stroke();
+
+    // Crear linea vertical divisora 3
+    const startX9 = 505;
+    const startY9 = 25;
+    const endY9 = startY9 + 55;
+    doc.moveTo(startX9, startY9)
+      .lineTo(startX9, endY9)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(6).text('Código:', 455, 30);
+
+    // (X, Y aliegn)
+    doc.fontSize(6).text('DCC_FOR_130', 515, 30, {align: 'left'});
+
+    // Rectangulo Superior Header (x, y, width, height)
+    doc.rect(30, 90, 550, 130).stroke(); // Solo borde
+
+    // Crear linea horizantal divisora 1
+    const startX10 = 30;
+    const endX10 = startX10 + 550;
+    const middleY10 = 100;
+    doc.moveTo(startX10, middleY10)
+      .lineTo(endX10, middleY10)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('DETALLE CLIENTE', 100, 93, { align: 'center' });
+
+    // Crear linea horizantal divisora 2
+    const startX11 = 30;
+    const endX11 = startX11 + 550;
+    const middleY11 = 110;
+    doc.moveTo(startX11, middleY11)
+      .lineTo(endX11, middleY11)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Fecha de Solicitud:', 50, 103, { align: 'left' });
+
+    // Crear linea vertical divisora 1
+    const startX12 = 110;
+    const startY12 = 100;
+    const endY12 = startY12 + 10;
+    doc.moveTo(startX12, startY12)
+      .lineTo(startX12, endY12)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('30/09/2024', 115, 103, { align: 'left' }); //###
+
+    // Crear linea vertical divisora 2
+    const startX13 = 180;
+    const startY13 = 100;
+    const endY13 = startY13 + 10;
+    doc.moveTo(startX13, startY13)
+      .lineTo(startX13, endY13)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Código:', 185, 103, { align: 'left' });
+
+    // Crear linea vertical divisora 3
+    const startX14 = 210;
+    const startY14 = 100;
+    const endY14 = startY14 + 10;
+    doc.moveTo(startX14, startY14)
+      .lineTo(startX14, endY14)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('1779', 220, 103, { align: 'left' }); //###
+
+    // Crear linea vertical divisora 4
+    const startX15 = 240;
+    const startY15 = 100;
+    const endY15 = startY15 + 10;
+    doc.moveTo(startX15, startY15)
+      .lineTo(startX15, endY15)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Gerente CEO:', 245, 103, { align: 'left' });
+
+    // Crear linea vertical divisora 5
+    const startX16 = 280;
+    const startY16 = 100;
+    const endY16 = startY16 + 10;
+    doc.moveTo(startX16, startY16)
+      .lineTo(startX16, endY16)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Cristian Camilo Salazar Zuleta', 285, 103, { align: 'left' }); //###
+
+    // Crear linea vertical divisora 6
+    const startX17 = 375;
+    const startY17 = 100;
+    const endY17 = startY17 + 10;
+    doc.moveTo(startX17, startY17)
+      .lineTo(startX17, endY17)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Dirección:', 380, 103, { align: 'left' });
+
+    // Crear linea vertical divisora 7
+    const startX18 = 410;
+    const startY18 = 100;
+    const endY18 = startY18 + 10;
+    doc.moveTo(startX18, startY18)
+      .lineTo(startX18, endY18)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Corporativo', 415, 103, { align: 'left' });//###
+
+    // Crear linea vertical divisora 8
+    const startX19 = 470;
+    const startY19 = 100;
+    const endY19 = startY19 + 10;
+    doc.moveTo(startX19, startY19)
+      .lineTo(startX19, endY19)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Segmento:', 480, 103, { align: 'left' });//###
+
+    // Crear linea vertical divisora 9
+    const startX20 = 520;
+    const startY20 = 100;
+    const endY20 = startY20 + 10;
+    doc.moveTo(startX20, startY20)
+      .lineTo(startX20, endY20)
+      .stroke();
+
+          // (X, Y aliegn)
+    doc.fontSize(5).text('Esto es una ', 520, 103, { align: 'left' });//###
+
+
+
+
+
+
+
+    // Creación de nuava pagina en blanco con la opción de texto
+    doc
+      .fontSize(10)
+      .text(
+        'Esto es un documento que se a generado automaticamente. Actualemnte en construcción 🚧',
+        50,
+        doc.page.height - 50,
+        { align: 'center' }
+      );
+
+    doc.end();
+
+    await new Promise((resolve) => {
+      doc.on('end', resolve);
+    });
+
+    const pdfBuffer = writableStream.getContents();
+    const pdfBase64 = pdfBuffer.toString('base64');
+
+    return res.send({
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'application/pdf',
+        'Content-Disposition': `attachment; filename="Resumen Pricing y FOR130 SIN Aprobar_${new Date().getTime()}.pdf"`,
+      },
+      builtPdf: pdfBase64,
+      isBase64Encoded: true,
+    });
+  } catch (error) {
+    console.error('Error al generar el PDF:', error);
+    return res.send({
+      statusCode: 500,
+      builtPdf: JSON.stringify({
+        message: 'Error al generar el PDF',
+        error: error.message,
+      }),
+    });
+  }
+});
+
+const response = async (statusCode, message, data) => {
+  return {
+    statusCode: statusCode,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
+    body: await servCryp.encrypt(
+      JSON.stringify({ message: message, data: data }),
+      sk
+    ),
+    isBase64Encoded: false,
+  };
+};
+
+app.listen(3000, () => {
+  console.log('Servidor escuchando en http://localhost:3000');
+});
