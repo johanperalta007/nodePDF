@@ -1225,7 +1225,19 @@ app.get('/api/pdf', async (req, res) => {
     doc.fontSize(6).text('Código:', 455, 30);
 
     // (X, Y aliegn)
-    doc.fontSize(6).text('DCC_FOR_130', 515, 30, { align: 'left' });
+    doc.fontSize(6).text('DCC_FOR_130', 520, 30, { align: 'left', width: 250 });
+
+    // (X, Y aliegn)
+    doc.fontSize(6).text('Versión:', 455, 47);
+
+    // (X, Y aliegn)
+    doc.fontSize(6).text('V9', 540, 47, { align: 'left', width: 250 });
+
+    // (X, Y aliegn)
+    doc.fontSize(6).text('Fecha de actualización:', 435, 66);
+
+    // (X, Y aliegn)
+    doc.fontSize(6).text('26/03/2025', 530, 66, { align: 'left', width: 250 });
 
     // Rectangulo Superior Header (x, y, width, height)
     doc.rect(30, 90, 550, 130).stroke(); // Solo borde
@@ -1338,7 +1350,7 @@ app.get('/api/pdf', async (req, res) => {
       .stroke();
 
     // (X, Y aliegn)
-    doc.fontSize(5).text('Segmento:', 480, 103, { align: 'left' });//###
+    doc.fontSize(5).text('Segmento:', 480, 103, { align: 'left' });
 
     // Crear linea vertical divisora 9
     const startX20 = 520;
@@ -1349,10 +1361,280 @@ app.get('/api/pdf', async (req, res) => {
       .stroke();
 
     // (X, Y aliegn)
-    doc.fontSize(5).text('Esto es una ', 520, 103, { align: 'left' });//###
+    doc.fontSize(5).text('Corporativo', 535, 103, { align: 'left', width: 250 });//###
+
+    // Crear linea horizantal divisora 3
+    const startX21 = 30;
+    const endX21 = startX21 + 550;
+    const middleY21 = 120;
+    doc.moveTo(startX21, middleY21)
+      .lineTo(endX21, middleY21)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Cliente:', 50, 113, { align: 'left' });
+
+    // Crear linea vertical divisora 10
+    const startX22 = 110;
+    const startY22 = 110;
+    const endY22 = startY22 + 10;
+    doc.moveTo(startX22, startY22)
+      .lineTo(startX22, endY22)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('ISAGEN S.A.E.S.P', 115, 113, { align: 'left' });
+
+    // Crear linea horizantal divisora 3
+    const startX223 = 30;
+    const endX223 = startX223 + 550;
+    const middleY223 = 120;
+    doc.moveTo(startX223, middleY223)
+      .lineTo(endX223, middleY223)
+      .stroke();
 
 
+    // Crear linea horizantal divisora 4
+    const startX23 = 30;
+    const endX23 = startX23 + 550;
+    const middleY23 = 130;
+    doc.moveTo(startX23, middleY23)
+      .lineTo(endX23, middleY23)
+      .stroke();
 
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Tipo de ID:', 50, 123, { align: 'left' });
+
+    // Crear linea vertical divisora 11
+    const startX24 = 155;
+    const startY24 = 120;
+    const endY24 = startY24 + 10;
+    doc.moveTo(startX24, startY24)
+      .lineTo(startX24, endY24)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Nit', 180, 123, { align: 'left' }); //###
+
+    // Crear linea vertical divisora 12
+    const startX125 = 210;
+    const startY125 = 120;
+    const endY125 = startY125 + 10;
+    doc.moveTo(startX125, startY125)
+      .lineTo(startX125, endY125)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Número ID:', 216, 123, { align: 'left' });
+
+    // Crear linea vertical divisora 13
+    const startX126 = 250;
+    const startY126 = 120;
+    const endY126 = startY126 + 10;
+    doc.moveTo(startX126, startY126)
+      .lineTo(startX126, endY126)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('8110007404', 260, 123, { align: 'left' }); //###
+
+    // Crear linea vertical divisora 14
+    const startX127 = 295;
+    const startY127 = 120;
+    const endY127 = startY127 + 10;
+    doc.moveTo(startX127, startY127)
+      .lineTo(startX127, endY127)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Nombre Grupo:', 317, 123, { align: 'left' });
+
+    // Crear linea vertical divisora 15
+    const startX128 = 375;
+    const startY128 = 120;
+    const endY128 = startY128 + 10;
+    doc.moveTo(startX128, startY128)
+      .lineTo(startX128, endY128)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('ISAGEN S.A. E.S.P', 390, 123, { align: 'left' }); //###
+
+    // Crear linea horizantal divisora 5
+    const startX29 = 30;
+    const endX29 = startX29 + 550;
+    const middleY29 = 140;
+    doc.moveTo(startX29, middleY29)
+      .lineTo(endX29, middleY29)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Calificación Cifin:', 50, 133, { align: 'left' });
+
+    // Crear linea vertical divisora 11
+    const startX30 = 155;
+    const startY30 = 130;
+    const endY30 = startY30 + 10;
+    doc.moveTo(startX30, startY30)
+      .lineTo(startX30, endY30)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('A', 180, 133, { align: 'left' }); //###
+
+    // Crear linea vertical divisora 12
+    const startX131 = 210;
+    const startY131 = 130;
+    const endY131 = startY131 + 10;
+    doc.moveTo(startX131, startY131)
+      .lineTo(startX131, endY131)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Rating Financiero:', 230, 133, { align: 'left' });
+
+    // Crear linea vertical divisora 12
+    const startX132 = 295;
+    const startY132 = 130;
+    const endY132 = startY132 + 10;
+    doc.moveTo(startX132, startY132)
+      .lineTo(startX132, endY132)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('2', 335, 133, { align: 'left' }); //###
+
+    // Crear linea vertical divisora 12
+    const startX133 = 375;
+    const startY133 = 130;
+    const endY133 = startY133 + 10;
+    doc.moveTo(startX133, startY133)
+      .lineTo(startX133, endY133)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Clasificación (EPC)', 405, 133, { align: 'left' });
+
+    // Crear linea vertical divisora 12
+    const startX134 = 470;
+    const startY134 = 130;
+    const endY134 = startY134 + 10;
+    doc.moveTo(startX134, startY134)
+      .lineTo(startX134, endY134)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Estratégico', 510, 133, { align: 'left', width: 250 },);
+
+    // Crear linea horizantal divisora 6
+    const startX35 = 30;
+    const endX35 = startX35 + 550;
+    const middleY35 = 150;
+    doc.moveTo(startX35, middleY35)
+      .lineTo(endX35, middleY35)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Priorización (BCPM):', 50, 143, { align: 'left' });
+
+    // Crear linea vertical divisora 12
+    const startX136 = 315;
+    const startY136 = 140;
+    const endY136 = startY136 + 10;
+    doc.moveTo(startX136, startY136)
+      .lineTo(startX136, endY136)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Blindar', 435, 143, { align: 'left' }); //###
+
+    // Crear linea horizantal divisora 7
+    const startX37 = 30;
+    const endX37 = startX37 + 550;
+    const middleY37 = 160;
+    doc.moveTo(startX37, middleY37)
+      .lineTo(endX37, middleY37)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Relación pasivo/activo acumulado año (# veces):', 50, 153, { align: 'left' });
+
+    // Crear linea vertical divisora 13
+    const startX38 = 260;
+    const startY38 = 150;
+    const endY38 = startY38 + 10;
+    doc.moveTo(startX38, startY38)
+      .lineTo(startX38, endY38)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('0.03', 290, 153, { align: 'left' }); //###
+
+    // Crear linea horizantal divisora 8
+    const startX39 = 30;
+    const endX39 = startX39 + 550;
+    const middleY39 = 170;
+    doc.moveTo(startX39, middleY39)
+      .lineTo(endX39, middleY39)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Margen de contribución ultimos 12 meses Cliente (Cifras en miles de $):', 50, 163, { align: 'left' });
+
+    // Crear linea vertical divisora 14
+    const startX40 = 315;
+    const startY40 = 160;
+    const endY40 = startY40 + 10;
+    doc.moveTo(startX40, startY40)
+      .lineTo(startX40, endY40)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('-$ 4,092,432,417.63', 325, 163, { align: 'left' }); //##      
+
+    // Crear linea vertical divisora 15
+    const startX41 = 380;
+    const startY41 = 160;
+    const endY41 = startY41 + 10;
+    doc.moveTo(startX41, startY41)
+      .lineTo(startX41, endY41)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Mes corte MC:', 410, 163, { align: 'left' });
+
+    // Crear linea vertical divisora 16
+    const startX142 = 470;
+    const startY142 = 160;
+    const endY142 = startY142 + 10;
+    doc.moveTo(startX142, startY142)
+      .lineTo(startX142, endY142)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Junio', 480, 163, { align: 'left' }); //###
+
+    // Crear linea horizantal divisora 9
+    const startX43 = 30;
+    const endX43 = startX43 + 550;
+    const middleY43 = 180;
+    doc.moveTo(startX43, middleY43)
+      .lineTo(endX43, middleY43)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Margen de contribución año corrido Grupo (Cifras en miles de $):', 50, 173, { align: 'left' });
+
+    // Crear linea vertical divisora 17
+    const startX44 = 315;
+    const startY44 = 170;
+    const endY44 = startY44 + 10;
+    doc.moveTo(startX44, startY44)
+      .lineTo(startX44, endY44)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('-$ 4,092,432,418.00', 325, 173, { align: 'left' }); //## 
 
 
     // Creación de nuava pagina en blanco con la opción de texto
