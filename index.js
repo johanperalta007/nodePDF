@@ -473,7 +473,7 @@ app.get('/api/pdf', async (req, res) => {
       .fontSize(7)
       .font('Times-Bold')
       .text('Sustitución (y/o) Prorroga', 35, 420, { align: 'left' },);
-      // (X, Y aliegn) Valor
+    // (X, Y aliegn) Valor
     doc.fontSize(7).text('No', 140, 420, { align: 'left' }); //###
 
     // Title 2
@@ -482,7 +482,7 @@ app.get('/api/pdf', async (req, res) => {
       .font('Times-Bold')
       .text('Nombre Campaña', 178, 420, { align: 'left' },);
 
-      // (X, Y aliegn) Valor 2
+    // (X, Y aliegn) Valor 2
     doc.fontSize(7).text('Retención', 265, 420, { align: 'left' }); //###
 
     // Title
@@ -490,7 +490,7 @@ app.get('/api/pdf', async (req, res) => {
       .fontSize(7)
       .font('Times-Bold')
       .text('Tipo de Operación', 35, 430, { align: 'left' },);
-      // (X, Y aliegn) Valor
+    // (X, Y aliegn) Valor
     doc.fontSize(7).text('Recursos Propios', 116, 430, { align: 'left' }); //###
 
     // Title 2
@@ -499,7 +499,7 @@ app.get('/api/pdf', async (req, res) => {
       .font('Times-Bold')
       .text('Tamaño de Productor', 178, 430, { align: 'left' },);
 
-      // (X, Y aliegn) Valor 2
+    // (X, Y aliegn) Valor 2
     doc.fontSize(7).text('-', 275, 430, { align: 'left' }); //###
 
     // Title
@@ -507,7 +507,7 @@ app.get('/api/pdf', async (req, res) => {
       .fontSize(7)
       .font('Times-Bold')
       .text('Entidad de redescuento', 35, 440, { align: 'left' },);
-      // (X, Y aliegn) Valor
+    // (X, Y aliegn) Valor
     doc.fontSize(7).text('-', 116, 440, { align: 'left' }); //###
 
     // Title
@@ -515,7 +515,7 @@ app.get('/api/pdf', async (req, res) => {
       .fontSize(7)
       .font('Times-Bold')
       .text('% de Redescuento', 35, 450, { align: 'left' },);
-      // (X, Y aliegn) Valor
+    // (X, Y aliegn) Valor
     doc.fontSize(7).text('-', 116, 450, { align: 'left' }); //###
 
     // Title 2
@@ -524,7 +524,7 @@ app.get('/api/pdf', async (req, res) => {
       .font('Times-Bold')
       .text('Tipo de Garantía', 178, 450, { align: 'left' },);
 
-      // (X, Y aliegn) Valor 2
+    // (X, Y aliegn) Valor 2
     doc.fontSize(7).text('Sin Garantia', 265, 450, { align: 'left' }); //###
 
     // Title
@@ -532,7 +532,7 @@ app.get('/api/pdf', async (req, res) => {
       .fontSize(7)
       .font('Times-Bold')
       .text('Índice de Referencia', 35, 480, { align: 'left' },);
-      // (X, Y aliegn) Valor
+    // (X, Y aliegn) Valor
     doc.fontSize(7).text('IBR 3m', 116, 480, { align: 'left' }); //###
 
     // Title 2
@@ -541,7 +541,7 @@ app.get('/api/pdf', async (req, res) => {
       .font('Times-Bold')
       .text('Plazo (Meses)', 178, 480, { align: 'left' },);
 
-      // (X, Y aliegn) Valor 2
+    // (X, Y aliegn) Valor 2
     doc.fontSize(7).text('72', 275, 480, { align: 'left' }); //###
 
     // Title
@@ -549,7 +549,7 @@ app.get('/api/pdf', async (req, res) => {
       .fontSize(7)
       .font('Times-Bold')
       .text('Tasa Referencia', 35, 490, { align: 'left' },);
-      // (X, Y aliegn) Valor
+    // (X, Y aliegn) Valor
     doc.fontSize(7).text('9.37%', 116, 490, { align: 'left' }); //###
 
     // Title 2
@@ -558,7 +558,7 @@ app.get('/api/pdf', async (req, res) => {
       .font('Times-Bold')
       .text('Periodo Gracia', 178, 490, { align: 'left' },);
 
-      // (X, Y aliegn) Valor 2
+    // (X, Y aliegn) Valor 2
     doc.fontSize(7).text('24', 275, 490, { align: 'left' }); //###
 
     // Title
@@ -566,7 +566,7 @@ app.get('/api/pdf', async (req, res) => {
       .fontSize(7)
       .font('Times-Bold')
       .text('Spread TV', 35, 500, { align: 'left' },);
-      // (X, Y aliegn) Valor
+    // (X, Y aliegn) Valor
     doc.fontSize(7).text('2.95%', 116, 500, { align: 'left' }); //###
 
     // Title 2
@@ -575,7 +575,7 @@ app.get('/api/pdf', async (req, res) => {
       .font('Times-Bold')
       .text('Vida Media', 178, 500, { align: 'left' },);
 
-      // (X, Y aliegn) Valor 2
+    // (X, Y aliegn) Valor 2
     doc.fontSize(7).text('51', 275, 500, { align: 'left' }); //###
 
     // Title
@@ -583,7 +583,7 @@ app.get('/api/pdf', async (req, res) => {
       .fontSize(7)
       .font('Times-Bold')
       .text('Tasa EA', 35, 510, { align: 'left' },);
-      // (X, Y aliegn) Valor
+    // (X, Y aliegn) Valor
     doc.fontSize(7).text('12.90%', 116, 510, { align: 'left' }); //###
 
     // Title 2
@@ -592,7 +592,7 @@ app.get('/api/pdf', async (req, res) => {
       .font('Times-Bold')
       .text('Amortización Capital', 178, 510, { align: 'left' },);
 
-      // (X, Y aliegn) Valor 2
+    // (X, Y aliegn) Valor 2
     doc.fontSize(7).text('Semestral', 265, 510, { align: 'left' }); //###
 
     // Title
@@ -600,7 +600,7 @@ app.get('/api/pdf', async (req, res) => {
       .fontSize(7)
       .font('Times-Bold')
       .text('Tasa MV', 35, 520, { align: 'left' },);
-      // (X, Y aliegn) Valor
+    // (X, Y aliegn) Valor
     doc.fontSize(7).text('12.20%', 116, 520, { align: 'left' }); //###
 
     // Title 2
@@ -609,7 +609,7 @@ app.get('/api/pdf', async (req, res) => {
       .font('Times-Bold')
       .text('Pago Intereses', 178, 520, { align: 'left' },);
 
-      // (X, Y aliegn) Valor 2
+    // (X, Y aliegn) Valor 2
     doc.fontSize(7).text('Trimestral', 265, 520, { align: 'left' }); //###
 
     doc
@@ -617,14 +617,8 @@ app.get('/api/pdf', async (req, res) => {
       .font('Times-Bold')
       .text('Comisiones Negociadas', 35, 550, { align: 'left' },)
       .text('(por año) %', 35, 556, { align: 'left' },);
-      // (X, Y aliegn) Valor
+    // (X, Y aliegn) Valor
     doc.fontSize(7).text('0.00%', 116, 550, { align: 'left' }); //###
-
-    doc
-      .fontSize(7)
-      .font('Times-Bold')
-      .text('Evaluación de Rentabilidad (Anualidad)', 395, 395, { underline: true, align: 'left', width: 250 },);
-
 
     // Rectangulo 7 (x, y, width, height)
     doc.rect(320, 390, 260, 235).stroke();
@@ -635,15 +629,531 @@ app.get('/api/pdf', async (req, res) => {
     doc.moveTo(startX4, middleY4)
       .lineTo(endX4, middleY4)
       .stroke();
+    doc
+      .fontSize(7)
+      .font('Times-Bold')
+      .text('Evaluación de Rentabilidad (Anualidad)', 395, 395, { underline: true, align: 'left', width: 250 },);
+
+    // (X, Y aliegn) Title
+    doc
+      .fontSize(7)
+      .text('Actual del', 420, 410, { align: 'left' })
+      .text('cliente', 426, 415, { align: 'left' });
+
+    // (X, Y aliegn) Title
+    doc
+      .fontSize(7)
+      .text('Actual del', 470, 410, { align: 'left' });
+
+    doc
+      .fontSize(7)
+      .text('Nueva del cliente', 520, 410, { align: 'left', width: 250 });
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fillColor('#777777')
+      .fontSize(7)
+      .text('(+) Ingreso por Intereses', 325, 425, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('15.83%', 427, 425, { align: 'left' });
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('12.20%', 475, 425, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('12.20%', 530, 425, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fontSize(7)
+      .text('(-) Intereses Pagados FTP', 325, 435, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('16.56%', 427, 435, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('11.36%', 475, 435, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('15.16%', 530, 435, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fontSize(7)
+      .text('(+) Intereses Recibidos FTP', 325, 445, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('0.37%', 427, 445, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.00%', 475, 445, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('0.25%', 530, 445, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fontSize(7)
+      .text('(-) Intereses Pagados Pasivo', 325, 455, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('0.36%', 427, 455, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.00%', 475, 455, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('0.24%', 530, 455, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fontSize(7)
+      .text('(+) Subsidio FTP ', 325, 465, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('0.00%', 427, 465, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.00%', 475, 465, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('0.00%', 530, 465, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fontSize(7)
+      .text('(-) Exigencia Adicional', 325, 475, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('0.00%', 427, 475, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.00%', 475, 475, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('0.00%', 530, 475, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fillColor('black')
+      .fontSize(7)
+      .text('(=) Margen Neto de Intereses', 325, 485, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('-0.72%', 427, 485, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.84%', 475, 485, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('-0.30%', 530, 485, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fillColor('#777777')
+      .fontSize(7)
+      .text('(-) Pérdida Esperada', 325, 500, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('0.18%', 427, 500, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.21%', 475, 500, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('0.18%', 530, 500, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fillColor('black')
+      .fontSize(7)
+      .text('(=) Margen Financiero', 325, 510, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('-0.90%', 427, 510, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.63%', 475, 510, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('-0.49%', 530, 510, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fillColor('#777777')
+      .fontSize(7)
+      .text('(+) Ingreso por Comisiones', 325, 525, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('0.06%', 427, 525, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.00%', 475, 525, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('0.04%', 530, 525, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fontSize(7)
+      .text('(+) Beneficio por E + E', 325, 535, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('0.00%', 427, 535, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.00%', 475, 535, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('0.00%', 530, 535, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fillColor('black')
+      .fontSize(7)
+      .text('(=) Margen Financiero Neto', 325, 545, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('-0.84%', 427, 545, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.63%', 475, 545, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('-0.45%', 530, 545, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fillColor('#777777')
+      .fontSize(7)
+      .text('(-) Costos Op. - Medios', 325, 555, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('0.52%', 427, 555, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.00%', 475, 555, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('0.35%', 530, 555, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fontSize(7)
+      .text('(-) Costos Op. - Marginales', 325, 565, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('0.02%', 427, 565, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.02%', 475, 565, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('0.01%', 530, 565, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fontSize(7)
+      .text('(+) Subsidios', 325, 575, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('0.00%', 427, 575, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.00%', 475, 575, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('0.00%', 530, 575, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fontSize(7)
+      .text('(+) Subsidios', 325, 575, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('0.00%', 427, 575, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.00%', 475, 575, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('0.00%', 530, 575, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fillColor('black')
+      .fontSize(7)
+      .text('(=) Utilidad Antes de Impuestos', 325, 585, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('-1.38%', 427, 585, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.61%', 475, 585, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('-0.81%', 530, 585, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fillColor('#777777')
+      .fontSize(7)
+      .text('(-) Impuestos', 325, 595, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('-0.55%', 427, 595, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.24%', 475, 595, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('-0.32%', 530, 595, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fillColor('black')
+      .fontSize(7)
+      .text('(=) Utilidad Neta', 325, 605, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('-0.83%', 427, 605, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.36%', 475, 605, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('-0.49%', 530, 605, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Info Title
+    doc
+      .fontSize(7)
+      .text('(=) Utilidad Neta Marginal', 325, 615, { align: 'left' });
+
+    // (X, Y aliegn) Info 1
+    doc
+      .fontSize(7)
+      .text('-0.52%', 427, 615, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 2
+    doc
+      .fontSize(7)
+      .text('0.36%', 475, 615, { align: 'left' });//###
+
+    // (X, Y aliegn) Info 3
+    doc
+      .fontSize(7)
+      .text('-0.28%', 530, 615, { align: 'left', width: 250 });//###
+
+    // (X, Y aliegn) Title
+    doc
+      .fontSize(7)
+      .text('ROA de la Operación', 370, 640, { align: 'left' });
+
+    // (X, Y aliegn) Info
+    doc
+      .fontSize(7)
+      .text('0.36%', 510, 640, { align: 'left', width: 250 });
 
     // Rectangulo 8 (x, y, width, height)
-    doc.rect(30, 600, 280, 145).stroke();
+    doc.rect(30, 600, 280, 60).stroke();
+
+    // Title Observaciones
+    doc
+      .fontSize(9)
+      .font('Times-Bold')
+      .text('Observaciones:', 35, 605, { underline: true, align: 'left' },);
+
+    // Observacion
+    doc
+      .fontSize(8)
+      .font('Times-Bold')
+      .text('NOVACION CREDITOS 754374233; 756354526', 35, 620, { align: 'left' },);
 
     // Rectangulo 9 (x, y, width, height)
     doc.rect(320, 635, 260, 60).stroke();
 
+    // (X, Y aliegn) Title
+    doc
+      .fontSize(7)
+      .text('ROA del Cliente incluyendo nueva operación', 337, 650, { align: 'left' });
+
+    // (X, Y aliegn) Info
+    doc
+      .fontSize(7)
+      .text('-0.49%', 510, 650, { align: 'left', width: 250 });
+
+    // (X, Y aliegn) Title
+    doc
+      .fontSize(7)
+      .text('Target Segmento', 370, 660, { align: 'left' });
+
+    // (X, Y aliegn) Info
+    doc
+      .fontSize(7)
+      .text('0.17%', 510, 660, { align: 'left', width: 250 });
+
+    // (X, Y aliegn) Title
+    doc
+      .fontSize(7)
+      .text('Nivel de Atribución Tasa', 350, 670, { align: 'left' });
+
+    // (X, Y aliegn) Info
+    doc
+      .fontSize(7)
+      .text('VP Ejecutivo', 500, 670, { align: 'left', width: 250 });
+
+    // (X, Y aliegn) Title
+    doc
+      .fontSize(7)
+      .text('Semáforo de Riesgo', 370, 680, { align: 'left' });
+
+    // (X, Y aliegn) Info
+    doc
+      .fontSize(7)
+      .text('Cliente sin ajuste en Riesgo', 480, 680, { align: 'left', width: 250 });
+
     // Rectangulo 10 (x, y, width, height)
-    doc.rect(320, 705, 260, 60).stroke();
+    doc.rect(30, 675, 280, 50).stroke();
+
+    doc
+      .fontSize(8)
+      .font('Times-Bold')
+      .text('Otros niveles de Atribución requeridos (DCC_FOR_130)', 80, 665, { underline: true, align: 'left', width: 250 },);
+
+    // (X, Y aliegn) Title
+    doc
+      .fontSize(7)
+      .text('Nivel de Atribución Monto', 50, 685, { align: 'left', width: 250 });
+
+    // (X, Y aliegn) Title
+    doc
+      .fontSize(7)
+      .text('VP Comercial Banca Empresas', 190, 685, { align: 'left', width: 250 });
+
+    // (X, Y aliegn) Title
+    doc
+      .fontSize(7)
+      .text('Nivel de Atribución Excepción', 50, 695, { align: 'left', width: 250 });
+
+    // (X, Y aliegn) Title
+    doc
+      .fontSize(7)
+      .text('Nivel de Atribución Prorroga', 50, 710, { align: 'left', width: 250 });
 
     // Pie de página
 
