@@ -1240,7 +1240,7 @@ app.get('/api/pdf', async (req, res) => {
     doc.fontSize(6).text('26/03/2025', 530, 66, { align: 'left', width: 250 });
 
     // Rectangulo Superior Header (x, y, width, height)
-    doc.rect(30, 90, 550, 130).stroke(); // Solo borde
+    doc.rect(30, 90, 550, 90).stroke(); // Solo borde
 
     // Crear linea horizantal divisora 1
     const startX10 = 30;
@@ -1614,14 +1614,6 @@ app.get('/api/pdf', async (req, res) => {
     // (X, Y aliegn)
     doc.fontSize(5).text('Junio', 480, 163, { align: 'left' }); //###
 
-    // Crear linea horizantal divisora 9
-    const startX43 = 30;
-    const endX43 = startX43 + 550;
-    const middleY43 = 180;
-    doc.moveTo(startX43, middleY43)
-      .lineTo(endX43, middleY43)
-      .stroke();
-
     // (X, Y aliegn)
     doc.fontSize(5).text('Margen de contribución año corrido Grupo (Cifras en miles de $):', 50, 173, { align: 'left' });
 
@@ -1634,7 +1626,263 @@ app.get('/api/pdf', async (req, res) => {
       .stroke();
 
     // (X, Y aliegn)
-    doc.fontSize(5).text('-$ 4,092,432,418.00', 325, 173, { align: 'left' }); //## 
+    doc.fontSize(5).text('-$ 4,092,432,418.00', 325, 173, { align: 'left' }); //##
+
+    // Rectangulo con relleno azul
+    doc.rect(30, 190, 550, 12).fill('#d6eaf8');
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('black')
+      .fontSize(6).text('DETALLE OPERACIÓN QUE SE APRUEBA', 100, 195, { align: 'center' });
+
+    // Rectangulo Superior Header (x, y, width, height)
+    doc.rect(30, 215, 210, 13).stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Producto', 50, 220, { align: 'left' });
+
+    // Crear linea vertical divisora 17
+    const startX45 = 150;
+    const startY45 = 215;
+    const endY45 = startY45 + 13;
+    doc.moveTo(startX45, startY45)
+      .lineTo(startX45, endY45)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Activo', 160, 220, { align: 'left' }); //###
+
+    // Rectangulo Superior Header (x, y, width, height)
+    doc.rect(30, 235, 550, 140).stroke();
+
+    // Crear linea horizantal divisora 9
+    const startX46 = 30;
+    const endX46 = startX46 + 550;
+    const middleY46 = 245;
+    doc.moveTo(startX46, middleY46)
+      .lineTo(endX46, middleY46)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Tipo de Operación:', 50, 239, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 17
+    const startX47 = 240;
+    const startY47 = 235;
+    const endY47 = startY47 + 10;
+    doc.moveTo(startX47, startY47)
+      .lineTo(startX47, endY47)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Cartera Ordinaria', 248, 239, { align: 'left' }); //###
+
+    // Crear linea vertical divisora 18
+    const startX48 = 380;
+    const startY48 = 235;
+    const endY48 = startY48 + 10;
+    doc.moveTo(startX48, startY48)
+      .lineTo(startX48, endY48)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Operacíon Cr. Constructor:', 385, 239, { align: 'left' })
+      .fillColor('black');
+
+
+    // Crear linea vertical divisora 19
+    const startX49 = 480;
+    const startY49 = 235;
+    const endY49 = startY49 + 10;
+    doc.moveTo(startX49, startY49)
+      .lineTo(startX49, endY49)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('', 490, 239, { align: 'left', width: 250 }); //###
+
+    // Crear linea horizantal divisora 10
+    const startX50 = 30;
+    const endX50 = startX50 + 550;
+    const middleY50 = 255;
+    doc.moveTo(startX50, middleY50)
+      .lineTo(endX50, middleY50)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Monto:', 50, 249, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 20
+    const startX51 = 100;
+    const startY51 = 245;
+    const endY51 = startY51 + 10;
+    doc.moveTo(startX51, startY51)
+      .lineTo(startX51, endY51)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('200,000,000,000.00', 110, 249, { align: 'left', width: 250 }); //###
+
+    // Crear linea vertical divisora 21
+    const startX52 = 200;
+    const startY52 = 245;
+    const endY52 = startY52 + 10;
+    doc.moveTo(startX52, startY52)
+      .lineTo(startX52, endY52)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Moneda:', 210, 249, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 22
+    const startX53 = 240;
+    const startY53 = 245;
+    const endY53 = startY53 + 10;
+    doc.moveTo(startX53, startY53)
+      .lineTo(startX53, endY53)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('COP', 250, 249, { align: 'left', width: 250 }); //###
+
+    // Crear linea vertical divisora 23
+    const startX54 = 270;
+    const startY54 = 245;
+    const endY54 = startY54 + 10;
+    doc.moveTo(startX54, startY54)
+      .lineTo(startX54, endY54)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Tasa Propuesta', 280, 249, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 24
+    const startX55 = 330;
+    const startY55 = 245;
+    const endY55 = startY55 + 10;
+    doc.moveTo(startX55, startY55)
+      .lineTo(startX55, endY55)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('IBR 3m', 345, 249, { align: 'left', width: 250 }); //###
+
+    // Crear linea vertical divisora 25
+    const startX56 = 380;
+    const startY56 = 245;
+    const endY56 = startY56 + 10;
+    doc.moveTo(startX56, startY56)
+      .lineTo(startX56, endY56)
+      .stroke();
+
+
+    // Crear linea vertical divisora 26
+    const startX57 = 430;
+    const startY57 = 245;
+    const endY57 = startY57 + 10;
+    doc.moveTo(startX57, startY57)
+      .lineTo(startX57, endY57)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Spread', 435, 249, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 27
+    const startX58 = 480;
+    const startY58 = 245;
+    const endY58 = startY58 + 10;
+    doc.moveTo(startX58, startY58)
+      .lineTo(startX58, endY58)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('2.95%', 500, 249, { align: 'left', width: 250 }); //###
+
+    // Crear linea vertical divisora 28
+    const startX59 = 530;
+    const startY59 = 245;
+    const endY59 = startY59 + 10;
+    doc.moveTo(startX59, startY59)
+      .lineTo(startX59, endY59)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('TV', 540, 249, { align: 'left', width: 250 }); //###
+
+
+    // Crear linea horizantal divisora 11
+    const startX60 = 30;
+    const endX60 = startX60 + 550;
+    const middleY60 = 265;
+    doc.moveTo(startX60, middleY60)
+      .lineTo(endX60, middleY60)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Plazo:', 50, 259, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 29
+    const startX61 = 100;
+    const startY61 = 255;
+    const endY61 = startY61 + 10;
+    doc.moveTo(startX61, startY61)
+      .lineTo(startX61, endY61)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('72', 120, 259, { align: 'left', width: 250 }); //###
+
+    // Crear linea vertical divisora 30
+    const startX62 = 150;
+    const startY62 = 255;
+    const endY62 = startY62 + 10;
+    doc.moveTo(startX62, startY62)
+      .lineTo(startX62, endY62)
+      .stroke();
+
+      // (X, Y aliegn)
+    doc
+    .fillColor('#777777')
+    .fontSize(5).text('Meses', 163, 259, { align: 'left' })
+    .fillColor('black');
+
+    // Crear linea vertical divisora 31
+    const startX63 = 190;
+    const startY63 = 255;
+    const endY63 = startY63 + 10;
+    doc.moveTo(startX63, startY63)
+      .lineTo(startX63, endY63)
+      .stroke();
+
+      // Crear linea vertical divisora 32
+    const startX64 = 220;
+    const startY64 = 255;
+    const endY64 = startY64 + 10;
+    doc.moveTo(startX64, startY64)
+      .lineTo(startX64, endY64)
+      .stroke();
+
 
 
     // Creación de nuava pagina en blanco con la opción de texto
