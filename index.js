@@ -1654,7 +1654,7 @@ app.get('/api/pdf', async (req, res) => {
     doc.fontSize(5).text('Activo', 160, 220, { align: 'left' }); //###
 
     // Rectangulo Superior Header (x, y, width, height)
-    doc.rect(30, 235, 550, 140).stroke();
+    doc.rect(30, 235, 550, 160).stroke();
 
     // Crear linea horizantal divisora 9
     const startX46 = 30;
@@ -1861,11 +1861,11 @@ app.get('/api/pdf', async (req, res) => {
       .lineTo(startX62, endY62)
       .stroke();
 
-      // (X, Y aliegn)
+    // (X, Y aliegn)
     doc
-    .fillColor('#777777')
-    .fontSize(5).text('Meses', 163, 259, { align: 'left' })
-    .fillColor('black');
+      .fillColor('#777777')
+      .fontSize(5).text('Meses', 163, 259, { align: 'left' })
+      .fillColor('black');
 
     // Crear linea vertical divisora 31
     const startX63 = 190;
@@ -1875,14 +1875,661 @@ app.get('/api/pdf', async (req, res) => {
       .lineTo(startX63, endY63)
       .stroke();
 
-      // Crear linea vertical divisora 32
-    const startX64 = 220;
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Periocidad pago de', 205, 259, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 32
+    const startX64 = 260;
     const startY64 = 255;
     const endY64 = startY64 + 10;
     doc.moveTo(startX64, startY64)
       .lineTo(startX64, endY64)
       .stroke();
 
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Trimestral', 290, 259, { align: 'left', width: 250 }); //###
+
+    // Crear linea vertical divisora 33
+    const startX65 = 380;
+    const startY65 = 255;
+    const endY65 = startY65 + 10;
+    doc.moveTo(startX65, startY65)
+      .lineTo(startX65, endY65)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Amortización:', 410, 259, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 34
+    const startX66 = 480;
+    const startY66 = 255;
+    const endY66 = startY66 + 10;
+    doc.moveTo(startX66, startY66)
+      .lineTo(startX66, endY66)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Semestral', 500, 259, { align: 'left', width: 250 }); //###
+
+    // Crear linea horizantal divisora 11
+    const startX67 = 30;
+    const endX67 = startX67 + 550;
+    const middleY67 = 275;
+    doc.moveTo(startX67, middleY67)
+      .lineTo(endX67, middleY67)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Desembolso', 50, 269, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 35
+    const startX68 = 100;
+    const startY68 = 265;
+    const endY68 = startY68 + 10;
+    doc.moveTo(startX68, startY68)
+      .lineTo(startX68, endY68)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Novación', 120, 269, { align: 'left', width: 250 }); //###
+
+    // Crear linea vertical divisora 36
+    const startX69 = 190;
+    const startY69 = 265;
+    const endY69 = startY69 + 10;
+    doc.moveTo(startX69, startY69)
+      .lineTo(startX69, endY69)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Tasa', 200, 269, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 37
+    const startX70 = 220;
+    const startY70 = 265;
+    const endY70 = startY70 + 10;
+    doc.moveTo(startX70, startY70)
+      .lineTo(startX70, endY70)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('IBR (3M)', 230, 269, { align: 'left', width: 250 }); //###
+
+    // Crear linea vertical divisora 38
+    const startX71 = 260;
+    const startY71 = 265;
+    const endY71 = startY71 + 10;
+    doc.moveTo(startX71, startY71)
+      .lineTo(startX71, endY71)
+      .stroke();
+
+    // Crear linea vertical divisora 38
+    const startX72 = 300;
+    const startY72 = 265;
+    const endY72 = startY72 + 10;
+    doc.moveTo(startX72, startY72)
+      .lineTo(startX72, endY72)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Spread:', 315, 269, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 39
+    const startX73 = 345;
+    const startY73 = 265;
+    const endY73 = startY73 + 10;
+    doc.moveTo(startX73, startY73)
+      .lineTo(startX73, endY73)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('3.90%', 350, 269, { align: 'left', width: 250 }); //###
+
+    // Crear linea vertical divisora 40
+    const startX74 = 370;
+    const startY74 = 265;
+    const endY74 = startY74 + 10;
+    doc.moveTo(startX74, startY74)
+      .lineTo(startX74, endY74)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('TV', 395, 269, { align: 'left', width: 250 }); //###
+
+    // Crear linea vertical divisora 41
+    const startX75 = 430;
+    const startY75 = 265;
+    const endY75 = startY75 + 10;
+    doc.moveTo(startX75, startY75)
+      .lineTo(startX75, endY75)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Margen neto de intereses(%)', 450, 269, { align: 'left', width: 250 })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 42
+    const startX76 = 530;
+    const startY76 = 265;
+    const endY76 = startY76 + 10;
+    doc.moveTo(startX76, startY76)
+      .lineTo(startX76, endY76)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('0.84%', 550, 269, { align: 'left', width: 250 }); //###
+
+    // Crear linea horizantal divisora 12
+    const startX77 = 30;
+    const endX77 = startX77 + 550;
+    const middleY77 = 285;
+    doc.moveTo(startX77, middleY77)
+      .lineTo(endX77, middleY77)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Periodo de Gracia', 50, 279, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 35
+    const startX78 = 100;
+    const startY78 = 275;
+    const endY78 = startY78 + 10;
+    doc.moveTo(startX78, startY78)
+      .lineTo(startX78, endY78)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Si', 125, 279, { align: 'left', width: 250 }); //###
+
+    // Crear linea vertical divisora 35
+    const startX79 = 150;
+    const startY79 = 275;
+    const endY79 = startY79 + 10;
+    doc.moveTo(startX79, startY79)
+      .lineTo(startX79, endY79)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Plazo en meses:', 170, 279, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 35
+    const startX80 = 220;
+    const startY80 = 275;
+    const endY80 = startY80 + 10;
+    doc.moveTo(startX80, startY80)
+      .lineTo(startX80, endY80)
+      .stroke()
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('24', 237, 279, { align: 'left', width: 250 }); //###
+
+    // Crear linea vertical divisora 35
+    const startX81 = 260;
+    const startY81 = 275;
+    const endY81 = startY81 + 10;
+    doc.moveTo(startX81, startY81)
+      .lineTo(startX81, endY81)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Clase de Garantia:', 330, 279, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 35
+    const startX82 = 430;
+    const startY82 = 275;
+    const endY82 = startY82 + 10;
+    doc.moveTo(startX82, startY82)
+      .lineTo(startX82, endY82)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('', 460, 279, { align: 'left', width: 250 }); //###
+
+    // Crear linea horizantal divisora 13
+    const startX83 = 30;
+    const endX83 = startX83 + 550;
+    const middleY83 = 295;
+    doc.moveTo(startX83, middleY83)
+      .lineTo(endX83, middleY83)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('ROA (12 Meses): ', 50, 289, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 36
+    const startX84 = 100;
+    const startY84 = 285;
+    const endY84 = startY84 + 10;
+    doc.moveTo(startX84, startY84)
+      .lineTo(startX84, endY84)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('-0.83%', 120, 289, { align: 'left', width: 250 }); //###
+
+    // Crear linea vertical divisora 37
+    const startX85 = 150;
+    const startY85 = 285;
+    const endY85 = startY85 + 10;
+    doc.moveTo(startX85, startY85)
+      .lineTo(startX85, endY85)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('ROA de la ', 175, 289, { align: 'left' }) //***
+      .fillColor('black');
+
+    // Crear linea vertical divisora 38
+    const startX86 = 220;
+    const startY86 = 285;
+    const endY86 = startY86 + 10;
+    doc.moveTo(startX86, startY86)
+      .lineTo(startX86, endY86)
+      .stroke()
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('0.36%', 235, 289, { align: 'left', width: 250 }); //###
+
+    // Crear linea vertical divisora 38
+    const startX87 = 260;
+    const startY87 = 285;
+    const endY87 = startY87 + 10;
+    doc.moveTo(startX87, startY87)
+      .lineTo(startX87, endY87)
+      .stroke()
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('ROA del cliente incluyendo nueva operación: ', 270, 289, { align: 'left' }) //***
+      .fillColor('black');
+
+    // Crear linea vertical divisora 39
+    const startX88 = 375;
+    const startY88 = 285;
+    const endY88 = startY88 + 10;
+    doc.moveTo(startX88, startY88)
+      .lineTo(startX88, endY88)
+      .stroke()
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('-0.49%', 395, 289, { align: 'left', width: 250 }); //###
+
+    // Crear linea vertical divisora 40
+    const startX89 = 430;
+    const startY89 = 285;
+    const endY89 = startY89 + 10;
+    doc.moveTo(startX89, startY89)
+      .lineTo(startX89, endY89)
+      .stroke()
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Tarjet de rentabilidad objetivo del', 440, 289, { align: 'left', width: 250 }) //***
+      .fillColor('black');
+
+    // Crear linea vertical divisora 41
+    const startX90 = 530;
+    const startY90 = 285;
+    const endY90 = startY90 + 10;
+    doc.moveTo(startX90, startY90)
+      .lineTo(startX90, endY90)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('0.04%', 550, 289, { align: 'left', width: 250 }); //###
+
+    // Crear linea horizantal divisora 14
+    const startX91 = 30;
+    const endX91 = startX91 + 550;
+    const middleY91 = 325;
+    doc.moveTo(startX91, middleY91)
+      .lineTo(endX91, middleY91)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Observaciones:', 50, 299, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 36
+    const startX92 = 100;
+    const startY92 = 295;
+    const endY92 = startY92 + 30;
+    doc.moveTo(startX92, startY92)
+      .lineTo(startX92, endY92)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('', 110, 299, { align: 'left', width: 250 }); //### ***
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Visto Bueno de Tasa', 120, 335, { align: 'left' });
+
+    // Rectangulo de respuesta 1
+    doc.rect(175, 330, 25, 12).stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('X', 185, 335, { align: 'left' }); //###
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Nivel de Atribución', 210, 335, { align: 'left' });
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Nivel de Atribución', 210, 350, { align: 'left' });
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Nivel de Atribución', 210, 365, { align: 'left' });
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Nivel de Atribución', 210, 380, { align: 'left' });
+
+    // Rectangulo siguiente a la respuesta
+    doc.rect(275, 330, 140, 12).stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('VP Ejecutivo', 285, 335, { align: 'left' }); //###
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Internal.', 445, 335, { align: 'left' });
+
+    // Rectangulo siguiente a la respuesta
+    doc.rect(470, 330, 100, 12).stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('', 480, 335, { align: 'left', width: 250 }); //###
+
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Visto Bueno Monto', 120, 350, { align: 'left' });
+
+    // Rectangulo de respuesta 2
+    doc.rect(175, 345, 25, 12).stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('X', 185, 350, { align: 'left' }); //###
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Visto Bueno Excepción', 120, 365, { align: 'left' });
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('', 185, 365, { align: 'left' }); //###
+
+    // Rectangulo siguiente a la respuesta
+    doc.rect(275, 360, 140, 12).stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('', 285, 365, { align: 'left' }); //###
+
+    // Rectangulo siguiente a la respuesta
+    doc.rect(275, 375, 140, 12).stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('', 285, 380, { align: 'left' }); //###
+
+
+    // Rectangulo siguiente a la respuesta
+    doc.rect(275, 345, 140, 12).stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('VP Comercial Banca Empresas', 285, 350, { align: 'left' }); //###
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Credito', 445, 350, { align: 'left' });
+
+    // Rectangulo siguiente a la respuesta
+    doc.rect(470, 345, 100, 12).stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('No Cobro sanción prepago ', 445, 380, { align: 'left' });
+
+    // Rectangulo siguiente a la respuesta
+    doc.rect(510, 375, 20, 12).stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('', 518, 380, { align: 'left' }); // ###
+
+    // Rectangulo de respuesta 3
+    doc.rect(175, 360, 25, 12).stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('', 185, 365, { align: 'left' }); //###
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Visto Bueno Prórroga', 120, 380, { align: 'left' });
+
+    // Rectangulo de respuesta 4
+    doc.rect(175, 375, 25, 12).stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('', 185, 380, { align: 'left' }); //###
+
+
+    // Rectangulo Superior Header (x, y, width, height)
+    doc.rect(30, 405, 550, 35).stroke();
+
+    // Crear linea horizantal divisora 15
+    const startX93 = 30;
+    const endX93 = startX93 + 550;
+    const middleY93 = 418;
+    doc.moveTo(startX93, middleY93)
+      .lineTo(endX93, middleY93)
+      .stroke();
+
+    // Crear linea horizantal divisora 16
+    const startX94 = 30;
+    const endX94 = startX94 + 550;
+    const middleY94 = 428;
+    doc.moveTo(startX94, middleY94)
+      .lineTo(endX94, middleY94)
+      .stroke();
+
+    // Rectangulo con relleno azul
+    doc.rect(30, 450, 550, 12).fill('#d6eaf8');
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('black')
+      .fontSize(6).text('DETALLE ENDEUDAMIENTO', 100, 454, { align: 'center' });
+
+    // Rectangulo Inferior Header (x, y, width, height)
+    doc.rect(30, 470, 550, 40).stroke();
+
+    // Crear linea horizantal divisora 17
+    const startX95 = 30;
+    const endX95 = startX95 + 550;
+    const middleY95 = 480;
+    doc.moveTo(startX95, middleY95)
+      .lineTo(endX95, middleY95)
+      .stroke();
+
+    // Crear linea horizantal divisora 18
+    const startX96 = 30;
+    const endX96 = startX96 + 550;
+    const middleY96 = 490;
+    doc.moveTo(startX96, middleY96)
+      .lineTo(endX96, middleY96)
+      .stroke();
+
+    // Crear linea horizantal divisora 19
+    const startX97 = 30;
+    const endX97 = startX97 + 550;
+    const middleY97 = 500;
+    doc.moveTo(startX97, middleY97)
+      .lineTo(endX97, middleY97)
+      .stroke();
+
+    // Crear linea vertical divisora 37
+    const startX98 = 220;
+    const startY98 = 470;
+    const endY98 = startY98 + 40;
+    doc.moveTo(startX98, startY98)
+      .lineTo(startX98, endY98)
+      .stroke();
+
+    // Rectangulo con relleno azul
+    doc.rect(30, 520, 550, 12).fill('#d6eaf8');
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('black')
+      .fontSize(6).text('VALIDACIÓN COMERCIAL (RIESGO CLIENTE)', 100, 524, { align: 'center' });
+
+    // Rectangulo Inferior Header (x, y, width, height)
+    doc.rect(30, 540, 550, 100).stroke();
+
+    // Crear linea horizantal divisora 20
+    const startX99 = 30;
+    const endX99 = startX99 + 550;
+    const middleY99 = 555;
+    doc.moveTo(startX99, middleY99)
+      .lineTo(endX99, middleY99)
+      .stroke();
+
+    // Crear linea vertical divisora 37
+    const startX100 = 180;
+    const startY100 = 540;
+    const endY100 = startY100 + 15;
+    doc.moveTo(startX100, startY100)
+      .lineTo(startX100, endY100)
+      .stroke();
+
+    // Crear linea vertical divisora 38
+    const startX101 = 220;
+    const startY101 = 540;
+    const endY101 = startY101 + 15;
+    doc.moveTo(startX101, startY101)
+      .lineTo(startX101, endY101)
+      .stroke();
+
+    // Crear linea vertical divisora 39
+    const startX102 = 350;
+    const startY102 = 540;
+    const endY102 = startY102 + 15;
+    doc.moveTo(startX102, startY102)
+      .lineTo(startX102, endY102)
+      .stroke();
+
+    // Crear linea vertical divisora 40
+    const startX103 = 430;
+    const startY103 = 540;
+    const endY103 = startY103 + 15;
+    doc.moveTo(startX103, startY103)
+      .lineTo(startX103, endY103)
+      .stroke();
+
+    // Crear linea vertical divisora 41
+    const startX104 = 540;
+    const startY104 = 540;
+    const endY104 = startY104 + 15;
+    doc.moveTo(startX104, startY104)
+      .lineTo(startX104, endY104)
+      .stroke();
+
+    // Crear linea horizantal divisora 21
+    const startX105 = 30;
+    const endX105 = startX105 + 550;
+    const middleY105 = 580;
+    doc.moveTo(startX105, middleY105)
+      .lineTo(endX105, middleY105)
+      .stroke();
+
+    // Crear linea vertical divisora 42
+    const startX106 = 160;
+    const startY106 = 555;
+    const endY106 = startY106 + 25;
+    doc.moveTo(startX106, startY106)
+      .lineTo(startX106, endY106)
+      .stroke();
+
+    // Crear linea horizantal divisora 22
+    const startX107 = 30;
+    const endX107 = startX107 + 550;
+    const middleY107 = 590;
+    doc.moveTo(startX107, middleY107)
+      .lineTo(endX107, middleY107)
+      .stroke();
+
+    // Crear linea vertical divisora 43
+    const startX108 = 180;
+    const startY108 = 580;
+    const endY108 = startY108 + 10;
+    doc.moveTo(startX108, startY108)
+      .lineTo(startX108, endY108)
+      .stroke();
+
+    // Crear linea vertical divisora 44
+    const startX109 = 220;
+    const startY109 = 580;
+    const endY109 = startY109 + 10;
+    doc.moveTo(startX109, startY109)
+      .lineTo(startX109, endY109)
+      .stroke();
+
+    // Crear linea vertical divisora 45
+    const startX110 = 310;
+    const startY110 = 580;
+    const endY110 = startY110 + 10;
+    doc.moveTo(startX110, startY110)
+      .lineTo(startX110, endY110)
+      .stroke();
+
+    // Crear linea vertical divisora 46
+    const startX111 = 390;
+    const startY111 = 580;
+    const endY111 = startY111 + 10;
+    doc.moveTo(startX111, startY111)
+      .lineTo(startX111, endY111)
+      .stroke();
+
+    // Crear linea vertical divisora 47
+    const startX112 = 520;
+    const startY112 = 580;
+    const endY112 = startY112 + 10;
+    doc.moveTo(startX112, startY112)
+      .lineTo(startX112, endY112)
+      .stroke();
+
+    // Crear linea vertical divisora 48
+    const startX113 = 140;
+    const startY113 = 580;
+    const endY113 = startY113 + 60;
+    doc.moveTo(startX113, startY113)
+      .lineTo(startX113, endY113)
+      .stroke();
 
 
     // Creación de nuava pagina en blanco con la opción de texto
