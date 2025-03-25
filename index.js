@@ -24,26 +24,21 @@ app.get('/api/pdf', async (req, res) => {
 
     doc.pipe(writableStream);
 
-    // Obtener la fecha actual (No importa la ahora del Servidor)
-    const fechaActual = new Date();
+    // 1. Obtener fecha UTC y ajustar a Colombia (GMT-5)
+    const ahoraUTC = new Date();
+    const offsetColombia = -5 * 60 * 60 * 1000; // -5 horas en milisegundos
+    const fechaColombia = new Date(ahoraUTC.getTime() + offsetColombia);
 
-    // Formatear la fecha en el formato "23 de diciembre de 2024"
+    // 2. Datos para formateo
     const meses = [
       'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
       'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
     ];
-    
-    const mes = meses[fechaActual.getMonth()];
-    const anio = fechaActual.getFullYear();
 
-    // 2. Aplicar offset de Colombia manualmente (GMT-5)
-    const offsetColombia = -5 * 60 * 60 * 1000; // -5 horas en milisegundos
-    const fechaColombia = new Date(fechaActual.getTime() + offsetColombia);
-
-    // 3. Calcular lunes anterior y próximo lunes (para Colombia)
+    // 3. Calcular lunes anterior y próximo lunes (usando UTC)
     const calcularLunes = (fecha) => {
-      const diaSemana = fecha.getUTCDay(); // 0 (domingo) a 6 (sábado)
-      const diasDesdeLunes = (diaSemana + 6) % 7; // Días transcurridos desde el lunes
+      const diaSemana = fecha.getUTCDay(); // 0=Dom, 1=Lun, ..., 6=Sab
+      const diasDesdeLunes = (diaSemana + 6) % 7;
       const lunes = new Date(fecha);
       lunes.setUTCDate(fecha.getUTCDate() - diasDesdeLunes);
       return lunes;
@@ -53,30 +48,28 @@ app.get('/api/pdf', async (req, res) => {
     const proximoLunes = new Date(lunesAnterior);
     proximoLunes.setUTCDate(lunesAnterior.getUTCDate() + 7);
 
+    // 4. Función de formateo (usa UTC para todo)
     const formatearFecha = (fecha) => {
-      return `${fecha.getUTCDate()}`;
+      return {
+        dia: fecha.getUTCDate(),
+        mes: meses[fecha.getUTCMonth()],
+        anio: fecha.getUTCFullYear()
+      };
     };
 
+    const fechaInicio = formatearFecha(lunesAnterior);
+    const fechaFin = formatearFecha(proximoLunes);
 
-    // Rectangulo 1 (x, y, width, height)
-    doc.rect(30, 25, 550, 55).stroke(); // Solo borde
-    //doc.rect(300, 50, 200, 100).fill('#3498db'); // Relleno azul
+    // 5. Generar texto (usando datos de fechas colombianas)
+    const textoSuperior = `Fecha de vigencia de la herramienta del ${fechaInicio.dia} de`;
+    const textoInferior = `${fechaInicio.mes} al ${fechaFin.dia} de ${fechaFin.mes} del ${fechaFin.anio}`;
 
-    doc.image('./images/bancoLogo.png', 50, 50, {
-      fit: [75, 75], // Tamaño ajustado
-      align: 'left', // Alineado a la izquierda
-      valign: 'top', // Alineado al principio
-    });
-
+    // --- Aplicación en PDF ---
+    doc.rect(30, 25, 550, 55).stroke();
+    doc.image('./images/bancoLogo.png', 50, 50, { fit: [75, 75], align: 'left', valign: 'top' });
     doc.fontSize(8).text('Herramienta de Pricing CEOIS Versión: V5', 100, 50, { align: 'center' });
-    doc
-      .fontSize(6)
-      .text(`Fecha de vigencia de la herramienta del ${formatearFecha(lunesAnterior)} de`, 100, 45, {
-        align: 'right',
-      });
-    doc
-      .fontSize(6)
-      .text(`${mes} al ${formatearFecha(proximoLunes)} de ${mes} del ${anio}`, 100, 55, { align: 'right' });
+    doc.fontSize(6).text(textoSuperior, 100, 45, { align: 'right' });
+    doc.fontSize(6).text(textoInferior, 100, 55, { align: 'right' });
 
     doc.moveDown(2); // Espaciado adicional
 
