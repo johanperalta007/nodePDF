@@ -86,9 +86,6 @@ app.get('/api/pdf', async (req, res) => {
     // Pipe el PDF a un archivo
     doc.pipe(fs.createWriteStream('output.pdf'));
 
-    // Ajustar la posición x para alinear más a la izquierda
-    const leftMargin = 50;
-
     // (X, Y aliegn)
     doc
       .fontSize(7)
