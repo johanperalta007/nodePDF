@@ -24,27 +24,39 @@ app.get('/api/pdf', async (req, res) => {
 
     doc.pipe(writableStream);
 
-    // Obtener la fecha actual
+    // Obtener la fecha actual (No importa la ahora del Servidor)
     const fechaActual = new Date();
 
     // Formatear la fecha en el formato "23 de diciembre de 2024"
     const meses = [
-      'Enero',
-      'Febrero',
-      'Marzo',
-      'Abril',
-      'Mayo',
-      'Junio',
-      'Julio',
-      'Agosto',
-      'Septiembre',
-      'Octubre',
-      'Noviembre',
-      'Diciembre',
+      'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+      'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
     ];
-    const dia = fechaActual.getDate();
+    
     const mes = meses[fechaActual.getMonth()];
     const anio = fechaActual.getFullYear();
+
+    // 2. Aplicar offset de Colombia manualmente (GMT-5)
+    const offsetColombia = -5 * 60 * 60 * 1000; // -5 horas en milisegundos
+    const fechaColombia = new Date(fechaActual.getTime() + offsetColombia);
+
+    // 3. Calcular lunes anterior y próximo lunes (para Colombia)
+    const calcularLunes = (fecha) => {
+      const diaSemana = fecha.getUTCDay(); // 0 (domingo) a 6 (sábado)
+      const diasDesdeLunes = (diaSemana + 6) % 7; // Días transcurridos desde el lunes
+      const lunes = new Date(fecha);
+      lunes.setUTCDate(fecha.getUTCDate() - diasDesdeLunes);
+      return lunes;
+    };
+
+    const lunesAnterior = calcularLunes(fechaColombia);
+    const proximoLunes = new Date(lunesAnterior);
+    proximoLunes.setUTCDate(lunesAnterior.getUTCDate() + 7);
+
+    const formatearFecha = (fecha) => {
+      return `${fecha.getUTCDate()}`;
+    };
+
 
     // Rectangulo 1 (x, y, width, height)
     doc.rect(30, 25, 550, 55).stroke(); // Solo borde
@@ -59,21 +71,14 @@ app.get('/api/pdf', async (req, res) => {
     doc.fontSize(8).text('Herramienta de Pricing CEOIS Versión: V5', 100, 50, { align: 'center' });
     doc
       .fontSize(6)
-      .text(`Fecha de vigencia de la herramienta del ${dia} de`, 100, 45, {
+      .text(`Fecha de vigencia de la herramienta del ${formatearFecha(lunesAnterior)} de`, 100, 45, {
         align: 'right',
       });
     doc
       .fontSize(6)
-      .text(`${mes} al ${dia} de Septiembre de ${anio}`, 100, 55, { align: 'right' });
+      .text(`${mes} al ${formatearFecha(proximoLunes)} de ${mes} del ${anio}`, 100, 55, { align: 'right' });
 
     doc.moveDown(2); // Espaciado adicional
-
-    // Título principal
-    //doc
-    //.fontSize(20)
-    //.font('Times-Bold')
-    //.text('DOCUMENTO LEGAL', { align: 'center' });
-    //doc.fontSize(16).font('Times-Bold').text('Herramienta de Pricing CEOIS Versión: V5', { align: 'center' });
 
     doc.moveDown(1); // Espaciado adicional
 
@@ -607,18 +612,26 @@ app.get('/api/pdf', async (req, res) => {
     doc
       .fontSize(7)
       .font('Times-Bold')
-      .text('Pago Intereses', 178, 520, { align: 'left' },);
+      .text('Pago Intereses', 178, 520, { align: 'left' });
 
     // (X, Y aliegn) Valor 2
     doc.fontSize(7).text('Trimestral', 265, 520, { align: 'left' }); //###
 
+    // Title
     doc
       .fontSize(7)
       .font('Times-Bold')
-      .text('Comisiones Negociadas', 35, 550, { align: 'left' },)
-      .text('(por año) %', 35, 556, { align: 'left' },);
+      .text('Rating Financiero', 35, 530, { align: 'left' },);
     // (X, Y aliegn) Valor
-    doc.fontSize(7).text('0.00%', 116, 550, { align: 'left' }); //###
+    doc.fontSize(7).text(`98%`, 116, 530, { align: 'left' }); //###
+
+    doc
+      .fontSize(7)
+      .font('Times-Bold')
+      .text('Comisiones Negociadas', 35, 555, { align: 'left' },)
+      .text('(por año) %', 35, 560, { align: 'left' },);
+    // (X, Y aliegn) Valor
+    doc.fontSize(7).text('0.00%', 116, 555, { align: 'left' }); //###
 
     // Rectangulo 7 (x, y, width, height)
     doc.rect(320, 390, 260, 235).stroke();
@@ -2338,6 +2351,63 @@ app.get('/api/pdf', async (req, res) => {
     doc.fontSize(5).text('', 185, 380, { align: 'left' }); //###
 
 
+    // (X, Y aliegn)
+    doc
+      .fillColor('black')
+      .fontSize(6).text('RECIPROCIDAD CIFRAS EN MILES DE $', 100, 410, { align: 'center' });
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Ahorros S.V.', 50, 422, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 49
+    const startX114 = 170;
+    const startY114 = 418;
+    const endY114 = startY114 + 22;
+    doc.moveTo(startX114, startY114)
+      .lineTo(startX114, endY114)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text(`$ 8,138,764.00`, 180, 422, { align: 'left' }); //###
+
+    // Crear linea vertical divisora 50
+    const startX115 = 320;
+    const startY115 = 418;
+    const endY115 = startY115 + 10;
+    doc.moveTo(startX115, startY115)
+      .lineTo(startX115, endY115)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Corrientes S.V.', 330, 422, { align: 'left' })
+      .fillColor('black');
+
+    // Crear linea vertical divisora 51
+    const startX116 = 450;
+    const startY116 = 418;
+    const endY116 = startY116 + 10;
+    doc.moveTo(startX116, startY116)
+      .lineTo(startX116, endY116)
+      .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text(`$ 0.00`, 460, 422, { align: 'left' }); //###
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('CDTS', 50, 434, { align: 'left' })
+      .fillColor('black');
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text(`$ 0.00`, 180, 434, { align: 'left' }); //###
+
+
     // Rectangulo Superior Header (x, y, width, height)
     doc.rect(30, 405, 550, 35).stroke();
 
@@ -2367,6 +2437,43 @@ app.get('/api/pdf', async (req, res) => {
 
     // Rectangulo Inferior Header (x, y, width, height)
     doc.rect(30, 470, 550, 40).stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('LEA (cifras en miles de $):', 50, 475, { align: 'left' })
+      .fillColor('black');
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text(`836,794,570.00`, 540, 475, { align: 'left', width: 250 }); //###
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Total utilizado (cifras en miles de $):', 50, 485, { align: 'left' })
+      .fillColor('black');
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text(`539,887,757.00`, 540, 485, { align: 'left', width: 250 }); //###
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Monto aprobado familia (cifras en miles de $):', 50, 495, { align: 'left' })
+      .fillColor('black');
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text(`400,000,000.00`, 540, 495, { align: 'left', width: 250 }); //###
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('#777777')
+      .fontSize(5).text('Margen neto de intereses:', 50, 505, { align: 'left' })
+      .fillColor('black');
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text(`0.84%`, 557, 505, { align: 'left', width: 250 }); //###
+
 
     // Crear linea horizantal divisora 17
     const startX95 = 30;
@@ -2419,6 +2526,12 @@ app.get('/api/pdf', async (req, res) => {
       .lineTo(endX99, middleY99)
       .stroke();
 
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Se analizaron las Cifras del cliente?', 35, 545, { align: 'left' });
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text(`Si`, 197, 545, { align: 'left', width: 250 }); //###
+
     // Crear linea vertical divisora 37
     const startX100 = 180;
     const startY100 = 540;
@@ -2426,6 +2539,9 @@ app.get('/api/pdf', async (req, res) => {
     doc.moveTo(startX100, startY100)
       .lineTo(startX100, endY100)
       .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Fecha de Corte de las Cifras', 224, 545, { align: 'left' });
 
     // Crear linea vertical divisora 38
     const startX101 = 220;
@@ -2435,6 +2551,9 @@ app.get('/api/pdf', async (req, res) => {
       .lineTo(startX101, endY101)
       .stroke();
 
+    // (X, Y aliegn)
+    doc.fontSize(5).text(`30/06/2024`, 380, 545, { align: 'left', width: 250 }); //###
+
     // Crear linea vertical divisora 39
     const startX102 = 350;
     const startY102 = 540;
@@ -2443,6 +2562,9 @@ app.get('/api/pdf', async (req, res) => {
       .lineTo(startX102, endY102)
       .stroke();
 
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Se Revisó Cifin?:', 440, 545, { align: 'left' });
+
     // Crear linea vertical divisora 40
     const startX103 = 430;
     const startY103 = 540;
@@ -2450,6 +2572,9 @@ app.get('/api/pdf', async (req, res) => {
     doc.moveTo(startX103, startY103)
       .lineTo(startX103, endY103)
       .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text(`Si`, 557, 545, { align: 'left', width: 250 }); //###
 
     // Crear linea vertical divisora 41
     const startX104 = 540;
@@ -2467,6 +2592,12 @@ app.get('/api/pdf', async (req, res) => {
       .lineTo(endX105, middleY105)
       .stroke();
 
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Observaciones para calificaciones diferentes a A: ', 35, 565, { align: 'left' });
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text(``, 165, 565, { align: 'left', width: 250 }); //###
+
     // Crear linea vertical divisora 42
     const startX106 = 160;
     const startY106 = 555;
@@ -2483,6 +2614,9 @@ app.get('/api/pdf', async (req, res) => {
       .lineTo(endX107, middleY107)
       .stroke();
 
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Realizo Visita comercial en el último trimestre?', 35, 583, { align: 'left' });
+
     // Crear linea vertical divisora 43
     const startX108 = 180;
     const startY108 = 580;
@@ -2490,6 +2624,9 @@ app.get('/api/pdf', async (req, res) => {
     doc.moveTo(startX108, startY108)
       .lineTo(startX108, endY108)
       .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text(`Si`, 197, 583, { align: 'left', width: 250 }); //###
 
     // Crear linea vertical divisora 44
     const startX109 = 220;
@@ -2499,6 +2636,9 @@ app.get('/api/pdf', async (req, res) => {
       .lineTo(startX109, endY109)
       .stroke();
 
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Nivel de Riesgo:', 230, 583, { align: 'left' });
+
     // Crear linea vertical divisora 45
     const startX110 = 310;
     const startY110 = 580;
@@ -2506,6 +2646,9 @@ app.get('/api/pdf', async (req, res) => {
     doc.moveTo(startX110, startY110)
       .lineTo(startX110, endY110)
       .stroke();
+
+    // (X, Y aliegn)
+    doc.fontSize(5).text(`Bajo`, 345, 583, { align: 'left', width: 250 }); //###
 
     // Crear linea vertical divisora 46
     const startX111 = 390;
@@ -2515,6 +2658,9 @@ app.get('/api/pdf', async (req, res) => {
       .lineTo(startX111, endY111)
       .stroke();
 
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Rating', 440, 583, { align: 'left' });
+
     // Crear linea vertical divisora 47
     const startX112 = 520;
     const startY112 = 580;
@@ -2523,24 +2669,23 @@ app.get('/api/pdf', async (req, res) => {
       .lineTo(startX112, endY112)
       .stroke();
 
+    // (X, Y aliegn)
+    doc.fontSize(5).text(`2`, 548, 583, { align: 'left', width: 250 }); //###
+
     // Crear linea vertical divisora 48
     const startX113 = 140;
-    const startY113 = 580;
-    const endY113 = startY113 + 60;
+    const startY113 = 590;
+    const endY113 = startY113 + 50;
     doc.moveTo(startX113, startY113)
       .lineTo(startX113, endY113)
       .stroke();
 
+    // (X, Y aliegn)
+    doc.fontSize(5).text('Recomendación Comercial para el', 35, 605, { align: 'left' });
+    doc.fontSize(5).text('desembolso:', 35, 610, { align: 'left' });
 
-    // Creación de nuava pagina en blanco con la opción de texto
-    doc
-      .fontSize(10)
-      .text(
-        'Esto es un documento que se a generado automaticamente. Actualemnte en construcción 🚧',
-        50,
-        doc.page.height - 50,
-        { align: 'center' }
-      );
+    // (X, Y aliegn)
+    doc.fontSize(5).text(``, 145, 605, { align: 'left', width: 250 }); //###
 
     doc.end();
 
