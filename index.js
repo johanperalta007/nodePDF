@@ -150,157 +150,48 @@ app.get('/api/pdf', async (req, res) => {
     // (X, Y aliegn)
     doc.fontSize(7).text('Borrador', 510, 95, { align: 'left' }); //###
 
-    // Crear linea horizantal divisora 1
-    const startX = 320;
-    const endX = startX + 260;
-    const middleY = 90 + 30 / 2;
-    // Dibujar la línea horizontal que pasa por la mitad del rectángulo
-    doc.moveTo(startX, middleY)
-      .lineTo(endX, middleY)
-      .stroke();
-
+    // Línea horizontal divisora 1
+    doc.moveTo(320, 90 + 30 / 2).lineTo(320 + 260, 90 + 30 / 2).stroke();
     doc.moveDown(5);
-
-    // Cuerpo principal
-
-    // Rectangulo 4 (x, y, width, height)
+    // Rectángulo 4
     doc.rect(30, 200, 280, 165).stroke();
-    const startX1 = 30;
-    const endX1 = startX1 + 280;
-    const middleY1 = 215;
-    doc.moveTo(startX1, middleY1)
-      .lineTo(endX1, middleY1)
-      .stroke();
+    // Línea dentro del rectángulo 4
+    doc.moveTo(30, 215).lineTo(30 + 280, 215).stroke();
 
-    doc
-      .fontSize(8)
-      .font('Times-Bold')
-      .text('Información Cliente Principal', 120, 205, { underline: true, align: 'left' },);
+    doc.fontSize(8).font('Times-Bold').text('Información Cliente Principal', 120, 205, { underline: true, align: 'left' });
 
-    // (X, Y aliegn)
-    doc
-      .fillColor('#777777')
-      .fontSize(10).text('ISAGEN S.A. E.S.P', 75, 225, { align: 'left' });
-
-    doc
-      .fontSize(7).text('Nit', 200, 222, { align: 'left' });
-
-    doc
-      .fontSize(7).text('8110007404', 200, 233, { align: 'left' })
-      .fillColor('black'); // Para devolver el color original
-
-    doc
-      .fontSize(7)
-      .font('Times-Bold')
-      .text('Segmento Comercial / Dirección Banca', 40, 243, { underline: false, align: 'left' },);
-
-    // (X, Y aliegn)
-    doc.fontSize(7).text('Corporativo / Infraestructura y', 200, 243, { align: 'left' }); //###
-
-    doc
-      .fontSize(7)
-      .font('Times-Bold')
-      .text('Calificación MRC', 40, 253, { underline: false, align: 'left' },);
-
-    // (X, Y aliegn)
-    doc.fontSize(7).text('AA', 240, 253, { align: 'left' }); //###
-
-    doc
-      .fontSize(7)
-      .font('Times-Bold')
-      .text('Rating MRC Observado E.F. a 2020', 40, 263, { underline: false, align: 'left' },);
-
-    // (X, Y aliegn)
-    doc.fontSize(7).text('2', 243, 263, { align: 'left' }); //###
-
-    doc
-      .fontSize(7)
-      .font('Times-Bold')
-      .text('Rating MRC Proyectado', 40, 273, { underline: false, align: 'left' },);
-    // (X, Y aliegn)
-    doc.fontSize(7).text('-', 243, 273, { align: 'left' }); //###
-
-    doc
-      .fontSize(7)
-      .font('Times-Bold')
-      .text('Clasificación Comercial EPC', 40, 283, { underline: false, align: 'left' },);
-
-    // (X, Y aliegn)
-    doc.fontSize(7).text('Estratégico', 230, 283, { align: 'left' }); //###
-
-    doc
-      .fontSize(8)
-      .font('Times-Bold')
-      .text('Información de Nomina (Beneficio E + E)', 100, 297, { underline: true, align: 'left' },);
-
-
-    doc
-      .fontSize(7)
-      .font('Times-Bold')
-      .text('Numero de cuentas asociadas', 40, 315, { underline: false, align: 'left' },);
-    // (X, Y aliegn)
-    doc.fontSize(7).text('0', 243, 315, { align: 'left' }); //###
-
-    doc
-      .fontSize(7)
-      .font('Times-Bold')
-      .text('Potencial de empleados', 40, 325, { underline: false, align: 'left' },);
-    // (X, Y aliegn)
-    doc.fontSize(7).text('0', 243, 325, { align: 'left' }); //###
-
-    doc
-      .fontSize(7)
-      .font('Times-Bold')
-      .text('Share de nomina de la empresa', 40, 335, { underline: false, align: 'left' },);
-
-    // (X, Y aliegn)
-    doc.fontSize(7).text('0%', 242, 335, { align: 'left' }); //###
-
-    doc
-      .fontSize(7)
-      .font('Times-Bold')
-      .text('Target del Share de nomina', 40, 345, { underline: false, align: 'left' },);
-    // (X, Y aliegn)
-    doc.fontSize(7).text('53%', 241, 345, { align: 'left' }); //###
-
-
-    // Rectangulo 5 (x, y, width, height)
+    doc.fillColor('#777777').fontSize(10).text('ISAGEN S.A. E.S.P', 75, 225, { align: 'left' });
+    doc.fontSize(7).text('Nit', 200, 222, { align: 'left' });
+    doc.fontSize(7).text('8110007404', 200, 233, { align: 'left' }).fillColor('black');
+    doc.fontSize(7).font('Times-Bold').text('Segmento Comercial / Dirección Banca', 40, 243, { underline: false, align: 'left' });
+    doc.fontSize(7).text('Corporativo / Infraestructura y', 200, 243, { align: 'left' });
+    doc.fontSize(7).font('Times-Bold').text('Calificación MRC', 40, 253, { underline: false, align: 'left' });
+    doc.fontSize(7).text('AA', 240, 253, { align: 'left' });
+    doc.fontSize(7).font('Times-Bold').text('Rating MRC Observado E.F. a 2020', 40, 263, { underline: false, align: 'left' });
+    doc.fontSize(7).text('2', 243, 263, { align: 'left' });
+    doc.fontSize(7).font('Times-Bold').text('Rating MRC Proyectado', 40, 273, { underline: false, align: 'left' });
+    doc.fontSize(7).text('-', 243, 273, { align: 'left' });
+    doc.fontSize(7).font('Times-Bold').text('Clasificación Comercial EPC', 40, 283, { underline: false, align: 'left' });
+    doc.fontSize(7).text('Estratégico', 230, 283, { align: 'left' });
+    doc.fontSize(8).font('Times-Bold').text('Información de Nomina (Beneficio E + E)', 100, 297, { underline: true, align: 'left' });
+    doc.fontSize(7).font('Times-Bold').text('Numero de cuentas asociadas', 40, 315, { underline: false, align: 'left' });
+    doc.fontSize(7).text('0', 243, 315, { align: 'left' });
+    doc.fontSize(7).font('Times-Bold').text('Potencial de empleados', 40, 325, { underline: false, align: 'left' });
+    doc.fontSize(7).text('0', 243, 325, { align: 'left' });
+    doc.fontSize(7).font('Times-Bold').text('Share de nomina de la empresa', 40, 335, { underline: false, align: 'left' });
+    doc.fontSize(7).text('0%', 242, 335, { align: 'left' });
+    doc.fontSize(7).font('Times-Bold').text('Target del Share de nomina', 40, 345, { underline: false, align: 'left' });
+    doc.fontSize(7).text('53%', 241, 345, { align: 'left' });
     doc.rect(320, 130, 260, 250).stroke();
-    // Crear linea horizantal divisora 2
-    const startX2 = 320;
-    const endX2 = startX2 + 260;
-    const middleY2 = 150;
-    doc.moveTo(startX2, middleY2)
-      .lineTo(endX2, middleY2)
-      .stroke();
-
-    doc
-      .fontSize(6)
-      .font('Times-Bold')
-      .text('INFORMACIÓN PROMEDIOS Y RENTABILIDAD DEL CLIENTE ISAGEN S.A. E.S.P', 335, 140, { underline: true, align: 'left', width: 250 },);
-
-    // (X, Y aliegn)
+    doc.moveTo(320, 150).lineTo(580, 150).stroke();
+    doc.fontSize(6).font('Times-Bold').text('INFORMACIÓN PROMEDIOS Y RENTABILIDAD DEL CLIENTE ISAGEN S.A. E.S.P', 335, 140, { underline: true, align: 'left', width: 250 });
     doc.fontSize(7).text('Activos con corte a jun-24', 330, 160, { align: 'left' });
-
-    // (X, Y aliegn)
     doc.fontSize(7).text('539,887,757,598', 510, 160, { align: 'left', width: 250 }); //###
-
-    // (X, Y aliegn)
     doc.fontSize(7).text('Volumen', 460, 180, { align: 'left', width: 250 });
-
-    // (X, Y aliegn)
     doc.fontSize(7).text('Tasa Implícita', 530, 180, { align: 'left', width: 250 });
-
-    // (X, Y aliegn) Title
     doc.fontSize(7).text('Total Activos', 330, 190, { align: 'left' });
-
-    // (X, Y aliegn)
     doc.fontSize(7).text('493,712,077,883', 450, 190, { align: 'left', width: 250 }); //###
-
-    // (X, Y aliegn)
     doc.fontSize(7).text('15.83%', 540, 190, { align: 'left', width: 250 }); //###
-
-    // (X, Y aliegn)
     doc
       .fillColor('#777777')
       .fontSize(7).text('Prestamos Comerciales', 336, 200, { align: 'left' });
@@ -2676,6 +2567,226 @@ app.get('/api/pdf', async (req, res) => {
 
     // (X, Y aliegn)
     doc.fontSize(5).text(``, 145, 605, { align: 'left', width: 250 }); //###
+
+
+    //PAG. 3 ----->>> Creación de nuava pagina en blanco <<<----- //
+    doc
+      .fontSize(10)
+      .text(
+        '',
+        50,
+        doc.page.height - 50,
+        { align: 'center' }
+      );
+
+    // Rectangulo superior Header (x, y, width, height)
+    doc.rect(30, 20, 350, 55).stroke();
+
+    // Rectangulo con relleno azul
+    doc.rect(30, 20, 180, 55).fill('#d6eaf8');
+
+    // Crear linea vertical divisora 49
+    doc.moveTo(210, 20).lineTo(210, 75).stroke();
+
+    // (X, Y aliegn)
+    doc
+      .fillColor('black')
+      .fontSize(7).text('Nivel Atribución requerido Tasa', 70, 25, { align: 'left' });
+    doc.fontSize(7).text('Gerente de Zona', 270, 25, { align: 'left' }); //###
+
+    doc
+      .fillColor('black')
+      .fontSize(7).text('Nivel de Atribución requerido Monto', 60, 35, { align: 'left' });
+    doc.fontSize(7).text('Gerente Comercial', 267, 35, { align: 'left' }); //###
+
+    doc
+      .fillColor('black')
+      .fontSize(7).text('Nivel de Atribución requerido Excepción', 55, 45, { align: 'left' });
+    doc.fontSize(7).text('', 265, 45, { align: 'left' }); //###
+
+    doc
+      .fillColor('black')
+      .fontSize(7).text('Nivel de Atribución requerido Prorroga/Periodo Gracia', 35, 55, { align: 'left' });
+    doc.fontSize(7).text('', 265, 55, { align: 'left' }); //###
+
+    doc
+      .fillColor('black')
+      .fontSize(7).text('Nivel de atribución No cobro sanción prepago', 55, 65, { align: 'left' });
+    doc.fontSize(7).text('', 265, 65, { align: 'left' }); //###
+
+    // Rectangulo medio Header (x, y, width, height)
+    doc.rect(30, 130, 550, 160).stroke();
+
+    // Rectangulo con relleno azul
+    doc.rect(30, 130, 85, 160).fill('#d6eaf8');
+
+    // Rectangulo Sup Header (x, y, width, height)
+    doc.rect(116, 110, 464, 180).stroke();
+
+    // Rectangulo con relleno azul
+    doc.rect(116, 110, 464, 20).fill('#d6eaf8');
+
+    doc
+      .fillColor('black')
+      .fontSize(6).text('Nivel de Atribución Tasa', 130, 120, { align: 'left' });
+
+    // Crear linea vertical divisora 49
+    const startX117 = 205;
+    const startY117 = 110;
+    const endY117 = startY117 + 180;
+    doc.moveTo(startX117, startY117)
+      .lineTo(startX117, endY117)
+      .stroke();
+
+    doc
+      .fillColor('black')
+      .fontSize(6).text('Nivel de Atribución Monto', 220, 120, { align: 'left' });
+
+    // Crear linea vertical divisora 50
+    const startX118 = 300;
+    const startY118 = 110;
+    const endY118 = startY118 + 180;
+    doc.moveTo(startX118, startY118)
+      .lineTo(startX118, endY118)
+      .stroke();
+
+    doc
+      .fillColor('black')
+      .fontSize(6).text('Nivel de Atribución Excepción', 308, 120, { align: 'left' });
+
+    // Crear linea vertical divisora 50
+    const startX119 = 395;
+    const startY119 = 110;
+    const endY119 = startY119 + 180;
+    doc.moveTo(startX119, startY119)
+      .lineTo(startX119, endY119)
+      .stroke();
+
+    doc
+      .fillColor('black')
+      .fontSize(6).text('Nivel de Atribución', 417, 115, { align: 'left' });
+
+    doc
+      .fillColor('black')
+      .fontSize(6).text('Prorroga/Periodo Gracia', 412, 120, { align: 'left' });
+
+    // Crear linea vertical divisora 51
+    const startX120 = 490;
+    const startY120 = 110;
+    const endY120 = startY120 + 180;
+    doc.moveTo(startX120, startY120)
+      .lineTo(startX120, endY120)
+      .stroke();
+
+    doc
+      .fillColor('black')
+      .fontSize(6).text('Nivel de atribución No cobro ', 500, 115, { align: 'left', width: 250 });
+
+    doc
+      .fillColor('black')
+      .fontSize(6).text('sanción prepago', 517, 120, { align: 'left', width: 250 });
+
+
+    // Titulos verticales inicio  
+    doc
+      .fillColor('black')
+      .fontSize(6).text('Gerente Comercial', 33, 140, { align: 'left' });
+
+    //Nivel de Atribución Tasa para Gerente Comercial
+    doc.fontSize(6).text('Aprobado 20/02/2025', 135, 135, { align: 'left' }); // ###
+    doc.fontSize(6).text('Libardo Arturo Gil Restrepo', 125, 142, { align: 'left' }); // ###
+    //Nivel de Atribución Monto para Gerente Comercial
+    doc.fontSize(6).text('Aprobado 20/02/2025', 225, 135, { align: 'left' }); // ###
+    doc.fontSize(6).text('Libardo Arturo Gil Restrepo', 215, 142, { align: 'left' }); // ###
+
+    // Crear linea horizantal divisora 2
+    const startX2 = 30;
+    const endX2 = startX2 + 550;
+    const middleY2 = 150;
+    doc.moveTo(startX2, middleY2)
+      .lineTo(endX2, middleY2)
+      .stroke();
+
+    doc
+      .fillColor('black')
+      .fontSize(6).text('Gerente de Zona', 33, 160, { align: 'left' });
+
+    //Nivel de Atribución Tasa para Gerente de Zona
+    doc.fontSize(6).text('Aprobado 20/02/2025', 135, 155, { align: 'left' }); // ###
+    doc.fontSize(6).text('Laura Victoria Alvarez Giraldo', 121, 162, { align: 'left' }); // ###
+
+    // Crear linea horizantal divisora 3
+    const startX129 = 30;
+    const endX129 = startX129 + 550;
+    const middleY129 = 170;
+    doc.moveTo(startX129, middleY129)
+      .lineTo(endX129, middleY129)
+      .stroke();
+
+    doc
+      .fillColor('black')
+      .fontSize(6).text('Director de Segmento', 33, 180, { align: 'left' });
+
+    // Crear linea horizantal divisora 4
+    const startX130 = 30;
+    const endX130 = startX130 + 550;
+    const middleY130 = 190;
+    doc.moveTo(startX130, middleY130)
+      .lineTo(endX130, middleY130)
+      .stroke();
+
+    doc
+      .fillColor('black')
+      .fontSize(6).text('Director de Crédito', 33, 200, { align: 'left' });
+
+    // Crear linea horizantal divisora 5
+    const startX135 = 30;
+    const endX135 = startX135 + 550;
+    const middleY135 = 210;
+    doc.moveTo(startX135, middleY135)
+      .lineTo(endX135, middleY135)
+      .stroke();
+
+    doc
+      .fillColor('black')
+      .fontSize(6).text('Director nacional de Segmento', 33, 220, { align: 'left' });
+
+    // Crear linea horizantal divisora 5
+    const startX137 = 30;
+    const endX137 = startX137 + 550;
+    const middleY137 = 230;
+    doc.moveTo(startX137, middleY137)
+      .lineTo(endX137, middleY137)
+      .stroke();
+
+    doc
+      .fillColor('black')
+      .fontSize(6).text('VP Comercial Banca Empresas', 33, 240, { align: 'left' });
+
+    // Crear linea horizantal divisora 5
+    const startX138 = 30;
+    const endX138 = startX138 + 550;
+    const middleY138 = 250;
+    doc.moveTo(startX138, middleY138)
+      .lineTo(endX138, middleY138)
+      .stroke();
+
+    doc
+      .fillColor('black')
+      .fontSize(6).text('VP Financiero y de Estrategia', 33, 260, { align: 'left' });
+
+    // Crear linea horizantal divisora 5
+    const startX139 = 30;
+    const endX139 = startX139 + 550;
+    const middleY139 = 270;
+    doc.moveTo(startX139, middleY139)
+      .lineTo(endX139, middleY139)
+      .stroke();
+
+    doc
+      .fillColor('black')
+      .fontSize(6).text('VP Crédito', 33, 280, { align: 'left' });
+
 
     doc.end();
 
