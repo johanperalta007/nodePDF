@@ -65,10 +65,8 @@ app.get('/api/pdf', async (req, res) => {
 
     const dynamoResponseList = structurePDF;
 
-    const obj = dynamoResponseList;
-
-    for (let index = 0; index < obj.length; index++) {
-      const element = obj[index];
+    for (let index = 0; index < dynamoResponseList.length; index++) {
+      const element = dynamoResponseList[index];
 
       if (element["type"] === "rect") {
         if (element["fill"]) {
