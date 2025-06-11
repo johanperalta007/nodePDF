@@ -57,11 +57,32 @@ app.get('/api/pdf', async (req, res) => {
     // Salida del PDF a un archivo local ¡¡¡ Solo corre en local eliminar en la nube!!!
     doc.pipe(fs.createWriteStream('output.pdf'));
 
+
+    // Este espacio se pretende para probar funciones de formna rapida y dummy
+    const insertarSaltosDeLinea = async (cadena, cadaCuantos = 75) => {
+      if (cadena === undefined || cadena === "" || cadena === null) {
+        return "-";
+      }
+      let resultado = "";
+      for (let i = 0; i < cadena.length; i += cadaCuantos) {
+        resultado += "" + cadena.slice(i, i + cadaCuantos) + "\n";
+      }
+      return resultado.trim();
+    };
+
     const fechaInicio = formatearFecha(lunesAnterior);
     const fechaFin = formatearFecha(proximoLunes);
 
     const textoSuperior = `Fecha de vigencia de la herramienta del ${fechaInicio.dia} de`;
     const textoInferior = `${fechaInicio.mes} al ${fechaFin.dia} de ${fechaFin.mes} del ${fechaFin.anio}`;
+
+    const dynamicVars = {
+      observations: await insertarSaltosDeLinea(
+        "Esto es una prueba para saber la cantidad de caracteres si se ajustan automaticamente o si hay que realizar el reciclado de una función que ya tengo para acomodar el texto y no me reporte por favor más Bugs por favor lo pido :( . Lo realmente importantes es poder verificar que pese a que hay muchos caracteres de observación dentro de este text , este a su vez no se va a tener que reventar dentro del formato del PDF, ya que este pdf para ser sinceros me lo tiene al rojo jaajja, pero hay camello que es lo imporantes y agradezco mucho a Dios por esta oportunimdfad que estoy aprovechando."
+      )
+    };
+    
+
 
     const dynamoResponseList = structurePDF;
 
@@ -77,19 +98,17 @@ app.get('/api/pdf', async (req, res) => {
       }
 
       if (element["type"] === "text") {
-        const textConfig = {
-          text: element["text"][0],
-          x: element["text"][1],
-          y: element["text"][2],
-          ...(element["text"][3] && { options: element["text"][3] })
-        };
-
+        const [rawText, x, y, options] = element["text"];
+      
+        // Si el texto es una variable dinámica, reemplázalo
+        const actualText = dynamicVars[rawText] || rawText;
+      
         if (element["font"]) doc.font(element["font"]);
         if (element["fillColor"]) doc.fillColor(element["fillColor"]);
         if (element["fontSize"]) doc.fontSize(element["fontSize"]);
-
-        doc.text(textConfig.text, textConfig.x, textConfig.y, textConfig.options);
-      }
+      
+        doc.text(actualText, x, y, options);
+      }            
 
       if (element["type"] === "moveDown") {
         doc.moveDown(element["size"]);
