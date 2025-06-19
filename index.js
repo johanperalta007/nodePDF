@@ -58,17 +58,21 @@ app.get('/api/pdf', async (req, res) => {
     doc.pipe(fs.createWriteStream('output.pdf'));
 
 
-    // Este espacio se pretende para probar funciones de formna rapida y dummy
-    const insertarSaltosDeLinea = async (cadena, cadaCuantos = 75) => {
-      if (cadena === undefined || cadena === "" || cadena === null) {
-        return "-";
-      }
-      let resultado = "";
-      for (let i = 0; i < cadena.length; i += cadaCuantos) {
-        resultado += "" + cadena.slice(i, i + cadaCuantos) + "\n";
-      }
-      return resultado.trim();
-    };
+ const insertarSaltosDeLinea = (cadena, cadaCuantos = 75) => {
+  if (!cadena || typeof cadena !== "string") {
+    return "-";
+  }
+
+  // Eliminar saltos de línea y espacios redundantes
+  const textoLimpio = cadena.replace(/[\r\n]+/g, ' ').replace(/\s+/g, ' ').trim();
+
+  let resultado = "";
+  for (let i = 0; i < textoLimpio.length; i += cadaCuantos) {
+    resultado += textoLimpio.slice(i, i + cadaCuantos) + "\n";
+  }
+
+  return resultado.trim();
+};
 
     const fechaInicio = formatearFecha(lunesAnterior);
     const fechaFin = formatearFecha(proximoLunes);
@@ -78,7 +82,13 @@ app.get('/api/pdf', async (req, res) => {
 
     const dynamicVars = {
       observations: await insertarSaltosDeLinea(
-        "Esto es una prueba para saber la cantidad de caracteres si se ajustan automaticamente o si hay que realizar el reciclado de una función que ya tengo para acomodar el texto y no me reporte por favor más Bugs por favor lo pido :( . Lo realmente importantes es poder verificar que pese a que hay muchos caracteres de observación dentro de este text , este a su vez no se va a tener que reventar dentro del formato del PDF, ya que este pdf para ser sinceros me lo tiene al rojo jaajja, pero hay camello que es lo imporantes y agradezco mucho a Dios por esta oportunimdfad que estoy aprovechando."
+        `Esto es una prueba para saber la cantidad de caracteres si se ajustan automaticamente o si hay 
+        que realizar el reciclado de una función que ya tengo para acomodar el texto y no me reporte por favor 
+        más Bugs por favor lo pido :( . Lo realmente importantes es poder verificar que pese a que hay muchos caracteres 
+        de observación dentro de este text , este a su vez no se va a tener que reventar dentro del formato del PDF, ya 
+        que este pdf para ser sinceros me lo tiene al rojo jaajja, pero hay camello que es lo imporantes y agradezco 
+        mucho a Dios por esta oportunimdfad que estoy aprovechando, para probar los alcances que puede llegar en la HU , 
+        ojala los caracteres pasen sin ningún problemna. La cosa es que yo veo que los caracteres hola esto es un`
       )
     };
     
