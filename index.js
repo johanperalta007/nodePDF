@@ -58,7 +58,7 @@ app.get('/api/pdf', async (req, res) => {
     doc.pipe(fs.createWriteStream('output.pdf'));
 
 
- const insertarSaltosDeLinea = (cadena, cadaCuantos = 75) => {
+ const insertarSaltosDeLinea = (cadena, cadaCuantos = 85) => {
   if (!cadena || typeof cadena !== "string") {
     return "-";
   }
@@ -82,13 +82,23 @@ app.get('/api/pdf', async (req, res) => {
 
     const dynamicVars = {
       observations: await insertarSaltosDeLinea(
-        `Esto es una prueba para saber la cantidad de caracteres si se ajustan automaticamente o si hay 
-        que realizar el reciclado de una función que ya tengo para acomodar el texto y no me reporte por favor 
-        más Bugs por favor lo pido :( . Lo realmente importantes es poder verificar que pese a que hay muchos caracteres 
-        de observación dentro de este text , este a su vez no se va a tener que reventar dentro del formato del PDF, ya 
-        que este pdf para ser sinceros me lo tiene al rojo jaajja, pero hay camello que es lo imporantes y agradezco 
-        mucho a Dios por esta oportunimdfad que estoy aprovechando, para probar los alcances que puede llegar en la HU , 
-        ojala los caracteres pasen sin ningún problemna. La cosa es que yo veo que los caracteres hola esto es un`
+        `Esto es una prueba para saber la cantidad de caracteres si se aj
+        ustan automaticamente o si hay 
+        que realizar el reciclado de una función que ya t
+        engo para acomodar el texto y no me reporte por favor 
+        más Bugs por favor 
+        lo pido :( . Lo realmente importantes es poder verificar que pese a que hay muchos caracteres 
+        de observación dentro de este text , 
+        este a su vez no se va a tener que reventar dentro del formato del PDF, ya 
+        que este pdf para
+         ser sinceros me lo tiene al rojo jaajja, pero hay 
+        camello que es lo imporantes y agradezco 
+        mucho a Dios por esta
+         oportunimdfad que estoy aprovechando, para probar los alcances que puede llegar en la HU , 
+        ojala los caractere
+        s pasen sin ningún prob
+        lemna. La prueba de desborde
+         se enfoca en esto precisamente, mejorar`
       )
     };
     
