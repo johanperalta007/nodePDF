@@ -74,6 +74,17 @@ app.get('/api/pdf', async (req, res) => {
   return resultado.trim();
 };
 
+const nombreNit = (text, limit = 30) => {
+  if (!text || typeof text !== "string") {
+    return "";
+  }
+  if (text.length <= limit) {
+    return text;
+  }
+  return text.substring(0, limit) + "...";
+};
+
+
     const fechaInicio = formatearFecha(lunesAnterior);
     const fechaFin = formatearFecha(proximoLunes);
 
@@ -82,27 +93,19 @@ app.get('/api/pdf', async (req, res) => {
 
     const dynamicVars = {
       observations: await insertarSaltosDeLinea(
-        `Esto es una prueba para saber la cantidad de caracteres si se aj
-        ustan automaticamente o si hay 
-        que realizar el reciclado de una función que ya t
-        engo para acomodar el texto y no me reporte por favor 
-        más Bugs por favor 
-        lo pido :( . Lo realmente importantes es poder verificar que pese a que hay muchos caracteres 
-        de observación dentro de este text , 
-        este a su vez no se va a tener que reventar dentro del formato del PDF, ya 
-        que este pdf para
-         ser sinceros me lo tiene al rojo jaajja, pero hay 
-        camello que es lo imporantes y agradezco 
-        mucho a Dios por esta
-         oportunimdfad que estoy aprovechando, para probar los alcances que puede llegar en la HU , 
-        ojala los caractere
-        s pasen sin ningún prob
-        lemna. La prueba de desborde
-         se enfoca en esto precisamente, mejorar`
+        `Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio. 
+        Tiene sus raices en una pieza clásica de la literatura del Latin, que data del año 45 antes de Cristo,
+         haciendo que este adquiera mas de 2000 años de antiguedad. Richard McClintock, un profesor de Latin 
+         de la Universidad de Hampden-Sydney en Virginia, encontró una de las palabras más oscuras de la lengua
+          del latín, "consecteur", en un pasaje de Lorem Ipsum, y al seguir leyendo distintos textos del latín, 
+          descubrió la fuente indudable. Lorem Ipsum viene de las secciones 1.10.32 y 1.10.33 de "de Finnibus 
+          Bonorum et Malorum" (Los Extremos del Bien y El Mal) por Cicero, escrito en el año 45 antes de Cristo. 
+          Este libro es un tratado de teoría de étic`
+      ),
+      clientName: await nombreNit(
+        "DISTRITO ESPECIAL DE CIENCIA TECNOLOGIA E INN"
       )
     };
-    
-
 
     const dynamoResponseList = structurePDF;
 
