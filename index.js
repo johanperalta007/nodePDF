@@ -4,7 +4,7 @@ const app = express();
 const PDFDocument = require('pdfkit');
 const streamBuffers = require('stream-buffers');
 const fs = require('fs');
-const structurePDF = require("./structure.json");
+const pdfTemplate = require("./structure.json");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -58,31 +58,31 @@ app.get('/api/pdf', async (req, res) => {
     doc.pipe(fs.createWriteStream('output.pdf'));
 
 
- const insertarSaltosDeLinea = (cadena, cadaCuantos = 85) => {
-  if (!cadena || typeof cadena !== "string") {
-    return "-";
-  }
+    const insertarSaltosDeLinea = (cadena, cadaCuantos = 85) => {
+      if (!cadena || typeof cadena !== "string") {
+        return "-";
+      }
 
-  // Eliminar saltos de línea y espacios redundantes
-  const textoLimpio = cadena.replace(/[\r\n]+/g, ' ').replace(/\s+/g, ' ').trim();
+      // Eliminar saltos de línea y espacios redundantes
+      const textoLimpio = cadena.replace(/[\r\n]+/g, ' ').replace(/\s+/g, ' ').trim();
 
-  let resultado = "";
-  for (let i = 0; i < textoLimpio.length; i += cadaCuantos) {
-    resultado += textoLimpio.slice(i, i + cadaCuantos) + "\n";
-  }
+      let resultado = "";
+      for (let i = 0; i < textoLimpio.length; i += cadaCuantos) {
+        resultado += textoLimpio.slice(i, i + cadaCuantos) + "\n";
+      }
 
-  return resultado.trim();
-};
+      return resultado.trim();
+    };
 
-const nombreNit = (text, limit = 30) => {
-  if (!text || typeof text !== "string") {
-    return "";
-  }
-  if (text.length <= limit) {
-    return text;
-  }
-  return text.substring(0, limit) + "...";
-};
+    const nombreNit = (text, limit = 30) => {
+      if (!text || typeof text !== "string") {
+        return "";
+      }
+      if (text.length <= limit) {
+        return text;
+      }
+      return text.substring(0, limit) + "...";
+    };
 
 
     const fechaInicio = formatearFecha(lunesAnterior);
@@ -107,31 +107,37 @@ const nombreNit = (text, limit = 30) => {
       )
     };
 
-    const dynamoResponseList = structurePDF;
+    const dynamoResponseList = pdfTemplate;
 
     for (let index = 0; index < dynamoResponseList.length; index++) {
       const element = dynamoResponseList[index];
 
       if (element["type"] === "rect") {
+        doc.lineWidth(0.5); // Grosor del borde
+        doc.strokeColor('gray'); // Color del borde
+
+        const [x, y, width, height] = element["positions"];
+        const radius = 4; // Puedes ajustar el radio según lo redondeado que lo quieras
+
         if (element["fill"]) {
-          doc.rect(...element["positions"]).fill(element["fill"]);
+          doc.roundedRect(x, y, width, height, radius).fill(element["fill"]);
         } else {
-          doc.rect(...element["positions"]).stroke();
+          doc.roundedRect(x, y, width, height, radius).stroke();
         }
       }
 
       if (element["type"] === "text") {
         const [rawText, x, y, options] = element["text"];
-      
+
         // Si el texto es una variable dinámica, reemplázalo
         const actualText = dynamicVars[rawText] || rawText;
-      
+
         if (element["font"]) doc.font(element["font"]);
         if (element["fillColor"]) doc.fillColor(element["fillColor"]);
         if (element["fontSize"]) doc.fontSize(element["fontSize"]);
-      
+
         doc.text(actualText, x, y, options);
-      }            
+      }
 
       if (element["type"] === "moveDown") {
         doc.moveDown(element["size"]);
