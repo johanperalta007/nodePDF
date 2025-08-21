@@ -5,6 +5,7 @@ const PDFDocument = require('pdfkit');
 const streamBuffers = require('stream-buffers');
 const fs = require('fs');
 const pdfTemplate = require("./structure.json");
+//const pdfTemplate = require("./structureOldest.json");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -88,9 +89,6 @@ app.get('/api/pdf', async (req, res) => {
     const fechaInicio = formatearFecha(lunesAnterior);
     const fechaFin = formatearFecha(proximoLunes);
 
-    const textoSuperior = `Fecha de vigencia de la herramienta del ${fechaInicio.dia} de`;
-    const textoInferior = `${fechaInicio.mes} al ${fechaFin.dia} de ${fechaFin.mes} del ${fechaFin.anio}`;
-
     const dynamicVars = {
       observations: await insertarSaltosDeLinea(
         `Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio. 
@@ -104,7 +102,8 @@ app.get('/api/pdf', async (req, res) => {
       ),
       clientName: await nombreNit(
         "DISTRITO ESPECIAL DE CIENCIA TECNOLOGIA E INN"
-      )
+      ),
+      textoFecha: `${fechaInicio.dia} de ${fechaInicio.mes} al ${fechaFin.dia} de ${fechaFin.mes} del ${fechaFin.anio}`
     };
 
     const dynamoResponseList = pdfTemplate;

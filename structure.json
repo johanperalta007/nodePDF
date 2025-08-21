@@ -1,10 +1,9 @@
 
 [
-  {"positions":[30,25,550,55],"type":"rect"},
   {"params":["imgLogo",50,50,{"align":"left","fit":[75,75],"valign":"top"}],"type":"image"},
-  {"fontSize":8,"text":["Herramienta de Pricing CEOIS/PYME Versión: V5",90,50,{"align":"center"}],"type":"text"},
-  {"fontSize":6,"text":["textoSuperior",100,45,{"align":"right"}],"type":"text2"},
-  {"fontSize":6,"text":["textoInferior",100,55,{"align":"right"}],"type":"text2"},
+  {"fillColor":"#0056B8","fontSize":9,"font": "Helvetica-Bold","text":["Herramienta de Pricing CEOIS Versión: V5",365,35,{"align":"center","width":250}],"type":"text"},
+  {"font":"Helvetica","fillColor":"black","fontSize":7,"text":["Fecha de vigencia de la herramienta: ",200,55,{"align":"right","width":250}],"type":"text"},
+  {"font": "Helvetica-Bold","fontSize":7,"text":["textoFecha",328,55,{"align":"right","width":250}],"type":"text"},
   {"size":3,"type":"moveDown"},
   {"positions":[30,90,280,45],"type":"rect"},
   {"positions":[30,145,280,45],"type":"rect"},
