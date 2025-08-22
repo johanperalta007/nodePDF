@@ -85,7 +85,6 @@ app.get('/api/pdf', async (req, res) => {
       return text.substring(0, limit) + "...";
     };
 
-
     const fechaInicio = formatearFecha(lunesAnterior);
     const fechaFin = formatearFecha(proximoLunes);
 
@@ -103,7 +102,8 @@ app.get('/api/pdf', async (req, res) => {
       clientName: await nombreNit(
         "DISTRITO ESPECIAL DE CIENCIA TECNOLOGIA E INN"
       ),
-      textoFecha: `${fechaInicio.dia} de ${fechaInicio.mes} al ${fechaFin.dia} de ${fechaFin.mes} del ${fechaFin.anio}`
+      textoFecha: `${fechaInicio.dia} de ${fechaInicio.mes} al ${fechaFin.dia} de ${fechaFin.mes} del ${fechaFin.anio}`,
+      imgLogo: './img/bancoLogo.png'
     };
 
     const dynamoResponseList = pdfTemplate;
@@ -145,6 +145,19 @@ app.get('/api/pdf', async (req, res) => {
       if (element["type"] === "moveTo") {
         doc.moveTo(...element["move"]).lineTo(...element["line"]).stroke();
       }
+
+      if (element.type === 'image') {
+        const [imgKey, x, y, options] = element.params;
+        const imgPath = dynamicVars[imgKey]; // Resuelve la ruta desde dynamicVars
+
+        if (fs.existsSync(imgPath)) {
+          doc.image(imgPath, x, y, options);
+        } else {
+          console.warn(`Imagen no encontrada en la ruta: ${imgPath}`);
+        }
+      }
+
+
     }
 
     doc.end();
