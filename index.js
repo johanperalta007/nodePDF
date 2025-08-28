@@ -112,7 +112,7 @@ app.get('/api/pdf', async (req, res) => {
       const element = dynamoResponseList[index];
 
       if (element["type"] === "rect") {
-        doc.lineWidth(0.5); // Grosor del borde
+        doc.lineWidth(0.1); // Grosor del borde
         doc.strokeColor('gray'); // Color del borde
 
         const [x, y, width, height] = element["positions"];
