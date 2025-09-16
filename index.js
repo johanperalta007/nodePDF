@@ -186,6 +186,6 @@ app.get('/api/pdf', async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
+app.listen(3007, () => {
   console.log('Servidor escuchando en http://localhost:3000');
 });
