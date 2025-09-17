@@ -55,7 +55,7 @@
   {"font":"Helvetica-Bold","fontSize":6,"text":["operationData.dataCustomer.infoRating.ratingCliente.mrcObservado.number",243,220,{"align":"left"}],"type":"text2"},
   {"font":"Helvetica","fontSize":6,"text":["Rating MRC Proyectado",40,230,{"align":"left","underline":false}],"type":"text"},
   {"font":"Helvetica-Bold","fontSize":6,"text":["operationData.dataCustomer.infoRating.mrcProyectado.number",243,230,{"align":"left"}],"type":"text2"},
-  {"font":"Helvetica","fontSize":6,"text":["Relación Pasivo Activo%",40,240,{"align":"left","underline":false}],"type":"text"},
+  {"font":"Helvetica","fontSize":6,"text":["Relación Pasivo Activo %",40,240,{"align":"left","underline":false}],"type":"text"},
   {"font":"Helvetica-Bold","fontSize":6,"text":["15%",243,240,{"align":"left"}],"type":"text"},
   {"font":"Helvetica","fontSize":6,"text":["Clasificación Comercial EPC",40,250,{"align":"left","underline":false}],"type":"text"},
   {"font":"Helvetica-Bold","fontSize":6,"text":["operationData.dataCustomer.infoCliente.clasificacionComercial",230,250,{"align":"left"}],"type":"text2"},
