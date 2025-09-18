@@ -75,7 +75,7 @@ app.get('/api/pdf', async (req, res) => {
       return resultado.trim();
     };
 
-    const nombreNit = (text, limit = 30) => {
+    const shortenText = (text, limit) => {
       if (!text || typeof text !== "string") {
         return "";
       }
@@ -85,8 +85,38 @@ app.get('/api/pdf', async (req, res) => {
       return text.substring(0, limit) + "...";
     };
 
+    const mapDocs = (idText) => {
+  switch (idText) {
+    case "Nit":
+      return "NIT";
+    case "Cédula de Ciudadanía":
+      return "CC";
+    case "Cédula de Extranjería":
+      return "CE";
+    case "Nit Persona Natural":
+      return "NPN";
+    case "Nit Persona Extranjera":
+      return "NE";
+    case "Registro Civil":
+      return "RC";
+    default:
+      return idText;
+  }
+};
+
+
     const fechaInicio = formatearFecha(lunesAnterior);
     const fechaFin = formatearFecha(proximoLunes);
+
+    const MyIds = {
+      "Nit": "NIT",
+      "Cédula de Ciudadanía": "CC",
+      "Cédula de Extranjería": "CE",
+      "Nit Persona Natural": "NPN",
+      "Nit Persona Extranjera": "NE",
+      "Registro Civil": "RC"
+    };
+
 
     const dynamicVars = {
       observations: await insertarSaltosDeLinea(
@@ -99,11 +129,13 @@ app.get('/api/pdf', async (req, res) => {
           Bonorum et Malorum" (Los Extremos del Bien y El Mal) por Cicero, escrito en el año 45 antes de Cristo. 
           Este libro es un tratado de teoría de étic`
       ),
-      clientName: await nombreNit(
-        "DISTRITO ESPECIAL DE CIENCIA TECNOLOGIA E INN"
+      nameClient: shortenText(
+        "Grupo Inbobiliario OIKOS Colombia S.A.S", 51
       ),
       textoFecha: `${fechaInicio.dia} de ${fechaInicio.mes} al ${fechaFin.dia} de ${fechaFin.mes} del ${fechaFin.anio}`,
-      imgLogo: './img/bancoLogo.png'
+      imgLogo: './img/bancoLogo.png',
+      nameProm: shortenText("DISTRITO ESPECIAL DE CIENCIA TECNOLOGIA E INN", 45),
+      tipoDoc: mapDocs("Nit")
     };
 
     const dynamoResponseList = pdfTemplate;
