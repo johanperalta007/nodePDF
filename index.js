@@ -59,7 +59,12 @@ app.get('/api/pdf', async (req, res) => {
     doc.pipe(fs.createWriteStream('output.pdf'));
 
 
-    const insertarSaltosDeLinea = (cadena, cadaCuantos = 85) => {
+    // Registrar la fuente Roboto
+    doc.registerFont('Roboto', 'path/to/Roboto-Regular.ttf');
+
+
+
+    const insertarSaltosDeLinea = (cadena, cadaCuantos) => {
       if (!cadena || typeof cadena !== "string") {
         return "-";
       }
@@ -86,23 +91,23 @@ app.get('/api/pdf', async (req, res) => {
     };
 
     const mapDocs = (idText) => {
-  switch (idText) {
-    case "Nit":
-      return "NIT";
-    case "Cédula de Ciudadanía":
-      return "CC";
-    case "Cédula de Extranjería":
-      return "CE";
-    case "Nit Persona Natural":
-      return "NPN";
-    case "Nit Persona Extranjera":
-      return "NE";
-    case "Registro Civil":
-      return "RC";
-    default:
-      return idText;
-  }
-};
+      switch (idText) {
+        case "Nit":
+          return "NIT";
+        case "Cédula de Ciudadanía":
+          return "CC";
+        case "Cédula de Extranjería":
+          return "CE";
+        case "Nit Persona Natural":
+          return "NPN";
+        case "Nit Persona Extranjera":
+          return "NE";
+        case "Registro Civil":
+          return "RC";
+        default:
+          return idText;
+      }
+    };
 
 
     const fechaInicio = formatearFecha(lunesAnterior);
@@ -119,7 +124,7 @@ app.get('/api/pdf', async (req, res) => {
 
 
     const dynamicVars = {
-      observations: await insertarSaltosDeLinea(
+      observations: insertarSaltosDeLinea(
         `Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio. 
         Tiene sus raices en una pieza clásica de la literatura del Latin, que data del año 45 antes de Cristo,
          haciendo que este adquiera mas de 2000 años de antiguedad. Richard McClintock, un profesor de Latin 
@@ -127,7 +132,7 @@ app.get('/api/pdf', async (req, res) => {
           del latín, "consecteur", en un pasaje de Lorem Ipsum, y al seguir leyendo distintos textos del latín, 
           descubrió la fuente indudable. Lorem Ipsum viene de las secciones 1.10.32 y 1.10.33 de "de Finnibus 
           Bonorum et Malorum" (Los Extremos del Bien y El Mal) por Cicero, escrito en el año 45 antes de Cristo. 
-          Este libro es un tratado de teoría de étic`
+          Este libro es un tratado de teoría de étic`, 90
       ),
       nameClient: shortenText(
         "Grupo Inbobiliario OIKOS Colombia S.A.S", 51
