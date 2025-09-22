@@ -147,7 +147,7 @@ app.get('/api/pdf', async (req, res) => {
       imgLogo: './img/LogoBBOG.png',
       nameProm: shortenText("DISTRITO ESPECIAL DE CIENCIA TECNOLOGIA E INN", 45),
       tipoDoc: mapDocs("Nit"),
-      cleinteEspecialBox: `${clienteEspecialName} (Patrimonio Autonomo)`,
+      clientSpecialName: `${clienteEspecialName} (Patrimonio Autonomo)`,
       tipoDocSpecial: mapDocs("Cédula de Ciudadanía")
     };
 
