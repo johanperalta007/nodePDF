@@ -123,6 +123,11 @@ app.get('/api/pdf', async (req, res) => {
     };
 
 
+    const clienteEspecialName = shortenText(
+      "NOMBRE CLIENTE ESPECIAL S.A.S hola hola esto es una prueba y estoy realizando unas", 40
+    );
+
+
     const dynamicVars = {
       observations: insertarSaltosDeLinea(
         `Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio. 
@@ -138,9 +143,12 @@ app.get('/api/pdf', async (req, res) => {
         "Grupo Inbobiliario OIKOS Colombia S.A.S", 51
       ),
       textoFecha: `${fechaInicio.dia} de ${fechaInicio.mes} al ${fechaFin.dia} de ${fechaFin.mes} del ${fechaFin.anio}`,
-      imgLogo: './img/bancoLogo.png',
+      //imgLogo: './img/bancoLogo.png',
+      imgLogo: './img/LogoBBOG.png',
       nameProm: shortenText("DISTRITO ESPECIAL DE CIENCIA TECNOLOGIA E INN", 45),
-      tipoDoc: mapDocs("Nit")
+      tipoDoc: mapDocs("Nit"),
+      cleinteEspecialBox: `${clienteEspecialName} (Patrimonio Autonomo)`,
+      tipoDocSpecial: mapDocs("Cédula de Ciudadanía")
     };
 
     const dynamoResponseList = pdfTemplate;
