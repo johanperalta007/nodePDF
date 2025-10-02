@@ -148,7 +148,33 @@ app.get('/api/pdf', async (req, res) => {
       nameProm: shortenText("DISTRITO ESPECIAL DE CIENCIA TECNOLOGIA E INN", 45),
       tipoDoc: mapDocs("Nit"),
       clientSpecialName: `${clienteEspecialName} (Patrimonio Autonomo)`,
-      tipoDocSpecial: mapDocs("Cédula de Ciudadanía")
+      tipoDocSpecial: mapDocs("Cédula de Ciudadanía"),
+      warrantyClassObs: insertarSaltosDeLinea(
+        `3 Gacela de la terrible presencia, de Federico García Lorca
+
+         Yo quiero que el agua se quede sin cauce.
+         Yo quiero que el viento se quede sin valles.
+
+         Quiero que la noche se quede sin ojos
+         y mi corazón sin la flor del oro.
+
+         Que los bueyes hablen con las grandes hojas
+         y que la lombriz se muera de sombra.
+
+         Que brillen los dientes de la calavera
+         y los amarillos inunden la seda.
+
+         Puedo ver el duelo de la noche herida
+         luchando enroscada con el mediodía.
+
+         Resisto un ocaso de verde veneno
+         y los arcos rotos donde sufre el tiempo.
+
+         Pero no me enseñes tu limpio desnudo
+         como un negro cactus abierto en los juncos.
+
+         Déjame en un ansia de oscuros planetas,
+         ¡pero no me enseñes tu cintura fresca!`, 84),
     };
 
     const dynamoResponseList = pdfTemplate;
