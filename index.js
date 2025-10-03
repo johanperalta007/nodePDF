@@ -143,7 +143,6 @@ app.get('/api/pdf', async (req, res) => {
         "Grupo Inbobiliario OIKOS Colombia S.A.S", 51
       ),
       textoFecha: `${fechaInicio.dia} de ${fechaInicio.mes} al ${fechaFin.dia} de ${fechaFin.mes} del ${fechaFin.anio}`,
-      //imgLogo: './img/bancoLogo.png',
       imgLogo: './img/LogoBBOG.png',
       nameProm: shortenText("DISTRITO ESPECIAL DE CIENCIA TECNOLOGIA E INN", 45),
       tipoDoc: mapDocs("Nit"),
@@ -175,6 +174,8 @@ app.get('/api/pdf', async (req, res) => {
 
          Déjame en un ansia de oscuros planetas,
          ¡pero no me enseñes tu cintura fresca!`, 84),
+      imgCheck: './img/Check.png',
+      //{"params":["imgCheck",45,332,{"align":"left","fit":[9,9],"valign":"top"}],"type":"image"},
     };
 
     const dynamoResponseList = pdfTemplate;
