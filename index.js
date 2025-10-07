@@ -178,7 +178,11 @@ app.get('/api/pdf', async (req, res) => {
       //{"params":["imgCheck",45,332,{"align":"left","fit":[9,9],"valign":"top"}],"type":"image"},
       activoGarantia: insertarSaltosDeLinea(
         "Leasing Trenes Barcos y Aviones", 30
-      )
+      ),
+      nameClient: shortenText(
+        "PINTURAS INDUPIN SOCIEDAD POR ACCIONES SIMPLIFICAD",
+        45
+      ),
     };
 
     const dynamoResponseList = pdfTemplate;
