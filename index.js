@@ -176,6 +176,9 @@ app.get('/api/pdf', async (req, res) => {
          ¡pero no me enseñes tu cintura fresca!`, 84),
       imgCheck: './img/Check.png',
       //{"params":["imgCheck",45,332,{"align":"left","fit":[9,9],"valign":"top"}],"type":"image"},
+      activoGarantia: insertarSaltosDeLinea(
+        "Leasing Trenes Barcos y Aviones", 30
+      )
     };
 
     const dynamoResponseList = pdfTemplate;
