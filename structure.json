@@ -202,7 +202,7 @@
   {"font":"Helvetica","fontSize":6,"text":["Tasa Nominal",178,570,{"align":"left"}],"type":"text"},
   {"font":"Helvetica-Bold","fontSize":6,"text":["operationData.operationServer.tasaMV",265,570,{"align":"left"}],"type":"text4"},
   {"font":"Helvetica","fontSize":6,"text":["Activo garantia",35,560,{"align":"left"}],"type":"text"},
-  {"font":"Helvetica-Bold","fontSize":6,"text":["operationData.operationServer.datosOperacionInput.activoGarantia",80,560,{"align":"left"}],"type":"text2"},
+  {"font":"Helvetica-Bold","fontSize":6,"text":["activoGarantia",80,560,{"align":"left"}],"type":"text2"},
   {"font":"Helvetica","fontSize":6,"text":["Comisiones negociada",35,570,{"align":"left"}],"type":"text"},
   {"fontSize":6,"text":["(por año) %",35,575,{"align":"left"}],"type":"text"},
   {"font":"Helvetica-Bold","fontSize":6,"text":["operationData.operationServer.datosOperacionInput.porcentajeComisionesNegociadas",116,570,{"align":"left"}],"type":"text4"},
