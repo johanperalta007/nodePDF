@@ -192,7 +192,8 @@ app.get('/api/pdf', async (req, res) => {
 
       if (element["type"] === "rect") {
         doc.lineWidth(0.1); // Grosor del borde
-        doc.strokeColor('#e6e6e6'); // Color del borde
+        //doc.strokeColor('#e6e6e6'); // Color del borde
+        doc.strokeColor('gray'); // Color del borde
 
         const [x, y, width, height] = element["positions"];
         const radius = 4; // Puedes ajustar el radio según lo redondeado que lo quieras
