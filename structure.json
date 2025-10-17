@@ -558,7 +558,7 @@
   {"fontSize":6,"text":["Prorroga/Periodo gracia",400,140,{"align":"left"}],"type":"text"},  
   {"fontSize":6,"text":["No cobro sanción prepago",495,140,{"align":"left","width":250}],"type":"text"},
   {"line":[580,155],"move":[30,155],"type":"moveTo"},
-  {"fillColor":"black","font":"Helvetica","fontSize":6,"text":["Gerente comercial",33,160,{"align":"left"}],"type":"text"},
+  {"fillColor":"black","font":"Helvetica","fontSize":6,"text":["Gerente comercial",33,165,{"align":"left"}],"type":"text"},
   {"fillColor":"#198500","font":"Helvetica","fontSize":6,"text":["coordenada1estado",120,155,{"align":"left"}],"type":"text2"},
   {"fillColor":"black","font":"Helvetica","fontSize":5,"text":["coordenada1nombre",120,162,{"align":"left"}],"type":"text2"},
   {"fillColor":"#198500","font":"Helvetica","fontSize":6,"text":["coordenada9estado",211,155,{"align":"left"}],"type":"text2"},
