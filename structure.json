@@ -541,7 +541,7 @@
   {"line":[580,75],"move":[30,75],"type":"moveTo"},
   {"params":["checkExcepcion",45,77,{"align":"left","fit":[9,9],"valign":"top"}],"type":"image"},
   {"fillColor":"black","font":"Helvetica","fontSize":6,"text":["Nivel atribución requerido por excepción",65,80,{"align":"left"}],"type":"text"},
-  {"fillColor":"#198500","font":"Helvetica-Bold","fontSize":6,"text":["VP Comercial Banca Empresas VP Crédito/ Dir Nal Crédito",405,80,{"align":"left","width":250}],"type":"text2"},
+  {"fillColor":"#198500","font":"Helvetica-Bold","fontSize":6,"text":["listAttributionLevelPDF.excepcion.cargo",405,80,{"align":"left","width":250}],"type":"text2"},
   {"line":[580,90],"move":[30,90],"type":"moveTo"},
   {"params":["checkSancion",45,92,{"align":"left","fit":[9,9],"valign":"top"}],"type":"image"},
   {"fillColor":"black","font":"Helvetica","fontSize":6,"text":["Nivel atribución requerido no cobro sanción prepago",65,95,{"align":"left"}],"type":"text"},
