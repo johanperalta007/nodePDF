@@ -124,7 +124,7 @@ app.get('/api/pdf', async (req, res) => {
 
 
     const clienteEspecialName = shortenText(
-      "NOMBRE CLIENTE ESPECIAL S.A.S hola hola esto es una prueba y estoy realizando unas", 40
+      "NOMBRE CLIENTE ESPECIAL S.A.S PARA UNA PRUEBA EN MY COMPANY", 55
     );
 
 
@@ -146,7 +146,7 @@ app.get('/api/pdf', async (req, res) => {
       imgLogo: './img/LogoBBOG.png',
       nameProm: shortenText("DISTRITO ESPECIAL DE CIENCIA TECNOLOGIA E INN", 45),
       tipoDoc: mapDocs("Nit"),
-      clientSpecialName: `${clienteEspecialName} (Patrimonio Autonomo)`,
+      clientSpecialName: clienteEspecialName,
       tipoDocSpecial: mapDocs("Cédula de Ciudadanía"),
       warrantyClassObs: insertarSaltosDeLinea(
         `3 Gacela de la terrible presencia, de Federico García Lorca
