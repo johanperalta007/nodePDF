@@ -389,7 +389,7 @@
   {"fillColor": "black", "font": "Helvetica", "fontSize": 6, "text": ["Desembolso:", 35, 290, {"align": "left"}], "type": "text"},
   {"fillColor": "black", "font": "Helvetica-Bold", "fontSize": 6, "text": ["for130.disbursementType", 110, 290, {"align": "left", "width": 250}], "type": "text2"},
   {"fillColor": "black", "font": "Helvetica", "fontSize": 6, "text": ["Target de rentabilidad objetivo:", 35, 300, {"align": "left", "width": 250}], "type": "text"},
-  {"fillColor": "black", "font": "Helvetica-Bold", "fontSize": 6, "text": ["operationData.operationServer.salidasRentabilidadDto.targetSegmento", 110, 300, {"align": "left", "width": 250}], "type": "text4"},
+  {"fillColor": "black", "font": "Helvetica-Bold", "fontSize": 6, "text": ["operationData.operationServer.salidasRentabilidadDto.targetSegmento", 120, 300, {"align": "left", "width": 250}], "type": "text4"},
   {"fillColor": "black", "font": "Helvetica", "fontSize": 6, "text": ["Tasa anterior:", 170, 200, {"align": "left"}], "type": "text"},
   {"fillColor": "black", "font": "Helvetica-Bold", "fontSize": 6, "text": ["for130.ratePrevious", 280, 200, {"align": "left", "width": 250}], "type": "text2"},
   {"fillColor": "black", "font": "Helvetica", "fontSize": 6, "text": ["Spread anterior:", 170, 210, {"align": "left"}], "type": "text"},
