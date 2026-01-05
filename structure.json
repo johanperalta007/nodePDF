@@ -396,7 +396,7 @@
   {"fillColor": "black", "font": "Helvetica", "fontSize": 6, "text": ["Margen neto de intereses(%):", 170, 220, {"align": "left", "width": 250}], "type": "text"},
   {"fillColor": "black", "font": "Helvetica-Bold", "fontSize": 6, "text": ["operationData.operationServer.salidasRentabilidadDto.margenNetoIntereses.operacion", 280, 220, {"align": "left", "width": 250}], "type": "text4"},
   {"fillColor": "black", "font": "Helvetica", "fontSize": 6, "text": ["Periodo de gracia:", 170, 230, {"align": "left"}], "type": "text"},
-  {"fillColor": "black", "font": "Helvetica-Bold", "fontSize": 6, "text": ["operationData.operationServer.datosOperacionInput.periodoGracia", 280, 230, {"align": "left", "width": 250}], "type": "text2"},
+  {"fillColor": "black", "font": "Helvetica-Bold", "fontSize": 6, "text": ["havePeriod", 280, 230, {"align": "left", "width": 250}], "type": "text2"},
   {"fillColor": "black", "font": "Helvetica", "fontSize": 6, "text": ["Plazo en meses:", 170, 240, {"align": "left"}], "type": "text"},
   {"fillColor": "black", "font": "Helvetica-Bold", "fontSize": 6, "text": ["operationData.operationServer.datosOperacionInput.periodoGracia", 280, 240, {"align": "left", "width": 250}], "type": "text2"},
   {"fillColor": "black", "font": "Helvetica", "fontSize": 6, "text": ["Clase de garantia:", 170, 250, {"align": "left"}], "type": "text"},
