@@ -416,7 +416,7 @@
   {"positions":[320,195,260,115],"type":"rect","fill": "#f2f2f2"},
   {"fillColor":"black","font":"Helvetica-Bold","fontSize":6,"text":["warrantyClassObs",325,200,{"align":"left","width":400}],"type":"text2"},
   {"positions":[30,319,550,17],"type":"rect","fill": "#0043a9"},
-  {"fillColor":"white","fontSize":6,"text":["DETALLE DEL ENDUEDAMIENTO",85,325,{"align":"center"}],"type":"text"},
+  {"fillColor":"white","fontSize":6,"text":["DETALLE DEL ENDEUDAMIENTO",85,325,{"align":"center"}],"type":"text"},
   {"positions":[30,340,550,60],"type":"rect"},
   {"fillColor":"black","font":"Helvetica","fontSize":6,"text":["LEA Total disponible :",40,345,{"align":"left"}],"type":"text"},
   {"fillColor":"black","font":"Helvetica-Bold","fontSize":6,"text":["operationData.allCustomer.totalesFamilia.totalValorDisponible",500,345,{"align":"left","width":250}],"type":"text3"},
