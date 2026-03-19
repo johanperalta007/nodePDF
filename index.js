@@ -130,14 +130,7 @@ app.get('/api/pdf', async (req, res) => {
 
     const dynamicVars = {
       observations: insertarSaltosDeLinea(
-        `Al contrario del pensamiento popular, el texto de Lorem Ipsum no es simplemente texto aleatorio. 
-        Tiene sus raices en una pieza clásica de la literatura del Latin, que data del año 45 antes de Cristo,
-         haciendo que este adquiera mas de 2000 años de antiguedad. Richard McClintock, un profesor de Latin 
-         de la Universidad de Hampden-Sydney en Virginia, encontró una de las palabras más oscuras de la lengua
-          del latín, "consecteur", en un pasaje de Lorem Ipsum, y al seguir leyendo distintos textos del latín, 
-          descubrió la fuente indudable. Lorem Ipsum viene de las secciones 1.10.32 y 1.10.33 de "de Finnibus 
-          Bonorum et Malorum" (Los Extremos del Bien y El Mal) por Cicero, escrito en el año 45 antes de Cristo. 
-          Este libro es un tratado de teoría de étic`, 90
+        "La realidad de todo es que quiero generar de la mejor forma los comentarios para que no me reporten más Bugs por parte del PDF es muy raro porque yo recuerdo que lo probé de manera correcta muchas veces y lo raro es que tiene la misma lógica que otro campo pero la idea es resolverlo y desplegarlos para este semana que hay un momento importante de despliegue en esta semana. La realidad de todo es que la idea es dejar esto lleno de comenatrios antes de que se acabe la jornada laboral. La verdad es que estoy escribiendo casi cualquier cosa para tener muchos caracteres y dejar la función de JavaScript más armada para estos procesos.\nEste es un espacio que dejé dado que quiero ver varios comportamientos:\n1. La \n2. Vaca \n3. Lola \n\nSe fue a comer  ", 90
       ),
       nameClient: shortenText(
         "Grupo Inbobiliario OIKOS Colombia S.A.S", 51
