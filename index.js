@@ -139,7 +139,7 @@ app.get('/api/pdf', async (req, res) => {
 
     const dynamicVars = {
       observations: insertarSaltosDeLinea(
-        "La realidad de todo es que quiero generar de la mejor forma los comentarios para que no me reporten más Bugs por parte del PDF es muy raro porque yo recuerdo que lo probé de manera correcta muchas veces y lo raro es que tiene la misma lógica que otro campo pero la idea es resolverlo y desplegarlos para este semana que hay un momento importante de despliegue en esta semana. La realidad de todo es que la idea es dejar esto lleno de comenatrios antes de que se acabe la jornada laboral. La verdad es que estoy escribiendo casi cualquier cosa para tener muchos caracteres y dejar la función de JavaScript más armada para estos procesos.\nEste es un espacio que dejé dado que quiero ver varios comportamientos:\n1. La \n2. Vaca \n3. Lola \n\nSe fue a comer  ", 90
+        "La realidad de todo es que quiero generar de la mejor forma los comentarios para que no me reporten más Bugs por parte del PDF es muy raro porque yo recuerdo que lo probé de manera correcta muchas veces y lo raro es que tiene la misma lógica que otro campo pero la idea es resolverlo y desplegarlos para este semana que hay un momento importante de despliegue en esta semana. La realidad de todo es que la idea es dejar esto lleno de comenatrios antes de que se acabe la jornada laboral. La verdad es que estoy escribiendo casi cualquier", 90
       ),
       nameClient: shortenText(
         "Grupo Inbobiliario OIKOS Colombia S.A.S", 51
