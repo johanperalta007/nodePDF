@@ -179,7 +179,7 @@ app.get('/api/pdf', async (req, res) => {
       imgCheck: './img/Check.png',
       //{"params":["imgCheck",45,332,{"align":"left","fit":[9,9],"valign":"top"}],"type":"image"},
       activoGarantia: insertarSaltosDeLinea(
-        "Leasing Trenes Barcos y Aviones", 30
+        "Leasing Trenes Barcos y Aviones", 31
       ),
       nameClient: shortenText(
         "PINTURAS INDUPIN SOCIEDAD POR ACCIONES SIMPLIFICAD",
