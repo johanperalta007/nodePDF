@@ -146,7 +146,7 @@ app.get('/api/pdf', async (req, res) => {
 
     const dynamicVars = {
       observations: insertarSaltosDeLinea(
-        "La realidad de todo es que quiero generar de la mejor forma los comentarios para que no me reporten más Bugs por parte del PDF es muy raro porque yo recuerdo que lo probé de manera correcta muchas veces y lo raro es que tiene la misma lógica que otro campo pero la idea es resolverlo y desplegarlos para este semana que hay un momento importante de despliegue en esta semana. La realidad de todo es que la idea es dejar esto lleno de comenatrios ante", 90
+        "La realidad de todo es que quiero generar de la mejor forma los comentarios para que no me reporten más Bugs por parte del PDF es muy raro porque yo recuerdo que lo probé de manera correcta muchas veces y lo raro es que tiene la misma lógica que otro campo pero la idea es resolverlo y desplegarlos para este semana que hay un momento importante de despliegue en esta semana. La realidad de todo es que la idea es dejar esto lleno de comenatrios ante ajkshaS skuahskjahsaS IaushaSas aiuSGAiushasa uygasiuagsaiu aiusgaiusaisiuag ausgai SDGAUS ASUDGSAD asdhajd asdhasdasdg sagdjahsdg sadhasdhash jhagdsjhagdhajs jhasgdjahs sadhaskud asdgjyasgd asdhgasjhd asjdgfsajd asd asygd asdkhakj asdjkh asdgajshdg asdgadahjs", 90
       ),
       nameClient: shortenText(
         "Grupo Inbobiliario OIKOS Colombia S.A.S", 51
@@ -457,7 +457,41 @@ app.get('/api/pdf', async (req, res) => {
       }
 
       if (element["type"] === "moveTo") {
+        // Soporte de linea punteada via la propiedad "dash" del JSON:
+        //   "dash": true              -> guiones de 2pt con espacio de 2pt
+        //   "dash": 3                 -> guiones de 3pt con espacio de 3pt
+        //   "dash": [3, 2]            -> guion de 3pt, espacio de 2pt
+        //   "dash": {"length":3,"space":2,"phase":0}
+        // Si no se envia "dash", la linea sale solida como siempre.
+        const dash = element["dash"];
+
+        if (dash !== undefined && dash !== false) {
+          let length = 2;
+          let space;
+          let phase = 0;
+
+          if (dash === true) {
+            length = 2;
+          } else if (typeof dash === "number") {
+            length = dash;
+          } else if (Array.isArray(dash)) {
+            [length, space] = dash;
+          } else if (typeof dash === "object") {
+            length = dash.length ?? 2;
+            space = dash.space;
+            phase = dash.phase ?? 0;
+          }
+
+          doc.dash(length, { space: space ?? length, phase });
+        }
+
         doc.moveTo(...element["move"]).lineTo(...element["line"]).stroke();
+
+        // Se restaura la linea solida para no afectar los trazos siguientes
+        // (los rect y demas lineas comparten el mismo estado del documento).
+        if (dash !== undefined && dash !== false) {
+          doc.undash();
+        }
       }
 
       if (element.type === 'image') {
