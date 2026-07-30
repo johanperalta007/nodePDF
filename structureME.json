@@ -325,7 +325,7 @@
   {"fontSize":6,"text":["operationData.operationServer.salidasRentabilidadDto.utilidadNetaMarginal.nueva",535,645,{"align":"left","width":250}],"type":"text4"},
   {"positions":[30,675,280,15],"type":"rect","fill": "#0043a9"},
   {"fillColor":"white","font":"Helvetica-Bold","fontSize":6,"text":["OBSERVACIONES",140,680,{"align":"left"}],"type":"text"},
-  {"positions":[30,695,280,60],"type":"rect"},
+  {"positions":[30,695,280,60],"type":"rect","fill": "#f2f2f2"},
   {"fillColor":"black","font":"Helvetica","fontSize":6,"text":["observations",35,700,{"align":"left"}],"type":"text2"},
   {"positions":[320,661,260,93], "type": "rect"},
   {"positions":[535,665,40,9], "type": "rect", "fill": "#edf7ff"},
