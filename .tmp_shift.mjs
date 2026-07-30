@@ -11,10 +11,10 @@ const raw = fs.readFileSync(filePath, 'utf8');
 const lines = raw.split('\n');
 
 // --- CONFIGURAR AQUÍ ANTES DE CADA EJECUCIÓN ---
-const DELTA_X = 0;   // cuánto sumar/restar a la coordenada X (0 = no tocar X)
-const DELTA_Y = -40; // cuánto sumar/restar a la coordenada Y (0 = no tocar Y)
-const START_LINE = 141; // 1-indexed, inclusive
-const END_LINE = 197;   // 1-indexed, inclusive
+const DELTA_X = 0;  // cuánto sumar/restar a la coordenada X (0 = no tocar X)
+const DELTA_Y = -5; // cuánto sumar/restar a la coordenada Y (0 = no tocar Y)
+const START_LINE = 295; // 1-indexed, inclusive
+const END_LINE = 298;   // 1-indexed, inclusive
 // -------------------------------------------------
 
 // Índices dentro del array donde viven X e Y para cada clave.

@@ -28,7 +28,14 @@ const fmtX = async (value) => value ? 'X' : '-';
 
 app.get('/api/pdf', async (req, res) => {
   try {
-    const doc = new PDFDocument();
+    // Se anula solo el margen inferior para ganar espacio vertical util.
+    // Con el margen por defecto (72) el area util termina en y=720 y PDFKit
+    // salta de pagina automaticamente cualquier texto por debajo de ese punto.
+    // Con bottom=0 el limite pasa a y=792 (alto de la hoja letter), sin cambiar
+    // el tamano de pagina ni afectar el salto de pagina forzado en y=974.
+    const doc = new PDFDocument({
+      margins: { top: 72, left: 72, right: 72, bottom: 0 },
+    });
     const writableStream = new streamBuffers.WritableStreamBuffer({
       initialSize: 100 * 1024,
       incrementAmount: 10 * 1024,
@@ -139,7 +146,7 @@ app.get('/api/pdf', async (req, res) => {
 
     const dynamicVars = {
       observations: insertarSaltosDeLinea(
-        "La realidad de todo es que quiero generar de la mejor forma los comentarios para que no me reporten más Bugs por parte del PDF es muy raro porque yo recuerdo que lo probé de manera correcta muchas veces y lo raro es que tiene la misma lógica que otro campo pero la idea es resolverlo y desplegarlos para este semana que hay un momento importante de despliegue en esta semana. La realidad de todo es que la idea es dejar esto lleno de comenatrios antes de que se acabe la jornada laboral. La verdad es que estoy escribiendo casi cualquier", 90
+        "La realidad de todo es que quiero generar de la mejor forma los comentarios para que no me reporten más Bugs por parte del PDF es muy raro porque yo recuerdo que lo probé de manera correcta muchas veces y lo raro es que tiene la misma lógica que otro campo pero la idea es resolverlo y desplegarlos para este semana que hay un momento importante de despliegue en esta semana. La realidad de todo es que la idea es dejar esto lleno de comenatrios ante", 90
       ),
       nameClient: shortenText(
         "Grupo Inbobiliario OIKOS Colombia S.A.S", 51
