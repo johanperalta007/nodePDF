@@ -7,24 +7,95 @@ const fs = require('fs');
 const pdfTemplate = require("./structureME.json");
 //const pdfTemplate = require("./structure.json");
 //const pdfTemplate = require("./structureOldest.json");
+const payload = require("./payload.json");
+const { mapOperation } = require("./mapOperation");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Funciones auxiliares para formateo (simplificadas)
-const fmtString = async (value) => (value === undefined || value === null || value === '') ? '-' : value;
-const fmtNumber = async (value) => {
-  const num = parseFloat(value);
-  if (isNaN(num)) return '-';
-  return `$${num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} `;
+// Funciones auxiliares de formateo.
+// IMPORTANTE: son copia literal de las de build-pdf/utils/generatePDF.js.
+// Si cambian alla, hay que cambiarlas aca o el harness local deja de reflejar
+// lo que sale en produccion.
+//   text2 -> fmtString     (cadenas)
+//   text3 -> fmtNumber     (moneda con "$" antepuesto)
+//   text4 -> fmtNumber2    (porcentaje, multiplica x100)
+//   text5 -> fmtDate       (fecha "dd /mm /aaaa")
+//   text6 -> fmtNumberUsd  (moneda con " USD" concatenado)
+const fmtString = async (cadena) => {
+  if (
+    cadena === undefined ||
+    cadena === '' ||
+    cadena === null ||
+    cadena === `${undefined}  ${undefined}`
+  ) {
+    return '-';
+  }
+  return cadena;
 };
-const fmtNumber2 = async (value) => {
-  const num = parseFloat(value);
-  if (isNaN(num)) return '-';
-  return `${num.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}% `;
+
+const fmtNumber = async (numero) => {
+  const num = parseFloat(numero);
+  if (isNaN(num)) {
+    return '-';
+  }
+  const truncado = Math.floor(num * 100) / 100;
+
+  const formateado = truncado.toLocaleString('en-US', {
+    style: 'decimal',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  return `$${formateado} `;
 };
-const fmtDate = async (value) => value ? new Date(value).toLocaleDateString('es-CO') : '-';
-const fmtX = async (value) => value ? 'X' : '-';
+// Multiplica por 100 porque el payload guarda fracciones (0.03 -> "3.00%").
+const fmtNumber2 = async (numero) => {
+  const num = parseFloat(numero);
+  if (isNaN(num)) {
+    return '-';
+  }
+  const truncado = num * 100;
+
+  const formateado = truncado.toLocaleString('en-US', {
+    style: 'decimal',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  return `${formateado}% `;
+};
+// Igual que fmtNumber pero concatenando " USD" en lugar de anteponer "$".
+// Para las cifras en dolares del PDF de Moneda Extranjera.
+const fmtNumberUsd = async (numero) => {
+  const num = parseFloat(numero);
+  if (isNaN(num)) {
+    return '-';
+  }
+  const truncado = Math.floor(num * 100) / 100;
+
+  const formateado = truncado.toLocaleString('en-US', {
+    style: 'decimal',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+
+  return `${formateado} USD`;
+};
+
+const fmtDate = async (dateString) => {
+  const date = new Date(dateString);
+
+  if (isNaN(date)) {
+    return '-';
+  }
+
+  const day = date.getDate().toString().padStart(2, '0');
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const year = date.getFullYear();
+
+  return `${day} /${month} /${year}`;
+};
 
 app.get('/api/pdf', async (req, res) => {
   try {
@@ -192,189 +263,26 @@ app.get('/api/pdf', async (req, res) => {
         "PINTURAS INDUPIN SOCIEDAD POR ACCIONES SIMPLIFICAD",
         45
       ),
-
-      // ---- Datos de prueba Hoja 1 ME (structureME.json) ----
-      "me.vigenciaFecha": "del 10 junio al 17 junio de 2026",
-      "me.clienteNombreDoc": "ASOCIACIÓN PARA LA EDUCACIÓN S.A.S",
-      "me.clienteTipoNumeroDoc": "NIT 900123456 - Cliente principal",
-      "me.gerenteNombre": "Barajas Lamus, Victor Hugo",
-      "me.cotizacionNo": "ME_SOL_PRC_100637",
-      "me.fechaCreacion": "2026-06-05",
-      "me.maxNivelAtribucionTasa": "Vp Internacional",
-      "me.estado": "APROBADA",
-      "me.fechaAprobacion": "2025-06-20",
-      "me.unidadNegocio": "1122",
-      "me.segmento": "Corporativo",
-      "me.zona": "Corporativo",
-
-      "me.resumenCarterasTitulo": "RESUMEN DE CARTERAS ME VIGENTES PARA ASOCIACIÓN PARA LA EDUCACIÓN S.A.S",
-      "me.carteraMEVigenteUSD": 0,
-      "me.carteraMEHoyUSD": 0,
-      "me.tasaPromedio": 0,
-      "me.plazoPromedio": "-",
-      "me.promedio3MesesUSD": 5407599,
-
-      "me.disclaimerMultiplesOperaciones": "Esta cotización es para múltiples operaciones que podrán ser desembolsadas cualquier día entre las fechas mínima y máxima de inicio con las condiciones acá estipuladas, mientras la suma de todos los desembolsos no supere el monto total de esta cotización.",
-
-      "me.segmentoComercial": "Mediana",
-      "me.zonaCliente": "Empresarial 2",
-      "me.calificacionMRC": "AA",
-      "me.ratingObservado": 3,
-      "me.ratingProyectado": "-",
-      "me.relacionPasivoActivo": 15,
-      "me.clasificacionEPC": "Estratégico",
-
-      "me.codeudorNombre": "ASOCIACIÓN PARA LA EDUCACIÓN S.A.S",
-      "me.codeudorNit": "NIT 9001234560",
-      "me.codeudorCalifMRC": "AA",
-      "me.codeudorRatingObservado": 3,
-      "me.codeudorRatingProyectado": "-",
-
-      "me.montoUSD": 1345000,
-      "me.indiceReferencia": "Back to back",
-      "me.montoCOP": 17334000000,
-      "me.libro": "Miami",
-      "me.sustitucionProrroga": "No",
-      "me.montoBackToBack": 0,
-      "me.tipoCotizacion": "En bloque",
-      "me.tasaDeposito": "Back to Back",
-      "me.rangoFechaDesembolso": "17 Jun 2026 al 25 Jun 2026",
-      "me.tasaFijaCredito": "Back to Back",
-      "me.tipoOperacion": "Giro financiado",
-      "me.margen": "Back to Back",
-      "me.vehiculo": 0,
-
-      "me.observacionesBackToBack": insertarSaltosDeLinea(
-        "Cliente con cupo disponible y vigente competencia Bancolombia. Tasa consultada con anterioridad.",
-        80
-      ),
-      "me.registroBanRep": "Registro BanRep. USD 30,00",
-
-      "me.tasaReferenciaMV": 1.95,
-      "me.vidaMedia": 6,
-      "me.spreadMV": 2.44,
-      "me.amortizacionCapital": "Trimestral",
-      "me.tasaEA": 2.3,
-      "me.pagoIntereses": "Trimestral",
-      "me.tasaMV": 2.3,
-      "me.tipoGarantia": "Fondo de garantías",
-      "me.spreadFTP": 1.43,
-      "me.valorGarantia": 0,
-      "me.plazoMeses": 6,
-      "me.coberturaGarantia": 50,
-      "me.periodoGracia": 6,
-
-      "me.porcentajeComision": 5.42,
-      "me.valorComision": "USD 120",
-
-      "me.observaciones": insertarSaltosDeLinea(
-        "Sin observaciones adicionales para esta operación.",
-        90
-      ),
-
-      "me.activosCorteLabel": "Activos con corte a jul-25 2026",
-      "me.activosCorteValor": 539887757598,
-
-      "me.totalActivosVol": 497865500883,
-      "me.totalActivosTasa": 15.65,
-      "me.prestamosComercialesVol": 497865500883,
-      "me.prestamosComercialesTasa": 18.23,
-      "me.carteraMEVol": 0,
-      "me.carteraMETasa": 0,
-      "me.leasingComercialVol": 0,
-      "me.leasingComercialTasa": 0,
-      "me.carteraRedescontadaVol": 0,
-      "me.carteraRedescontadaTasa": 0,
-      "me.tarjetaCreditoVol": 0,
-      "me.tarjetaCreditoTasa": 0,
-      "me.otrosActivosVol": 0,
-      "me.otrosActivosTasa": 0,
-
-      "me.totalPasivosVol": 497865500883,
-      "me.totalPasivosTasa": 15.65,
-      "me.cuentasAhorroVol": 497865500883,
-      "me.cuentasAhorroTasa": 18.23,
-      "me.cuentasCorrientesVol": 0,
-      "me.cuentasCorrientesTasa": 0,
-      "me.cdtsVol": 0,
-      "me.cdtsTasa": 0,
-      "me.otrosPasivosVol": 0,
-      "me.otrosPasivosTasa": 0,
-
-      "me.margenContribucionFinanciero": -4094000018,
-      "me.roaCliente": -0.85,
-
-      "me.rentabilidad.ingresoIntereses.actual": 0,
-      "me.rentabilidad.ingresoIntereses.operacion": 0,
-      "me.rentabilidad.ingresoIntereses.nueva": 0,
-      "me.rentabilidad.interesesPagadosFtp.actual": 0,
-      "me.rentabilidad.interesesPagadosFtp.operacion": 0,
-      "me.rentabilidad.interesesPagadosFtp.nueva": 0,
-      "me.rentabilidad.interesesRecibidosFtp.actual": 0,
-      "me.rentabilidad.interesesRecibidosFtp.operacion": 0,
-      "me.rentabilidad.interesesRecibidosFtp.nueva": 0,
-      "me.rentabilidad.interesesPagadosPasivo.actual": 0,
-      "me.rentabilidad.interesesPagadosPasivo.operacion": 0,
-      "me.rentabilidad.interesesPagadosPasivo.nueva": 0,
-      "me.rentabilidad.subsidioFtp.actual": 0,
-      "me.rentabilidad.subsidioFtp.operacion": 0,
-      "me.rentabilidad.subsidioFtp.nueva": 0,
-      "me.rentabilidad.exigenciaAdicional.actual": 0,
-      "me.rentabilidad.exigenciaAdicional.operacion": 0,
-      "me.rentabilidad.exigenciaAdicional.nueva": 0,
-      "me.rentabilidad.margenNetoIntereses.actual": 0,
-      "me.rentabilidad.margenNetoIntereses.operacion": 0,
-      "me.rentabilidad.margenNetoIntereses.nueva": 0,
-      "me.rentabilidad.perdidaEsperada.actual": 0,
-      "me.rentabilidad.perdidaEsperada.operacion": 0,
-      "me.rentabilidad.perdidaEsperada.nueva": 0,
-      "me.rentabilidad.margenFinanciero.actual": 0,
-      "me.rentabilidad.margenFinanciero.operacion": 0,
-      "me.rentabilidad.margenFinanciero.nueva": 0,
-      "me.rentabilidad.ingresoComisiones.actual": 0,
-      "me.rentabilidad.ingresoComisiones.operacion": 0,
-      "me.rentabilidad.ingresoComisiones.nueva": 0,
-      "me.rentabilidad.beneficioEE.actual": 0,
-      "me.rentabilidad.beneficioEE.operacion": 0,
-      "me.rentabilidad.beneficioEE.nueva": 0,
-      "me.rentabilidad.margenFinancieroNeto.actual": 0,
-      "me.rentabilidad.margenFinancieroNeto.operacion": 0,
-      "me.rentabilidad.margenFinancieroNeto.nueva": 0,
-      "me.rentabilidad.costosOpMedios.actual": 0,
-      "me.rentabilidad.costosOpMedios.operacion": 0,
-      "me.rentabilidad.costosOpMedios.nueva": 0,
-      "me.rentabilidad.costosOpMarginales.actual": 0,
-      "me.rentabilidad.costosOpMarginales.operacion": 0,
-      "me.rentabilidad.costosOpMarginales.nueva": 0,
-      "me.rentabilidad.subsidios.actual": 0,
-      "me.rentabilidad.subsidios.operacion": 0,
-      "me.rentabilidad.subsidios.nueva": 0,
-      "me.rentabilidad.utilidadAntesImpuestos.actual": 0,
-      "me.rentabilidad.utilidadAntesImpuestos.operacion": 0,
-      "me.rentabilidad.utilidadAntesImpuestos.nueva": 0,
-      "me.rentabilidad.impuestos.actual": 0,
-      "me.rentabilidad.impuestos.operacion": 0,
-      "me.rentabilidad.impuestos.nueva": 0,
-      "me.rentabilidad.utilidadNeta.actual": 0,
-      "me.rentabilidad.utilidadNeta.operacion": 0,
-      "me.rentabilidad.utilidadNeta.nueva": 0,
-      "me.rentabilidad.utilidadNetaMarginal.actual": 0,
-      "me.rentabilidad.utilidadNetaMarginal.operacion": 0,
-      "me.rentabilidad.utilidadNetaMarginal.nueva": 0,
-
-      "me.roaActual": 0.36,
-      "me.roaOperacion": -0.49,
-      "me.roaNuevoCliente": -0.49,
-      "me.roeOperacion": 2.13,
-      "me.roeNuevoCliente": 3.55,
-      "me.targetSegmento": 0.5,
-      "me.nivelAtribucionTasa": "VP. Internacional",
     };
+
+    // ---- Payload real de Dynamo sobre el mock ----
+    // structureME.json NO referencia ninguna clave "me.*": sus 266 claves
+    // mapeadas son operationData.* (128) + derivadas (138). Todo el bloque
+    // "me.*" de arriba es codigo muerto para esta plantilla; se deja solo por
+    // si se quiere volver a maquetar posiciones a mano.
+    const operation = await mapOperation(payload.data, { ordenarPorDetalle: false });
+    Object.assign(dynamicVars, operation);
 
     const dynamoResponseList = pdfTemplate;
 
     for (let index = 0; index < dynamoResponseList.length; index++) {
       const element = dynamoResponseList[index];
+
+      // Igual que la lambda: la hoja 4 (aprobaciones) solo se emite cuando la
+      // cotizacion esta Aprobada. Sin esto el local sacaba una pagina de mas.
+      if (element["type"] === "page4" && dynamicVars["state"] !== "Aprobada") {
+        break;
+      }
 
       if (element["type"] === "rect") {
         doc.lineWidth(0.1); // Grosor del borde
@@ -432,6 +340,18 @@ app.get('/api/pdf', async (req, res) => {
       if (element["type"] === "text4") {
         const [key, x, y, options] = element["text"];
         const value = await fmtNumber2(dynamicVars[key]);
+
+        if (element["font"]) doc.font(element["font"]);
+        if (element["fillColor"]) doc.fillColor(element["fillColor"]);
+        if (element["fontSize"]) doc.fontSize(element["fontSize"]);
+
+        doc.text(value, x, y, options);
+      }
+
+      // text6: mapea cifras en dolares (fmtNumber con sufijo USD)
+      if (element["type"] === "text6") {
+        const [key, x, y, options] = element["text"];
+        const value = await fmtNumberUsd(dynamicVars[key]);
 
         if (element["font"]) doc.font(element["font"]);
         if (element["fillColor"]) doc.fillColor(element["fillColor"]);
