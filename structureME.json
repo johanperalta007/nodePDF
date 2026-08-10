@@ -72,7 +72,7 @@
   {"font":"Helvetica","fontSize":6,"text":["Relación Pasivo Activo",180,245,{"align":"left"}],"type":"text"},
   {"font":"Helvetica-Bold","fontSize":6,"text":["passiveActiveRelation",280,245,{"align":"left","width":250}],"type":"text4"},
   {"font":"Helvetica","fontSize":6,"text":["Clasificación Comercial EPC",180,255,{"align":"left","underline":false}],"type":"text"},
-  {"font":"Helvetica-Bold","fontSize":6,"text":["operationData.dataCustomer.infoCliente.clasificacionComercial",280,255,{"align":"left"}],"type":"text2"},
+  {"font":"Helvetica-Bold","fontSize":6,"text":["operationData.dataCustomer.infoCliente.clasificacionComercial",270,255,{"align":"left"}],"type":"text2"},
   {"positions":[320,210,260,15],"type":"rect","fill": "#0043a9"},
   {"positions":[320,230,260,15],"type":"rect"},
   {"fillColor":"white","font":"Helvetica-Bold","fontSize":6,"text":["PROMEDIOS Y RENTABILIDAD",405,216,{"align":"left","width":250}],"type":"text"},
