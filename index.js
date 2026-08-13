@@ -262,7 +262,7 @@ app.get('/api/pdf', async (req, res) => {
       nameClient: shortenText(
         "PINTURAS INDUPIN SOCIEDAD POR ACCIONES SIMPLIFICAD",
         45
-      ),
+      )
     };
 
     // ---- Payload real de Dynamo sobre el mock ----
