@@ -12,9 +12,9 @@ const lines = raw.split('\n');
 
 // --- CONFIGURAR AQUÍ ANTES DE CADA EJECUCIÓN ---
 const DELTA_X = 0;  // cuánto sumar/restar a la coordenada X (0 = no tocar X)
-const DELTA_Y = 5; // cuánto sumar/restar a la coordenada Y (0 = no tocar Y)
-const START_LINE = 337; // 1-indexed, inclusive
-const END_LINE = 339;   // 1-indexed, inclusive
+const DELTA_Y = -30; // cuánto sumar/restar a la coordenada Y (0 = no tocar Y)
+const START_LINE = 554; // 1-indexed, inclusive
+const END_LINE = 681;   // 1-indexed, inclusive
 // -------------------------------------------------
 
 // Índices dentro del array donde viven X e Y para cada clave.
@@ -27,6 +27,7 @@ const keyIndex = {
   text3:    { x: 1, y: 2 },
   text4:    { x: 1, y: 2 },
   text5:    { x: 1, y: 2 },
+  text6:    { x: 1, y: 2 },
   params:   { x: 1, y: 2 },
   positions:{ x: 0, y: 1 },
   line:     { x: 0, y: 1 },
@@ -77,7 +78,9 @@ function shiftLine(lineText) {
   let result = '';
   let cursor = 0;
   let modified = 0;
-  const keyPattern = /"(text5|text4|text3|text2|text|params|positions|line|move)":\[/g;
+  // \s* tras los dos puntos: el archivo tiene formato inconsistente y hay
+  // entradas escritas como "text": [ ... ] que de otro modo se saltarían.
+  const keyPattern = /"(text6|text5|text4|text3|text2|text|params|positions|line|move)":\s*\[/g;
   let match;
   while ((match = keyPattern.exec(lineText)) !== null) {
     const key = match[1];

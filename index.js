@@ -262,7 +262,8 @@ app.get('/api/pdf', async (req, res) => {
       nameClient: shortenText(
         "PINTURAS INDUPIN SOCIEDAD POR ACCIONES SIMPLIFICAD",
         45
-      )
+      ),
+      state: "Aprobada",
     };
 
     // ---- Payload real de Dynamo sobre el mock ----
@@ -280,9 +281,11 @@ app.get('/api/pdf', async (req, res) => {
 
       // Igual que la lambda: la hoja 4 (aprobaciones) solo se emite cuando la
       // cotizacion esta Aprobada. Sin esto el local sacaba una pagina de mas.
+      /*
       if (element["type"] === "page4" && dynamicVars["state"] !== "Aprobada") {
         break;
       }
+      */
 
       if (element["type"] === "rect") {
         doc.lineWidth(0.1); // Grosor del borde
