@@ -210,7 +210,7 @@
         "operationData.operationServer.datosOperacionInput.comisiones.totalPercentage": 21,
         "operationData.operationServer.datosOperacionInput.comisiones.totalUsdValue": 210000,
         "operationData.operationServer.datosOperacionInput.entidadRedescuento": "-",
-        "operationData.operationServer.datosOperacionInput.indiceReferencia": "SOFR90",
+        "operationData.operationServer.datosOperacionInput.indiceReferencia": "BACK TO BACK",
         "operationData.operationServer.datosOperacionInput.moneda": "ME",
         "operationData.operationServer.datosOperacionInput.nombreCampana": "-",
         "operationData.operationServer.datosOperacionInput.pagoIntereses": "Trimestral",

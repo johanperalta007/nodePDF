@@ -177,6 +177,13 @@ app.get('/api/pdf', async (req, res) => {
       return text.substring(0, limit) + "...";
     };
 
+    const changeColor = (text) => {
+      if (text == "BACK TO BACK") {
+        return "#427A8A"
+      }
+      return "black"
+    };
+
     const mapDocs = (idText) => {
       switch (idText) {
         case "Nit":
@@ -263,7 +270,7 @@ app.get('/api/pdf', async (req, res) => {
         "PINTURAS INDUPIN SOCIEDAD POR ACCIONES SIMPLIFICAD",
         45
       ),
-      state: "Aprobada",
+      dynamicColor: changeColor("BACK TO BACK")
     };
 
     // ---- Payload real de Dynamo sobre el mock ----
@@ -273,6 +280,42 @@ app.get('/api/pdf', async (req, res) => {
     // si se quiere volver a maquetar posiciones a mano.
     const operation = await mapOperation(payload.data, { ordenarPorDetalle: false });
     Object.assign(dynamicVars, operation);
+
+    // Aplica font / fillColor / fontSize de un elemento del template.
+    //
+    // "fillColor" acepta dos formas:
+    //   1. un color literal      -> "black", "#427A8A"
+    //   2. una clave de dynamicVars cuyo valor ES el color -> "dynamicColor"
+    //
+    // Sin esta resolucion, PDFKit recibe la cadena "dynamicColor", no la
+    // reconoce como color y descarta el cambio EN SILENCIO (_setColor retorna
+    // false sin lanzar excepcion), por lo que el texto se pinta con el color
+    // que quedo activo del elemento anterior.
+    //
+    // Nota: no se aplica un color por defecto cuando el elemento no declara
+    // "fillColor". Hay 252 elementos de texto en la plantilla que dependen de
+    // heredar el color activo, y forzar "black" cambiaria el PDF actual.
+    const applyTextStyle = (element) => {
+      if (element["font"]) doc.font(element["font"]);
+
+      if (element["fillColor"]) {
+        const declared = element["fillColor"];
+        const resolved =
+          dynamicVars[declared] !== undefined ? dynamicVars[declared] : declared;
+
+        if (doc._normalizeColor(resolved)) {
+          doc.fillColor(resolved);
+        } else {
+          console.warn(
+            `fillColor no reconocido: "${declared}"` +
+            (resolved !== declared ? ` (resuelto a "${resolved}")` : '') +
+            ' - se conserva el color anterior'
+          );
+        }
+      }
+
+      if (element["fontSize"]) doc.fontSize(element["fontSize"]);
+    };
 
     const dynamoResponseList = pdfTemplate;
 
@@ -308,9 +351,7 @@ app.get('/api/pdf', async (req, res) => {
         // Si el texto es una variable dinámica, reemplázalo
         const actualText = dynamicVars[rawText] !== undefined ? dynamicVars[rawText] : rawText;
 
-        if (element["font"]) doc.font(element["font"]);
-        if (element["fillColor"]) doc.fillColor(element["fillColor"]);
-        if (element["fontSize"]) doc.fontSize(element["fontSize"]);
+        applyTextStyle(element);
 
         doc.text(actualText, x, y, options);
       }
@@ -320,9 +361,7 @@ app.get('/api/pdf', async (req, res) => {
         const [key, x, y, options] = element["text"];
         const value = await fmtString(dynamicVars[key]);
 
-        if (element["font"]) doc.font(element["font"]);
-        if (element["fillColor"]) doc.fillColor(element["fillColor"]);
-        if (element["fontSize"]) doc.fontSize(element["fontSize"]);
+        applyTextStyle(element);
 
         doc.text(value, x, y, options);
       }
@@ -332,9 +371,7 @@ app.get('/api/pdf', async (req, res) => {
         const [key, x, y, options] = element["text"];
         const value = await fmtNumber(dynamicVars[key]);
 
-        if (element["font"]) doc.font(element["font"]);
-        if (element["fillColor"]) doc.fillColor(element["fillColor"]);
-        if (element["fontSize"]) doc.fontSize(element["fontSize"]);
+        applyTextStyle(element);
 
         doc.text(value, x, y, options);
       }
@@ -344,9 +381,7 @@ app.get('/api/pdf', async (req, res) => {
         const [key, x, y, options] = element["text"];
         const value = await fmtNumber2(dynamicVars[key]);
 
-        if (element["font"]) doc.font(element["font"]);
-        if (element["fillColor"]) doc.fillColor(element["fillColor"]);
-        if (element["fontSize"]) doc.fontSize(element["fontSize"]);
+        applyTextStyle(element);
 
         doc.text(value, x, y, options);
       }
@@ -356,9 +391,7 @@ app.get('/api/pdf', async (req, res) => {
         const [key, x, y, options] = element["text"];
         const value = await fmtNumberUsd(dynamicVars[key]);
 
-        if (element["font"]) doc.font(element["font"]);
-        if (element["fillColor"]) doc.fillColor(element["fillColor"]);
-        if (element["fontSize"]) doc.fontSize(element["fontSize"]);
+        applyTextStyle(element);
 
         doc.text(value, x, y, options);
       }
@@ -368,9 +401,7 @@ app.get('/api/pdf', async (req, res) => {
         const [key, x, y, options] = element["text"];
         const value = await fmtDate(dynamicVars[key]);
 
-        if (element["font"]) doc.font(element["font"]);
-        if (element["fillColor"]) doc.fillColor(element["fillColor"]);
-        if (element["fontSize"]) doc.fontSize(element["fontSize"]);
+        applyTextStyle(element);
 
         doc.text(value, x, y, options);
       }
