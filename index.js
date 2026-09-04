@@ -281,35 +281,21 @@ app.get('/api/pdf', async (req, res) => {
     const operation = await mapOperation(payload.data, { ordenarPorDetalle: false });
     Object.assign(dynamicVars, operation);
 
-    // Aplica font / fillColor / fontSize de un elemento del template.
-    //
-    // "fillColor" acepta dos formas:
-    //   1. un color literal      -> "black", "#427A8A"
-    //   2. una clave de dynamicVars cuyo valor ES el color -> "dynamicColor"
-    //
-    // Sin esta resolucion, PDFKit recibe la cadena "dynamicColor", no la
-    // reconoce como color y descarta el cambio EN SILENCIO (_setColor retorna
-    // false sin lanzar excepcion), por lo que el texto se pinta con el color
-    // que quedo activo del elemento anterior.
-    //
-    // Nota: no se aplica un color por defecto cuando el elemento no declara
-    // "fillColor". Hay 252 elementos de texto en la plantilla que dependen de
-    // heredar el color activo, y forzar "black" cambiaria el PDF actual.
     const applyTextStyle = (element) => {
       if (element["font"]) doc.font(element["font"]);
 
       if (element["fillColor"]) {
-        const declared = element["fillColor"];
-        const resolved =
-          dynamicVars[declared] !== undefined ? dynamicVars[declared] : declared;
+        const declaredFillColor = element["fillColor"];
+        const color =
+          dynamicVars[declaredFillColor] !== undefined
+            ? dynamicVars[declaredFillColor]
+            : declaredFillColor;
 
-        if (doc._normalizeColor(resolved)) {
-          doc.fillColor(resolved);
+        if (doc._normalizeColor(color)) {
+          doc.fillColor(color);
         } else {
           console.warn(
-            `fillColor no reconocido: "${declared}"` +
-            (resolved !== declared ? ` (resuelto a "${resolved}")` : '') +
-            ' - se conserva el color anterior'
+            `Unrecognized fillColor "${declaredFillColor}" resolved to "${color}", PDFKit would drop it silently`
           );
         }
       }
