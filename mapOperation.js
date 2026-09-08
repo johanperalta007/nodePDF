@@ -191,6 +191,71 @@ const mapComisiones = async (operation, { ordenarPorDetalle = false } = {}) => {
   return operation;
 };
 
+// ---------- NUEVO: aplanado de niveles de atribucion ----------
+//
+// operationData.allAttributionLevel es un array y el motor no puede indexar
+// arrays desde la plantilla, asi que cada entrada se expone como claves
+// escalares derivadas del cargo:
+//
+//   "Consultor Internacional" -> attributionLevel.consultorInternacional.nombre
+//   "Gerente Comercial"       -> attributionLevel.gerenteComercial.nombre
+//
+// Si un cargo se repite gana la primera aparicion, para que el resultado no
+// dependa del orden en que el servicio devuelva la lista.
+
+const ATTRIBUTION_FIELDS = [
+  "nombre",
+  "cargo",
+  "correo",
+  "usuario",
+  "segmento",
+  "unidadNegocio",
+];
+
+const toCamelCaseKey = (texto) =>
+  texto
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-zA-Z0-9]+/g, " ")
+    .trim()
+    .split(" ")
+    .map((palabra, indice) =>
+      indice === 0
+        ? palabra.toLowerCase()
+        : palabra.charAt(0).toUpperCase() + palabra.slice(1).toLowerCase()
+    )
+    .join("");
+
+const mapAttributionLevel = async (operation) => {
+  const niveles = operation["operationData.allAttributionLevel"];
+
+  if (!Array.isArray(niveles)) {
+    return operation;
+  }
+
+  const cargosAsignados = new Set();
+
+  for (const nivel of niveles) {
+    if (!nivel || typeof nivel.cargo !== "string") {
+      continue;
+    }
+
+    const clave = toCamelCaseKey(nivel.cargo);
+
+    if (clave === "" || cargosAsignados.has(clave)) {
+      continue;
+    }
+
+    cargosAsignados.add(clave);
+
+    for (const campo of ATTRIBUTION_FIELDS) {
+      operation[`attributionLevel.${clave}.${campo}`] = nivel[campo];
+    }
+  }
+
+  return operation;
+};
+
 // ---------- armado del objeto operation ----------
 
 module.exports.mapOperation = async (data, opts = {}) => {
@@ -341,8 +406,11 @@ module.exports.mapOperation = async (data, opts = {}) => {
     (await fmtString(operation["for130.acronymsReference"]));
 
   await mapComisiones(operation, opts);
+  await mapAttributionLevel(operation);
 
   return operation;
 };
 
 module.exports.mapComisiones = mapComisiones;
+module.exports.mapAttributionLevel = mapAttributionLevel;
+module.exports.toCamelCaseKey = toCamelCaseKey;

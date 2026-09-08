@@ -34,8 +34,57 @@ const fmtString = async (cadena) => {
   return cadena;
 };
 
+const PLAIN_NUMBER = /^[-+]?\d*\.?\d+(e[-+]?\d+)?$/i;
+const NON_NUMERIC_CHARS = /[^\d.,+-]/g;
+
+const normalizeSeparators = (cadena) => {
+  const limpio = cadena.replace(NON_NUMERIC_CHARS, '');
+  const ultimoPunto = limpio.lastIndexOf('.');
+  const ultimaComa = limpio.lastIndexOf(',');
+
+  if (ultimoPunto === -1 && ultimaComa === -1) {
+    return limpio;
+  }
+
+  if (ultimoPunto !== -1 && ultimaComa !== -1) {
+    const separadorDecimal = ultimoPunto > ultimaComa ? '.' : ',';
+    const separadorMiles = separadorDecimal === '.' ? ',' : '.';
+
+    return limpio
+      .split(separadorMiles)
+      .join('')
+      .replace(separadorDecimal, '.');
+  }
+
+  const separador = ultimoPunto !== -1 ? '.' : ',';
+  const grupos = limpio.split(separador);
+
+  if (grupos.length > 2) {
+    return grupos.join('');
+  }
+
+  return separador === ',' ? limpio.replace(',', '.') : limpio;
+};
+
+const parseAmount = (valor) => {
+  if (typeof valor === 'number') {
+    return valor;
+  }
+  if (typeof valor !== 'string') {
+    return parseFloat(valor);
+  }
+
+  const recortado = valor.trim();
+
+  if (PLAIN_NUMBER.test(recortado)) {
+    return parseFloat(recortado);
+  }
+
+  return parseFloat(normalizeSeparators(recortado));
+};
+
 const fmtNumber = async (numero) => {
-  const num = parseFloat(numero);
+  const num = parseAmount(numero);
   if (isNaN(num)) {
     return '-';
   }
@@ -51,7 +100,7 @@ const fmtNumber = async (numero) => {
 };
 // Multiplica por 100 porque el payload guarda fracciones (0.03 -> "3.00%").
 const fmtNumber2 = async (numero) => {
-  const num = parseFloat(numero);
+  const num = parseAmount(numero);
   if (isNaN(num)) {
     return '-';
   }
@@ -68,7 +117,7 @@ const fmtNumber2 = async (numero) => {
 // Igual que fmtNumber pero concatenando " USD" en lugar de anteponer "$".
 // Para las cifras en dolares del PDF de Moneda Extranjera.
 const fmtNumberUsd = async (numero) => {
-  const num = parseFloat(numero);
+  const num = parseAmount(numero);
   if (isNaN(num)) {
     return '-';
   }
