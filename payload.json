@@ -1,473 +1,562 @@
 {
     "data": {
-        "key": "ME_SOL_PRC_100682",
-        "aditionalInfoDisbursement.approvalDateDirectorCredito": "-",
-        "aditionalInfoDisbursement.approvalDateDirectorNacional": "-",
-        "aditionalInfoDisbursement.approvalDateDirectorSegmento": "-",
-        "aditionalInfoDisbursement.approvalDateGerenteComercial": "-",
-        "aditionalInfoDisbursement.approvalDateGerenteZona": "-",
-        "aditionalInfoDisbursement.approvalDateVpComercial": "-",
-        "aditionalInfoDisbursement.approvalDateVpCredito": "-",
-        "aditionalInfoDisbursement.approvalDateVpFinanciero": "-",
-        "aditionalInfoDisbursement.commentDirectorCredito": "Sin Comentarios.",
-        "aditionalInfoDisbursement.commentDirectorNacional": "Sin Comentarios.",
-        "aditionalInfoDisbursement.commentDirectorSegmento": "Sin Comentarios.",
-        "aditionalInfoDisbursement.commentGerenteComercial": "Sin Comentarios.",
-        "aditionalInfoDisbursement.commentGerenteZona": "Sin Comentarios.",
-        "aditionalInfoDisbursement.commentVpComercial": "Sin Comentarios.",
-        "aditionalInfoDisbursement.commentVpCredito": "Sin Comentarios.",
-        "aditionalInfoDisbursement.commentVpFinanciero": "Sin Comentarios.",
-        "aditionalInfoDisbursement.creditNumber1": "-",
-        "aditionalInfoDisbursement.creditNumber2": "-",
-        "aditionalInfoDisbursement.disbursementDate1": "-",
-        "aditionalInfoDisbursement.disbursementDate2": "-",
+        "key": "SOL_PRC_100298",
+        "aditionalInfoDisbursement": {
+            "approvalDateDirectorCredito": "",
+            "approvalDateDirectorNacional": "",
+            "approvalDateDirectorSegmento": "",
+            "approvalDateGerenteComercial": "",
+            "approvalDateGerenteZona": "",
+            "approvalDateVpComercial": "",
+            "approvalDateVpCredito": "",
+            "approvalDateVpFinanciero": "",
+            "commentDirectorCredito": "",
+            "commentDirectorNacional": "",
+            "commentDirectorSegmento": "",
+            "commentGerenteComercial": "",
+            "commentGerenteZona": "",
+            "commentVpComercial": "",
+            "commentVpCredito": "",
+            "commentVpFinanciero": "",
+            "creditNumber1": "",
+            "creditNumber2": "",
+            "disbursementDate1": "",
+            "disbursementDate2": ""
+        },
         "businessId": "2015",
         "commentRequest": [
             {
-                "Cargo": "Consultor Internacional",
+                "Cargo": "Gerente de Zona",
                 "Comentarios": "Sin Comentarios.",
-                "Estado": "Pendiente",
-                "NombreAprobador": "Peralta Montano, Johan Esteban",
+                "Estado": "Aprobada",
+                "NombreAprobador": "Martinez Acevedo, Yorman Paul",
+                "Orden": 2
+            },
+            {
+                "Cargo": "Gerente Comercial",
+                "Comentarios": "Sin Comentarios.",
+                "Estado": "Aprobada",
+                "NombreAprobador": "Martinez Acevedo, Yorman Paul",
                 "Orden": 1
             }
         ],
-        "for130": "-",
-        "idRequestRate": "406",
-        "jobTitle": "Analista III",
-        "lastModifiedFile": "del 25 de Agosto al 1 de Septiembre de 2025",
-        "MoneyType": "ME",
-        "operationData.allAttributionLevel": [
-            {
-                "cargo": "Consultor Internacional",
-                "correo": "ogarci4@bancodebogota.com.co",
-                "nombre": "Oscar Andres García Jimenez",
-                "segmento": "Empresarial",
-                "unidadNegocio": "2015",
-                "usuario": "ogarci4"
+        "fecha_desembolso": "01-06-2026",
+        "for130": {
+            "acronymsReference": "",
+            "attributionLevel": [
+                {
+                    "cargo": "Gerente Comercial",
+                    "correo": "ymart43@bancodebogota.com.co",
+                    "nombre": "Martinez Acevedo, Yorman Paul",
+                    "segmento": "Empresarial",
+                    "status": "ENABLED",
+                    "unidad_negocio": "2015",
+                    "usuario": "cgonz39",
+                    "voBo": {
+                        "excepcion": false,
+                        "monto": false,
+                        "prorroga": false,
+                        "sancion": false,
+                        "tasa": true
+                    }
+                },
+                {
+                    "cargo": "Gerente de Zona",
+                    "correo": "ymart43@bancodebogota.com.co",
+                    "nombre": "Martinez Acevedo, Yorman Paul",
+                    "segmento": "Empresarial",
+                    "status": "ENABLED",
+                    "unidad_negocio": "2015",
+                    "usuario": "lmerca1",
+                    "voBo": {
+                        "excepcion": false,
+                        "monto": false,
+                        "prorroga": false,
+                        "sancion": false,
+                        "tasa": true
+                    }
+                }
+            ],
+            "commercialCommitmentCalendar": null,
+            "creditPrevious": 0,
+            "cutOffFiguresCalendar": "2025-05-01T05:00:00.000Z",
+            "differentRatingsObservations": "",
+            "disbursementType": "",
+            "exceptionObservationOne": "",
+            "exceptionObservationThree": "",
+            "exceptionObservationTwo": "",
+            "exceptionOne": "",
+            "exceptionThree": "",
+            "exceptionTwo": "",
+            "greaterSeniorityNormalizationCalendar": null,
+            "levelAttributionForAmount": "",
+            "levelAttributionForException": "",
+            "lightTraffic": "Amarillo",
+            "normalizationGreater60Total": 0,
+            "normalizationPendingClient": 0,
+            "normalizationPendingTotal": 0,
+            "oldestDateAddressCalendar": null,
+            "optionChecked": [
+                {
+                    "isChecked": "false",
+                    "label": "Visita comercial último semestre",
+                    "value": "lbl1"
+                },
+                {
+                    "isChecked": "true",
+                    "label": "Revisión CIFIN",
+                    "value": "lbl2"
+                }
+            ],
+            "ratePrevious": "",
+            "ratingCifin": "A",
+            "recommendationDisbursementCommercial": "",
+            "spreadPrevious": 0,
+            "typeCredit": "",
+            "typeOperationFOR130": "Anticipo Leasing",
+            "vboExtensionGracePeriod": false,
+            "vboPrepaidPenalty": false,
+            "warrantyClassObs": "ew"
+        },
+        "idRequest": "114",
+        "numero_credito": "00001158016427",
+        "operationData": {
+            "allAttributionLevel": [
+                {
+                    "cargo": "Ejecutivo Comercial",
+                    "correo": "jgonz14@bancodebogota.com.co",
+                    "nombre": "Jenny Paola Gonzalez Moreno",
+                    "segmento": "Empresarial",
+                    "unidad_negocio": "2015",
+                    "usuario": "jgonz14"
+                },
+                {
+                    "cargo": "Gerente Comercial",
+                    "correo": "cgonz39@bancodebogota.com.co",
+                    "nombre": "Cristian Camilo González Montenegro",
+                    "segmento": "Empresarial",
+                    "unidad_negocio": "2015",
+                    "usuario": "cgonz39"
+                },
+                {
+                    "cargo": "Gerente de Zona",
+                    "correo": "lmerca1@bancodebogota.com.co",
+                    "nombre": "Luz Mercedes Mercado Gonzalez",
+                    "segmento": "Empresarial",
+                    "unidad_negocio": "2015",
+                    "usuario": "lmerca1"
+                },
+                {
+                    "cargo": "Director de Segmento",
+                    "correo": "jpalaci@bancodebogota.com.co",
+                    "nombre": "Juan Carlos Palacios Rojas",
+                    "segmento": "Empresarial",
+                    "unidad_negocio": "2015",
+                    "usuario": "jpalaci"
+                },
+                {
+                    "cargo": "Director de Crédito",
+                    "correo": "CGALIND@bancodebogota.com.co",
+                    "nombre": "Galindo Marquez, Carlos Andres",
+                    "segmento": "Empresarial",
+                    "unidad_negocio": "2015",
+                    "usuario": "CGALIND"
+                },
+                {
+                    "cargo": "VP Comercial Banca Empresas",
+                    "correo": "rarango@bancodebogota.com.co",
+                    "nombre": "Rafael Arango Calle",
+                    "segmento": "Transversal",
+                    "unidad_negocio": "Transversal",
+                    "usuario": "rarango"
+                },
+                {
+                    "cargo": "VP Financiero y de Estrategia",
+                    "correo": "SSANDOV@bancodebogota.com.co",
+                    "nombre": "Sergio Ivan Sandoval Cadena",
+                    "segmento": "Transversal",
+                    "unidad_negocio": "Transversal",
+                    "usuario": "SSANDOV"
+                },
+                {
+                    "cargo": "VP Crédito/ Dir Nal Crédito",
+                    "correo": "ccastel@bancodebogota.com.co",
+                    "nombre": "Castellanos Pabon, Cesar",
+                    "segmento": "Transversal",
+                    "unidad_negocio": "Transversal",
+                    "usuario": "ccastel"
+                }
+            ],
+            "allCustomer": {
+                "carteraME": {
+                    "tasaImplicita": 0,
+                    "volumen": 0
+                },
+                "carteraRedescontada": {
+                    "tasaImplicita": 0,
+                    "volumen": 0
+                },
+                "cdts": {
+                    "tasaImplicita": 0.0740688145686366,
+                    "volumen": 28115607000.1666
+                },
+                "clienteEspecial": {
+                    "nombre": "No Existe",
+                    "numeroIdentificacion": "",
+                    "tipoIdentificacion": ""
+                },
+                "clientePrincipal": {
+                    "nombre": "SODIMAC COLOMBIA S A",
+                    "numeroIdentificacion": "8002421062",
+                    "tipoIdentificacion": "Nit"
+                },
+                "cuentasAhorro": {
+                    "tasaImplicita": 0.101291182206842,
+                    "volumen": 45736503317.1374
+                },
+                "cuentasCorrientes": {
+                    "tasaImplicita": 0,
+                    "volumen": 377820786.5
+                },
+                "familiaCredito": [
+                    {
+                        "nombreModalidad": "CAP.TRABAJO",
+                        "valorAprobado": "150000000000",
+                        "valorDisponible": "150000000000"
+                    }
+                ],
+                "fechaFin": "2025-01-01T05:00:00.000+00:00",
+                "fechaInicio": "2024-02-01T05:00:00.000+00:00",
+                "infoCliente": {
+                    "activosCorte": {
+                        "number": 221521712246.74,
+                        "text": null
+                    },
+                    "activosPromedio": {
+                        "number": 221861558721.035,
+                        "text": null
+                    },
+                    "clasificacionComercial": "Estrategico",
+                    "direccionBanca": "Comercio y Manufactura",
+                    "margenContribucion": {
+                        "number": 1467825917.56522,
+                        "text": null
+                    },
+                    "pasivosPromedio": {
+                        "number": 74229931103.804,
+                        "text": null
+                    },
+                    "roa": {
+                        "number": 0.00661595422851449,
+                        "text": null
+                    },
+                    "segmentoComercial": "Corporativo"
+                },
+                "infoRating": {
+                    "ratingCliente": {
+                        "mrc": "AA",
+                        "mrcObservado": {
+                            "number": 2,
+                            "text": null
+                        },
+                        "mrcProyectado": {
+                            "number": null,
+                            "text": ""
+                        }
+                    },
+                    "ratingClienteEspecial": {
+                        "mrc": null,
+                        "mrcObservado": null,
+                        "mrcProyectado": null
+                    }
+                },
+                "leasingComercial": {
+                    "tasaImplicita": 0.136517387496338,
+                    "volumen": 1601136023.83333
+                },
+                "numCuentasAsociadas": 365,
+                "otrosActivos": {
+                    "tasaImplicita": 0,
+                    "volumen": 0
+                },
+                "otrosPasivos": {
+                    "tasaImplicita": 0,
+                    "volumen": 0
+                },
+                "potencialEmpleados": 800,
+                "prestamosComerciales": {
+                    "tasaImplicita": 0.0610907320859424,
+                    "volumen": 219999990000
+                },
+                "shareNominaEmpresa": 0.45625,
+                "targetShareNomina": 0.53,
+                "tarjetaCredito": {
+                    "tasaImplicita": 0.00823128157727413,
+                    "volumen": 260432697.202166
+                },
+                "tipoClienteEspecial": "No",
+                "totalActivo": {
+                    "tasaImplicita": 0.15234022208623,
+                    "volumen": 1266129.83333333
+                },
+                "totalActivos": {
+                    "tasaImplicita": 0.061573023865028,
+                    "volumen": 221861558721.035
+                },
+                "totalesFamilia": {
+                    "totalValorAprobado": "150000000000",
+                    "totalValorDisponible": "150000000000",
+                    "totalValorUtilizado": "0"
+                },
+                "totalPasivo": {
+                    "tasaImplicita": 138.817990262716,
+                    "volumen": 2221247781.15836
+                },
+                "totalPasivos": {
+                    "tasaImplicita": 0.0904647771124749,
+                    "volumen": 74229931103.804
+                },
+                "unidadNegocio": {
+                    "codigo": "2015",
+                    "direccion": "Empresarial",
+                    "gerente": "Cristian Camilo González Montenegro"
+                }
             },
-            {
-                "cargo": "Jefe Internacional",
-                "correo": "nlgomez@bancodebogota.com.co",
-                "nombre": "Nixa Liliana Gómez Rodríguez",
-                "segmento": "Empresarial",
-                "unidadNegocio": "2015",
-                "usuario": "nlgomez"
+            "attributionLevel": [
+                {
+                    "cargo": "Gerente Comercial",
+                    "correo": "cgonz39@bancodebogota.com.co",
+                    "nombre": "Cristian Camilo González Montenegro",
+                    "segmento": "Empresarial",
+                    "unidad_negocio": "2015",
+                    "usuario": "cgonz39"
+                },
+                {
+                    "cargo": "Gerente de Zona",
+                    "correo": "lmerca1@bancodebogota.com.co",
+                    "nombre": "Luz Mercedes Mercado Gonzalez",
+                    "segmento": "Empresarial",
+                    "unidad_negocio": "2015",
+                    "usuario": "lmerca1"
+                }
+            ],
+            "dataCustomer": {
+                "clienteEspecial": {
+                    "nombre": "No Existe",
+                    "numeroIdentificacion": "",
+                    "tipoIdentificacion": ""
+                },
+                "clientePrincipal": {
+                    "nombre": "SODIMAC COLOMBIA S A",
+                    "numeroIdentificacion": "8002421062",
+                    "tipoIdentificacion": "Nit"
+                },
+                "correo": "YMART43@bancodebogota.com.co",
+                "ejecutivoComercial": "",
+                "familiaCredito": [
+                    {
+                        "nombreModalidad": "CAP.TRABAJO",
+                        "valorAprobado": "150000000000",
+                        "valorDisponible": "150000000000"
+                    }
+                ],
+                "fechaFin": "2025-01-01T05:00:00.000+00:00",
+                "fechaInicio": "2024-02-01T05:00:00.000+00:00",
+                "infoCliente": {
+                    "activosCorte": {
+                        "number": 221521712246.74,
+                        "text": null
+                    },
+                    "activosPromedio": {
+                        "number": 221861558721.035,
+                        "text": null
+                    },
+                    "clasificacionComercial": "Estrategico",
+                    "direccionBanca": "Comercio y Manufactura",
+                    "margenContribucion": {
+                        "number": 1467825917.56522,
+                        "text": null
+                    },
+                    "pasivosPromedio": {
+                        "number": 74229931103.804,
+                        "text": null
+                    },
+                    "roa": {
+                        "number": 0.00661595422851449,
+                        "text": null
+                    },
+                    "segmentoComercial": "Corporativo"
+                },
+                "infoRating": {
+                    "ratingCliente": {
+                        "mrc": "AA",
+                        "mrcObservado": {
+                            "number": 2,
+                            "text": null
+                        },
+                        "mrcProyectado": {
+                            "number": null,
+                            "text": ""
+                        }
+                    },
+                    "ratingClienteEspecial": {
+                        "mrc": null,
+                        "mrcObservado": null,
+                        "mrcProyectado": null
+                    }
+                },
+                "tipoClienteEspecial": "No",
+                "unidadNegocio": {
+                    "codigo": "2015",
+                    "direccion": "Empresarial",
+                    "gerente": "Cristian Camilo González Montenegro"
+                }
             },
-            {
-                "cargo": "Gerente de Internacional",
-                "correo": "esanch2@bancodebogota.com.co",
-                "nombre": "Edgar Mauricio Sanchez Romero",
-                "segmento": "Transversal",
-                "unidadNegocio": "Transversal",
-                "usuario": "esanch2"
+            "operationServer": {
+                "datosOperacionInput": {
+                    "activoGarantia": null,
+                    "amortizacionCapital": "Mensual",
+                    "campanaComercial": "No",
+                    "entidadRedescuento": null,
+                    "indiceReferencia": "IBR 3m",
+                    "nombreCampana": "",
+                    "pagoIntereses": "Trimestral",
+                    "periodoGracia": 0,
+                    "plazoMeses": 12,
+                    "porcentajeCobertura": 0.000000233333333333333,
+                    "porcentajeComisionesNegociadas": 0.02,
+                    "porcentajeRedescuento": null,
+                    "porcentajeSpread": 0.11,
+                    "prorroga": "No",
+                    "spreadRedescuento": null,
+                    "sustitucion": "Si",
+                    "tamanioProductor": null,
+                    "tipoGarantia": "Colateral Financiero",
+                    "tipoOperacion": "Recursos Propios",
+                    "valorGarantia": 21,
+                    "valorOperacion": 90000000
+                },
+                "periodicidad": " TV ",
+                "porcentajeCobertura": 0.000000233333333333333,
+                "salidasRentabilidadDto": {
+                    "beneficioEmase": {
+                        "actual": 0,
+                        "nueva": 0,
+                        "operacion": 0
+                    },
+                    "costosOperacionales": {
+                        "actual": 0.00706304440888758,
+                        "nueva": 0.00706304440888758,
+                        "operacion": 0
+                    },
+                    "costosOperacionalesMarginales": {
+                        "actual": 0.00114108283884921,
+                        "nueva": 0.00114108283884921,
+                        "operacion": 0.0002
+                    },
+                    "dirección": "Empresarial",
+                    "exigenciaAdicional": {
+                        "actual": 0,
+                        "nueva": 0,
+                        "operacion": 0
+                    },
+                    "impuestos": {
+                        "actual": 0.00441063615234299,
+                        "nueva": 0.00442649144335769,
+                        "operacion": 0.0435504421772107
+                    },
+                    "ingresoComisiones": {
+                        "actual": 0.002920745146204,
+                        "nueva": 0.00292887076053654,
+                        "operacion": 0.02
+                    },
+                    "ingresoIntereses": {
+                        "actual": 0.061573023865028,
+                        "nueva": 0.0616274939045714,
+                        "operacion": 0.195642984151715
+                    },
+                    "interesesPagadosFtp": {
+                        "actual": 0.0487428605454375,
+                        "nueva": 0.0487659766001436,
+                        "operacion": 0.105639616310905
+                    },
+                    "interesesPagadosPasivo": {
+                        "actual": 0.030267497492991,
+                        "nueva": 0.030267497492991,
+                        "operacion": 0
+                    },
+                    "interesesRecibidosFtp": {
+                        "actual": 0.0350650093586154,
+                        "nueva": 0.0350650093586154,
+                        "operacion": 0
+                    },
+                    "margenFinancieroDespuesProv": {
+                        "actual": 0.0163099724823903,
+                        "nueva": 0.0163414850955945,
+                        "operacion": 0.0890761054430267
+                    },
+                    "margenFinancieroNeto": {
+                        "actual": 0.0192307176285943,
+                        "nueva": 0.019270355856131,
+                        "operacion": 0.109076105443027
+                    },
+                    "margenNetoIntereses": {
+                        "actual": 0.017627675185215,
+                        "nueva": 0.0176590291700522,
+                        "operacion": 0.0900033678408101
+                    },
+                    "mesCorteMC": "Enero",
+                    "nivelAtribucion": "Gerente de Zona",
+                    "nombreGrupo": "SODIMAC COLOMBIA S A",
+                    "perdidaEsperada": {
+                        "actual": 0.0013177027028247,
+                        "nueva": 0.00131754407445777,
+                        "operacion": 0.000927262397783433
+                    },
+                    "roaCliente": 0.00663973716503653,
+                    "roaOperacion": 0.065325663265816,
+                    "semasforoRiesgo": "Cliente sin ajuste en Riesgo",
+                    "spreadFTP": 0.019848505859375,
+                    "spreadSugerido": 0.0186288366152292,
+                    "subsidioFtp": {
+                        "actual": 0,
+                        "nueva": 0,
+                        "operacion": 0
+                    },
+                    "subsidios": {
+                        "actual": 0,
+                        "nueva": 0,
+                        "operacion": 0
+                    },
+                    "targetRentabilidadSubsegmento": 0.0004,
+                    "targetSegmento": 0.00391838986177661,
+                    "tasaReferencia": 0.08885,
+                    "utilidadAntesImpuestos": {
+                        "actual": 0.0110265903808575,
+                        "nueva": 0.0110662286083942,
+                        "operacion": 0.108876105443027
+                    },
+                    "utilidadDespuesImpuestos": {
+                        "actual": 0.00661595422851449,
+                        "nueva": 0.00663973716503653,
+                        "operacion": 0.065325663265816
+                    },
+                    "utilidadNetaMarginal": {
+                        "actual": 0.010853780873847,
+                        "nueva": 0.0108775638103691,
+                        "operacion": 0.065325663265816
+                    }
+                },
+                "spreadMV": " TV ",
+                "tasaEA": 0.214175527921293,
+                "tasaMV": 0.195642984151715,
+                "valorComisionesNegociadas": 1800000,
+                "vidaMedia": 17
             },
-            {
-                "cargo": "Director de Internacional y Distribución",
-                "correo": "pgonzal@bancodebogota.com.co",
-                "nombre": "Patricia Gonzalez Román",
-                "segmento": "Transversal",
-                "unidadNegocio": "Transversal",
-                "usuario": "pgonzal"
-            },
-            {
-                "cargo": "VP Internacional y Tesorería",
-                "correo": "lgonz21@bancodebogota.com.co",
-                "nombre": "Luis Miguel Gonzalez Espinosa",
-                "segmento": "Transversal",
-                "unidadNegocio": "Transversal",
-                "usuario": "lgonz21"
-            },
-            {
-                "cargo": "Ejecutivo Comercial",
-                "correo": "jgonz14@bancodebogota.com.co",
-                "nombre": "Jenny Paola Gonzalez Moreno",
-                "segmento": "Empresarial",
-                "unidadNegocio": "2015",
-                "usuario": "jgonz14"
-            },
-            {
-                "cargo": "Gerente Comercial",
-                "correo": "cgonz39@bancodebogota.com.co",
-                "nombre": "Cristian Camilo González Montenegro",
-                "segmento": "Empresarial",
-                "unidadNegocio": "2015",
-                "usuario": "cgonz39"
-            },
-            {
-                "cargo": "Gerente de Zona",
-                "correo": "lmerca1@bancodebogota.com.co",
-                "nombre": "Luz Mercedes Mercado Gonzalez",
-                "segmento": "Empresarial",
-                "unidadNegocio": "2015",
-                "usuario": "lmerca1"
-            },
-            {
-                "cargo": "Director de Segmento",
-                "correo": "jpalaci@bancodebogota.com.co",
-                "nombre": "Juan Carlos Palacios Rojas",
-                "segmento": "Empresarial",
-                "unidadNegocio": "2015",
-                "usuario": "jpalaci"
-            },
-            {
-                "cargo": "Director de Crédito",
-                "correo": "CGALIND@bancodebogota.com.co",
-                "nombre": "Galindo Marquez, Carlos Andres",
-                "segmento": "Empresarial",
-                "unidadNegocio": "2015",
-                "usuario": "CGALIND"
-            },
-            {
-                "cargo": "VP Comercial Banca Empresas",
-                "correo": "SSANDOV@bancodebogota.com.co",
-                "nombre": "Sergio Ivan Sandoval Cadena",
-                "segmento": "Transversal",
-                "unidadNegocio": "Transversal",
-                "usuario": "SSANDOV"
-            },
-            {
-                "cargo": "VP Financiero y de Estrategia",
-                "correo": "SSANDOV@bancodebogota.com.co",
-                "nombre": "Sergio Ivan Sandoval Cadena",
-                "segmento": "Transversal",
-                "unidadNegocio": "Transversal",
-                "usuario": "SSANDOV"
-            },
-            {
-                "cargo": "VP Crédito/ Dir Nal Crédito",
-                "correo": "ccastel@bancodebogota.com.co",
-                "nombre": "Castellanos Pabon, Cesar",
-                "segmento": "Transversal",
-                "unidadNegocio": "Transversal",
-                "usuario": "ccastel"
-            }
-        ],
-        "operationData.allCustomer.alertPassiveActive": "-",
-        "operationData.allCustomer.carteraME.tasaImplicita": 0,
-        "operationData.allCustomer.carteraME.volumen": 0,
-        "operationData.allCustomer.carteraRedescontada.tasaImplicita": 0,
-        "operationData.allCustomer.carteraRedescontada.volumen": 0,
-        "operationData.allCustomer.cdts.tasaImplicita": 0,
-        "operationData.allCustomer.cdts.volumen": 0,
-        "operationData.allCustomer.clienteEspecial.nombre": "No Existe",
-        "operationData.allCustomer.clienteEspecial.numeroIdentificacion": "-",
-        "operationData.allCustomer.clienteEspecial.tipoIdentificacion": "-",
-        "operationData.allCustomer.clientePrincipal.nombre": "IMPORMADERAS LTDA",
-        "operationData.allCustomer.clientePrincipal.numeroIdentificacion": "8050287056",
-        "operationData.allCustomer.clientePrincipal.tipoIdentificacion": "Nit",
-        "operationData.allCustomer.cuentasAhorro.tasaImplicita": 0,
-        "operationData.allCustomer.cuentasAhorro.volumen": 0,
-        "operationData.allCustomer.cuentasCorrientes.tasaImplicita": 0,
-        "operationData.allCustomer.cuentasCorrientes.volumen": 227673232.166667,
-        "operationData.allCustomer.familiaCredito": [
-            {
-                "message": "El cliente actualmente no cuenta con ninguna familia de crédito activa"
-            }
-        ],
-        "operationData.allCustomer.fechaFin": "2025-05-01T05:00:00.000+00:00",
-        "operationData.allCustomer.fechaInicio": "2024-06-01T05:00:00.000+00:00",
-        "operationData.allCustomer.infoCliente.activosCorte.number": 4962611476.72,
-        "operationData.allCustomer.infoCliente.activosCorte.text": "-",
-        "operationData.allCustomer.infoCliente.activosPromedio.number": 3763056130.35758,
-        "operationData.allCustomer.infoCliente.activosPromedio.text": "-",
-        "operationData.allCustomer.infoCliente.clasificacionComercial": "Preferente",
-        "operationData.allCustomer.infoCliente.direccionBanca": "Occidente Empresarial",
-        "operationData.allCustomer.infoCliente.margenContribucion.number": 49142592.3755733,
-        "operationData.allCustomer.infoCliente.margenContribucion.text": "-",
-        "operationData.allCustomer.infoCliente.pasivosPromedio.number": 1413457467.94167,
-        "operationData.allCustomer.infoCliente.pasivosPromedio.text": "-",
-        "operationData.allCustomer.infoCliente.roa.number": 0.0130592238524233,
-        "operationData.allCustomer.infoCliente.roa.text": "-",
-        "operationData.allCustomer.infoCliente.segmentoComercial": "Empresarial",
-        "operationData.allCustomer.infoRating.ratingCliente.mrc": "AA",
-        "operationData.allCustomer.infoRating.ratingCliente.mrcObservado.number": 1,
-        "operationData.allCustomer.infoRating.ratingCliente.mrcObservado.text": "-",
-        "operationData.allCustomer.infoRating.ratingCliente.mrcProyectado.number": "-",
-        "operationData.allCustomer.infoRating.ratingCliente.mrcProyectado.text": "-",
-        "operationData.allCustomer.infoRating.ratingClienteEspecial.mrc": "-",
-        "operationData.allCustomer.infoRating.ratingClienteEspecial.mrcObservado": "-",
-        "operationData.allCustomer.infoRating.ratingClienteEspecial.mrcProyectado": "-",
-        "operationData.allCustomer.leasingComercial.tasaImplicita": 0,
-        "operationData.allCustomer.leasingComercial.volumen": 0,
-        "operationData.allCustomer.numCuentasAsociadas": "-",
-        "operationData.allCustomer.otrosActivos.tasaImplicita": 0.313603236556738,
-        "operationData.allCustomer.otrosActivos.volumen": 140231.333333333,
-        "operationData.allCustomer.otrosPasivos.tasaImplicita": 0,
-        "operationData.allCustomer.otrosPasivos.volumen": 1185784235.775,
-        "operationData.allCustomer.potencialEmpleados": "-",
-        "operationData.allCustomer.prestamosComerciales.tasaImplicita": 0.0990202262878075,
-        "operationData.allCustomer.prestamosComerciales.volumen": 3739028670,
-        "operationData.allCustomer.rentabilidadNomina": "-",
-        "operationData.allCustomer.shareNominaEmpresa": "-",
-        "operationData.allCustomer.targetShareNomina": "-",
-        "operationData.allCustomer.tarjetaCredito.tasaImplicita": 0.0100748847666962,
-        "operationData.allCustomer.tarjetaCredito.volumen": 23887229.02425,
-        "operationData.allCustomer.tipoClienteEspecial": "No",
-        "operationData.allCustomer.totalActivo.tasaImplicita": 0.101287417904639,
-        "operationData.allCustomer.totalActivo.volumen": 26243229.8679968,
-        "operationData.allCustomer.totalActivos.tasaImplicita": 0.0984636131496147,
-        "operationData.allCustomer.totalActivos.volumen": 3763056130.35758,
-        "operationData.allCustomer.totalPasivo.tasaImplicita": 2.1754338445674,
-        "operationData.allCustomer.totalPasivo.volumen": 821026538.743253,
-        "operationData.allCustomer.totalPasivos.tasaImplicita": 0,
-        "operationData.allCustomer.totalPasivos.volumen": 1413457467.94167,
-        "operationData.allCustomer.unidadNegocio.codigo": "2015",
-        "operationData.allCustomer.unidadNegocio.direccion": "Empresarial",
-        "operationData.allCustomer.unidadNegocio.gerente": "Cristian Camilo González Montenegro",
-        "operationData.allCustomer.utilidadConvenioNomina": "-",
-        "operationData.attributionLevel": [
-            {
-                "cargo": "Consultor Internacional",
-                "correo": "jperal7@bancodebogota.com.co",
-                "nombre": "Peralta Montano, Johan Esteban",
-                "segmento": "Empresarial",
-                "unidadNegocio": "2015",
-                "usuario": "ogarci4"
-            }
-        ],
-        "operationData.comment": "Esto es una prueba realizada por JP data systems",
-        "operationData.dataCustomer.clienteEspecial.nombre": "No Existe",
-        "operationData.dataCustomer.clienteEspecial.numeroIdentificacion": "-",
-        "operationData.dataCustomer.clienteEspecial.tipoIdentificacion": "-",
-        "operationData.dataCustomer.clientePrincipal.nombre": "IMPORMADERAS LTDA",
-        "operationData.dataCustomer.clientePrincipal.numeroIdentificacion": "8050287056",
-        "operationData.dataCustomer.clientePrincipal.tipoIdentificacion": "Nit",
-        "operationData.dataCustomer.correo": "JPERAL7@bancodebogota.com.co",
-        "operationData.dataCustomer.ejecutivoComercial": "-",
-        "operationData.dataCustomer.familiaCredito": [
-            {
-                "message": "El cliente actualmente no cuenta con ninguna familia de crédito activa"
-            }
-        ],
-        "operationData.dataCustomer.fechaFin": "2025-05-01T05:00:00.000+00:00",
-        "operationData.dataCustomer.fechaInicio": "2024-06-01T05:00:00.000+00:00",
-        "operationData.dataCustomer.infoCliente.activosCorte.number": 4962611476.72,
-        "operationData.dataCustomer.infoCliente.activosCorte.text": "-",
-        "operationData.dataCustomer.infoCliente.activosPromedio.number": 3763056130.35758,
-        "operationData.dataCustomer.infoCliente.activosPromedio.text": "-",
-        "operationData.dataCustomer.infoCliente.clasificacionComercial": "Preferente",
-        "operationData.dataCustomer.infoCliente.direccionBanca": "Occidente Empresarial",
-        "operationData.dataCustomer.infoCliente.margenContribucion.number": 49142592.3755733,
-        "operationData.dataCustomer.infoCliente.margenContribucion.text": "-",
-        "operationData.dataCustomer.infoCliente.pasivosPromedio.number": 1413457467.94167,
-        "operationData.dataCustomer.infoCliente.pasivosPromedio.text": "-",
-        "operationData.dataCustomer.infoCliente.roa.number": 0.0130592238524233,
-        "operationData.dataCustomer.infoCliente.roa.text": "-",
-        "operationData.dataCustomer.infoCliente.segmentoComercial": "Empresarial",
-        "operationData.dataCustomer.infoRating.ratingCliente.mrc": "AA",
-        "operationData.dataCustomer.infoRating.ratingCliente.mrcObservado.number": 1,
-        "operationData.dataCustomer.infoRating.ratingCliente.mrcObservado.text": "-",
-        "operationData.dataCustomer.infoRating.ratingCliente.mrcProyectado.number": "-",
-        "operationData.dataCustomer.infoRating.ratingCliente.mrcProyectado.text": "-",
-        "operationData.dataCustomer.infoRating.ratingClienteEspecial.mrc": "-",
-        "operationData.dataCustomer.infoRating.ratingClienteEspecial.mrcObservado": "-",
-        "operationData.dataCustomer.infoRating.ratingClienteEspecial.mrcProyectado": "-",
-        "operationData.dataCustomer.rentabilidadNomina": "-",
-        "operationData.dataCustomer.tipoClienteEspecial": "No",
-        "operationData.dataCustomer.unidadNegocio.codigo": "2015",
-        "operationData.dataCustomer.unidadNegocio.direccion": "Empresarial",
-        "operationData.dataCustomer.unidadNegocio.gerente": "Cristian Camilo González Montenegro",
-        "operationData.dataCustomer.utilidadConvenioNomina": "-",
-        "operationData.operationServer.backToBack.margen": "6,00%",
-        "operationData.operationServer.backToBack.monto": " 30.000.000,00 ",
-        "operationData.operationServer.backToBack.tasaDeposito": "12,00%",
-        "operationData.operationServer.backToBack.tasaFijaCredito": "18,00%",
-        "operationData.operationServer.comisiones.totalComisiones": "USD 150000,000",
-        "operationData.operationServer.comisiones.totalPorcentaje": "17.00",
-        "operationData.operationServer.datosOperacionInput.activoGarantia": "-",
-        "operationData.operationServer.datosOperacionInput.amortizacionCapital": "Anual",
-        "operationData.operationServer.datosOperacionInput.backToBack.detail.libro": "New York",
-        "operationData.operationServer.datosOperacionInput.backToBack.detail.margen": 1,
-        "operationData.operationServer.datosOperacionInput.backToBack.detail.montoUSD": 30000000,
-        "operationData.operationServer.datosOperacionInput.backToBack.detail.observaciones": "LOLAAAAA es una Vacaaaaa",
-        "operationData.operationServer.datosOperacionInput.backToBack.detail.tasaDeposito": 11,
-        "operationData.operationServer.datosOperacionInput.backToBack.detail.tasaFijaCredito": 12,
-        "operationData.operationServer.datosOperacionInput.backToBack.saved": true,
-        "operationData.operationServer.datosOperacionInput.campanaComercial": "No",
-        "operationData.operationServer.datosOperacionInput.comisiones.active": true,
-        "operationData.operationServer.datosOperacionInput.comisiones.rows": [
-            {
-                "detail": "1",
-                "id": "commission-row-mtrfwfep-vbxh3b",
-                "percentage": 1,
-                "usdValue": 300000
-            },
-            {
-                "detail": "5",
-                "id": "commission-row-mtrgap6y-qmopv5",
-                "percentage": 1,
-                "usdValue": 300000
-            },
-            {
-                "detail": "9",
-                "id": "commission-row-mtrgatyu-gnr983",
-                "percentage": 3,
-                "usdValue": 900000
-            },
-            {
-                "customDetail": "LOL",
-                "detail": "15",
-                "id": "commission-row-mtrgaxja-drmmb8",
-                "percentage": 2,
-                "usdValue": 600000
-            },
-            {
-                "detail": "4",
-                "id": "commission-row-mtrgb4ul-oujian",
-                "percentage": 2,
-                "usdValue": 600000
-            },
-            {
-                "detail": "10",
-                "id": "commission-row-mtrgb8q9-qz5gwh",
-                "percentage": 1,
-                "usdValue": 300000
-            },
-            {
-                "detail": "14",
-                "id": "commission-row-mtrgbb5r-gn3kaj",
-                "percentage": 3,
-                "usdValue": 900000
-            },
-            {
-                "detail": "13",
-                "id": "commission-row-mtrgbdqy-1o7e45",
-                "percentage": 2,
-                "usdValue": 600000
-            },
-            {
-                "customDetail": "LUPUS",
-                "detail": "15",
-                "id": "commission-row-mtrgbgwc-gx0a1p",
-                "percentage": 1,
-                "usdValue": 300000
-            },
-            {
-                "detail": "11",
-                "id": "commission-row-mtrgbsp4-hvllxj",
-                "percentage": 1,
-                "usdValue": 300000
-            }
-        ],
-        "operationData.operationServer.datosOperacionInput.comisiones.totalPercentage": 17,
-        "operationData.operationServer.datosOperacionInput.comisiones.totalUsdValue": 5100000,
-        "operationData.operationServer.datosOperacionInput.destinoFondos": "-",
-        "operationData.operationServer.datosOperacionInput.entidadRedescuento": "-",
-        "operationData.operationServer.datosOperacionInput.indiceReferencia": "BACK TO BACK",
-        "operationData.operationServer.datosOperacionInput.moneda": "ME",
-        "operationData.operationServer.datosOperacionInput.nombreCampana": "-",
-        "operationData.operationServer.datosOperacionInput.pagoIntereses": "Trimestral",
-        "operationData.operationServer.datosOperacionInput.periodoGracia": 2,
-        "operationData.operationServer.datosOperacionInput.plazoMeses": 23,
-        "operationData.operationServer.datosOperacionInput.porcentajeCobertura": 4e-7,
-        "operationData.operationServer.datosOperacionInput.porcentajeComisionesNegociadas": 0.17,
-        "operationData.operationServer.datosOperacionInput.porcentajeRedescuento": "-",
-        "operationData.operationServer.datosOperacionInput.porcentajeSpread": 0.01,
-        "operationData.operationServer.datosOperacionInput.spreadRedescuento": "-",
-        "operationData.operationServer.datosOperacionInput.sustitucion": "Si",
-        "operationData.operationServer.datosOperacionInput.tamanioProductor": "-",
-        "operationData.operationServer.datosOperacionInput.tipoCotizacion": "En Bloque",
-        "operationData.operationServer.datosOperacionInput.tipoGarantia": "Colateral Nación",
-        "operationData.operationServer.datosOperacionInput.tipoOperacion": "-",
-        "operationData.operationServer.datosOperacionInput.valorGarantia": 12,
-        "operationData.operationServer.datosOperacionInput.valorOperacion": 0,
-        "operationData.operationServer.periodicidad": " EA ",
-        "operationData.operationServer.porcentajeCobertura": 4e-7,
-        "operationData.operationServer.salidasRentabilidadDto.beneficioEmase.actual": 0,
-        "operationData.operationServer.salidasRentabilidadDto.beneficioEmase.nueva": 0,
-        "operationData.operationServer.salidasRentabilidadDto.beneficioEmase.operacion": 0,
-        "operationData.operationServer.salidasRentabilidadDto.costosOperacionales.actual": 0.00835777358578157,
-        "operationData.operationServer.salidasRentabilidadDto.costosOperacionales.nueva": 0.000308013820552567,
-        "operationData.operationServer.salidasRentabilidadDto.costosOperacionales.operacion": 0,
-        "operationData.operationServer.salidasRentabilidadDto.costosOperacionalesMarginales.actual": 0.000530235347016677,
-        "operationData.operationServer.salidasRentabilidadDto.costosOperacionalesMarginales.nueva": 0.0000237823971150148,
-        "operationData.operationServer.salidasRentabilidadDto.costosOperacionalesMarginales.operacion": 0.000165410580006984,
-        "operationData.operationServer.salidasRentabilidadDto.direccion": "-",
-        "operationData.operationServer.salidasRentabilidadDto.exigenciaAdicional.actual": 0,
-        "operationData.operationServer.salidasRentabilidadDto.exigenciaAdicional.nueva": 0,
-        "operationData.operationServer.salidasRentabilidadDto.exigenciaAdicional.operacion": 0,
-        "operationData.operationServer.salidasRentabilidadDto.impuestos.actual": 0.00870614923494885,
-        "operationData.operationServer.salidasRentabilidadDto.impuestos.nueva": 0.0199886042095978,
-        "operationData.operationServer.salidasRentabilidadDto.impuestos.operacion": 0.0210520953543662,
-        "operationData.operationServer.salidasRentabilidadDto.ingresoComisiones.actual": 0.00790682724872687,
-        "operationData.operationServer.salidasRentabilidadDto.ingresoComisiones.nueva": 0.000291394836714969,
-        "operationData.operationServer.salidasRentabilidadDto.ingresoComisiones.operacion": 0,
-        "operationData.operationServer.salidasRentabilidadDto.ingresoIntereses.actual": 0.0984636131496147,
-        "operationData.operationServer.salidasRentabilidadDto.ingresoIntereses.nueva": 0.163346664660385,
-        "operationData.operationServer.salidasRentabilidadDto.ingresoIntereses.operacion": 0.166661164180919,
-        "operationData.operationServer.salidasRentabilidadDto.interesesPagadosFtp.actual": 0.0943492403753921,
-        "operationData.operationServer.salidasRentabilidadDto.interesesPagadosFtp.nueva": 0.112916996058219,
-        "operationData.operationServer.salidasRentabilidadDto.interesesPagadosFtp.operacion": 0.113865515214997,
-        "operationData.operationServer.salidasRentabilidadDto.interesesPagadosPasivo.actual": 0,
-        "operationData.operationServer.salidasRentabilidadDto.interesesPagadosPasivo.nueva": 0,
-        "operationData.operationServer.salidasRentabilidadDto.interesesPagadosPasivo.operacion": 0,
-        "operationData.operationServer.salidasRentabilidadDto.interesesRecibidosFtp.actual": 0.0186321819972208,
-        "operationData.operationServer.salidasRentabilidadDto.interesesRecibidosFtp.nueva": 0.000686662482931818,
-        "operationData.operationServer.salidasRentabilidadDto.interesesRecibidosFtp.operacion": 0,
-        "operationData.operationServer.salidasRentabilidadDto.margenFinancieroDespuesProv.actual": 0.0227465547714435,
-        "operationData.operationServer.salidasRentabilidadDto.margenFinancieroDespuesProv.nueva": 0.050011911904947,
-        "operationData.operationServer.salidasRentabilidadDto.margenFinancieroDespuesProv.operacion": 0.0527956489659225,
-        "operationData.operationServer.salidasRentabilidadDto.margenFinancieroNeto.actual": 0.0306533820201704,
-        "operationData.operationServer.salidasRentabilidadDto.margenFinancieroNeto.nueva": 0.050303306741662,
-        "operationData.operationServer.salidasRentabilidadDto.margenFinancieroNeto.operacion": 0.0527956489659225,
-        "operationData.operationServer.salidasRentabilidadDto.margenNetoIntereses.actual": 0.0227465547714435,
-        "operationData.operationServer.salidasRentabilidadDto.margenNetoIntereses.nueva": 0.0511163310850973,
-        "operationData.operationServer.salidasRentabilidadDto.margenNetoIntereses.operacion": 0.0527956489659225,
-        "operationData.operationServer.salidasRentabilidadDto.mesCorteMC": "Mayo",
-        "operationData.operationServer.salidasRentabilidadDto.nivelAtribucion": "Consultor de Comercio Exterior",
-        "operationData.operationServer.salidasRentabilidadDto.nombreGrupo": "BRINKS DE COLOMBIA S A",
-        "operationData.operationServer.salidasRentabilidadDto.perdidaEsperada.actual": 0,
-        "operationData.operationServer.salidasRentabilidadDto.perdidaEsperada.nueva": 0.00110441918015023,
-        "operationData.operationServer.salidasRentabilidadDto.perdidaEsperada.operacion": 0,
-        "operationData.operationServer.salidasRentabilidadDto.roaCliente": 0.0299829063143967,
-        "operationData.operationServer.salidasRentabilidadDto.roaOperacion": 0.0315781430315493,
-        "operationData.operationServer.salidasRentabilidadDto.roeClienteIncluyendoNuevaOperacion": "-",
-        "operationData.operationServer.salidasRentabilidadDto.roeOperacion": "-",
-        "operationData.operationServer.salidasRentabilidadDto.semasforoRiesgo": "-",
-        "operationData.operationServer.salidasRentabilidadDto.spreadFTP": "-",
-        "operationData.operationServer.salidasRentabilidadDto.spreadSugerido": "-",
-        "operationData.operationServer.salidasRentabilidadDto.subsidioFtp.actual": 0,
-        "operationData.operationServer.salidasRentabilidadDto.subsidioFtp.nueva": 0,
-        "operationData.operationServer.salidasRentabilidadDto.subsidioFtp.operacion": 0,
-        "operationData.operationServer.salidasRentabilidadDto.subsidios.actual": 0,
-        "operationData.operationServer.salidasRentabilidadDto.subsidios.nueva": 0,
-        "operationData.operationServer.salidasRentabilidadDto.subsidios.operacion": 0,
-        "operationData.operationServer.salidasRentabilidadDto.targetRentabilidadSubsegmento": 0,
-        "operationData.operationServer.salidasRentabilidadDto.targetSegmento": 0,
-        "operationData.operationServer.salidasRentabilidadDto.tasaReferencia": "-",
-        "operationData.operationServer.salidasRentabilidadDto.utilidadAntesImpuestos.actual": 0.0217653730873721,
-        "operationData.operationServer.salidasRentabilidadDto.utilidadAntesImpuestos.nueva": 0.0499715105239944,
-        "operationData.operationServer.salidasRentabilidadDto.utilidadAntesImpuestos.operacion": 0.0526302383859155,
-        "operationData.operationServer.salidasRentabilidadDto.utilidadDespuesImpuestos.actual": 0.0130592238524233,
-        "operationData.operationServer.salidasRentabilidadDto.utilidadDespuesImpuestos.nueva": 0.0299829063143967,
-        "operationData.operationServer.salidasRentabilidadDto.utilidadDespuesImpuestos.operacion": 0.0315781430315493,
-        "operationData.operationServer.salidasRentabilidadDto.utilidadNetaMarginal.actual": 0.0180738880038922,
-        "operationData.operationServer.salidasRentabilidadDto.utilidadNetaMarginal.nueva": 0.0301677146067282,
-        "operationData.operationServer.salidasRentabilidadDto.utilidadNetaMarginal.operacion": 0.0315781430315493,
-        "operationData.operationServer.spreadMV": " EA ",
-        "operationData.operationServer.tasaEA": "-",
-        "operationData.operationServer.tasaMV": "-",
-        "operationData.operationServer.valorComisionesNegociadas": 5100000,
-        "operationData.operationServer.vidaMedia": 19,
-        "operationData.periodicidad": " EA ",
-        "operationData.ratingObservedCosigner": "-",
-        "operationData.ratingObservedCustomer": 1,
-        "operationData.ratingProjectedCosigner": "-",
-        "operationData.ratingProjectedCustomer": "-",
-        "operationData.ratingSelectedCosigner": "-",
-        "operationData.ratingSelectedCustomer": "-",
-        "operationData.sceneryId": "ME-1788798364603",
-        "radicator": "JPERAL7@bancodebogota.com.co",
-        "registerDate": "2026-09-07T16:27:03.454Z",
-        "state": "En aprobación por Tasa",
-        "stepsProgress.aprobacionFOR130.registerDate": "-",
-        "stepsProgress.aprobacionFOR130.state": "-",
-        "stepsProgress.aprobacionTasa.registerDate": "2026-09-07T16:27:38.324Z",
-        "stepsProgress.aprobacionTasa.state": "En aprobación por Tasa",
-        "stepsProgress.cotizacionCreada.registerDate": "2026-09-07T16:27:03.454Z",
-        "stepsProgress.cotizacionCreada.state": "Completada",
-        "stepsProgress.DCC_FOR130.registerDate": "-",
-        "stepsProgress.DCC_FOR130.state": "-",
-        "XFile": 4
+            "periodicidad": " TV "
+        },
+        "registerDate": "2025-05-27T17:08:19.048Z",
+        "state": "Aprobada",
+        "stateRequest": "Aprobada"
     }
 }

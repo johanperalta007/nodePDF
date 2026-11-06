@@ -4,11 +4,25 @@ const app = express();
 const PDFDocument = require('pdfkit');
 const streamBuffers = require('stream-buffers');
 const fs = require('fs');
-const pdfTemplate = require("./structureME.json");
+//const pdfTemplate = require("./structureME.json");
 //const pdfTemplate = require("./structureML.json");
 //const pdfTemplate = require("./structureOldest.json");
+const pdfTemplate = require("./template.json");
 const payload = require("./payload.json");
 const { mapOperation } = require("./mapOperation");
+
+const flattenPayload = (source, parentKey = "", accumulator = {}) => {
+  for (const [key, value] of Object.entries(source)) {
+    const fullKey = parentKey ? `${parentKey}.${key}` : key;
+    const isNestedObject = value && typeof value === "object" && !Array.isArray(value);
+    if (isNestedObject) {
+      flattenPayload(value, fullKey, accumulator);
+    } else {
+      accumulator[fullKey] = value;
+    }
+  }
+  return accumulator;
+};
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -327,7 +341,7 @@ app.get('/api/pdf', async (req, res) => {
     // mapeadas son operationData.* (128) + derivadas (138). Todo el bloque
     // "me.*" de arriba es codigo muerto para esta plantilla; se deja solo por
     // si se quiere volver a maquetar posiciones a mano.
-    const operation = await mapOperation(payload.data, { ordenarPorDetalle: false });
+    const operation = await mapOperation(flattenPayload(payload.data), { ordenarPorDetalle: false });
     Object.assign(dynamicVars, operation);
 
     const applyTextStyle = (element) => {
@@ -366,14 +380,16 @@ app.get('/api/pdf', async (req, res) => {
       */
 
       if (element["type"] === "rect") {
-        doc.lineWidth(0.1); // Grosor del borde
+        doc.lineWidth(element["lineWidth"] || 0.1); // Grosor del borde
         //doc.strokeColor('#e6e6e6'); // Color del borde
-        doc.strokeColor('gray'); // Color del borde
+        doc.strokeColor(element["stroke"] || 'gray'); // Color del borde
 
         const [x, y, width, height] = element["positions"];
         const radius = 4; // Puedes ajustar el radio según lo redondeado que lo quieras
 
-        if (element["fill"]) {
+        if (element["fill"] && element["stroke"]) {
+          doc.roundedRect(x, y, width, height, radius).fillAndStroke(element["fill"], element["stroke"]);
+        } else if (element["fill"]) {
           doc.roundedRect(x, y, width, height, radius).fill(element["fill"]);
         } else {
           doc.roundedRect(x, y, width, height, radius).stroke();
