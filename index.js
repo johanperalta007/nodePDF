@@ -294,6 +294,7 @@ app.get('/api/pdf', async (req, res) => {
       ),
       textoFecha: `${fechaInicio.dia} de ${fechaInicio.mes} al ${fechaFin.dia} de ${fechaFin.mes} del ${fechaFin.anio}`,
       imgLogo: './img/LogoBBOG.png',
+      imgCheckGray: './img/checkGray.png',
       nameProm: shortenText("DISTRITO ESPECIAL DE CIENCIA TECNOLOGIA E INN", 45),
       tipoDoc: mapDocs("Nit"),
       clientSpecialName: clienteEspecialName,
